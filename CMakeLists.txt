@@ -1,37 +1,48 @@
 cmake_minimum_required(VERSION 3.16)
-project(Jogo_PIF C)
+project(Jogo_PIF LANGUAGES C)
 
-# Use C99
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Evita que o raylib baixe/compile exemplos
-set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
+endif()
 
-# Adiciona o raylib (como subdiretório do seu repo)
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(BUILD_GAMES    OFF CACHE BOOL "" FORCE)
+set(BUILD_TESTING  OFF CACHE BOOL "" FORCE)
+set(RAYLIB_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
 add_subdirectory(external/raylib)
 
-# Seu executável
 add_executable(Jogo_PIF
-    src/main.c
+  src/main.c
 )
 
-# Linka com raylib
+# No Windows, adiciona o shim e força subsystem=console no MinGW
+if (WIN32)
+  target_sources(Jogo_PIF PRIVATE src/winmain_shim.c)
+  if (MINGW)
+    target_link_options(Jogo_PIF PRIVATE -mconsole -Wl,-subsystem,console)
+    target_link_libraries(Jogo_PIF PRIVATE gdi32 winmm opengl32)
+  elseif (MSVC)
+    target_link_options(Jogo_PIF PRIVATE /SUBSYSTEM:CONSOLE)
+  endif()
+elseif(APPLE)
+  find_library(COCOA_FRAMEWORK Cocoa)
+  find_library(IOKIT_FRAMEWORK IOKit)
+  find_library(COREVIDEO_FRAMEWORK CoreVideo)
+  target_link_libraries(Jogo_PIF PRIVATE ${COCOA_FRAMEWORK} ${IOKIT_FRAMEWORK} ${COREVIDEO_FRAMEWORK})
+elseif(UNIX)
+  find_package(Threads REQUIRED)
+  target_link_libraries(Jogo_PIF PRIVATE m dl Threads::Threads)
+endif()
+
 target_link_libraries(Jogo_PIF PRIVATE raylib)
 
-# (Opcional) Definições de Windows mínimas — mantêm compatível com headers do Win32
-if(WIN32)
-    target_compile_definitions(Jogo_PIF PRIVATE WINVER=0x0601 _WIN32_WINNT=0x0601)
-endif()
+set_target_properties(Jogo_PIF PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}"
+)
 
-# Em Linux/Unix pode precisar de libs extras (raylib já cuida bem disso, mas por garantia):
-if(UNIX AND NOT APPLE)
-    find_package(Threads REQUIRED)
-    target_link_libraries(Jogo_PIF PRIVATE m pthread dl rt)
-endif()
-
-# Sugestão de pasta de trabalho para rodar pelo CMake Tools/VSCode
-set_property(TARGET Jogo_PIF PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
-
-# Mensagem amigável
-message(STATUS "Compilando ${PROJECT_NAME} com raylib de external/raylib")
+message(STATUS "=> Build: ${CMAKE_BUILD_TYPE}")

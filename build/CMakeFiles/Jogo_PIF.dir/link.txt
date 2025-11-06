@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\Jogo_PIF.dir/objects.a
+C:\mingw64\bin\ar.exe qc CMakeFiles\Jogo_PIF.dir/objects.a @CMakeFiles\Jogo_PIF.dir\objects1.rsp
+C:\mingw64\bin\gcc.exe -O3 -DNDEBUG -mconsole -Wl,-subsystem,console -Wl,--whole-archive CMakeFiles\Jogo_PIF.dir/objects.a -Wl,--no-whole-archive -o Jogo_PIF.exe -Wl,--out-implib,libJogo_PIF.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Jogo_PIF.dir\linkLibs.rsp
