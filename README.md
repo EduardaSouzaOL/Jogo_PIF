@@ -35,14 +35,6 @@ Este é um projeto desenvolvido em **C** usando a biblioteca **[Raylib](https://
    C:\raylib\raylib-5.5_win64_mingw-w64
    ```
 
-4. Adicione o caminho aos includes e libs no `CMakeLists.txt`:
-   ```cmake
-   include_directories("C:/raylib/raylib-5.5_win64_mingw-w64/include")
-   link_directories("C:/raylib/raylib-5.5_win64_mingw-w64/lib")
-   ```
-
----
-
 ### 🔹 Linux (Debian/Ubuntu ou derivados)
 
 1. Instale Raylib e dependências:
@@ -80,8 +72,8 @@ No terminal do VSCode (ou MSYS2/Linux):
 
 ```bash
 cd build
-./nome_do_jogo.exe     # Windows
-./nome_do_jogo         # Linux
+./Jogo_PIF.exe     # Windows
+./Jogo_PIF         # Linux
 ```
 
 ---
@@ -136,43 +128,6 @@ cd build
 
 ---
 
-## 🧰 .gitignore
-
-```gitignore
-# --- Build ---
-build/
-*.o
-*.obj
-*.exe
-*.dll
-*.lib
-*.a
-*.so
-*.out
-
-# --- CMake ---
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-
-# --- VSCode ---
-.vscode/
-.vscode/settings.json
-
-# --- Sistema ---
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# --- Temporários ---
-*.log
-*.tmp
-*.bak
-```
-
----
-
 ## 📜 Licença
 
 Este projeto é distribuído sob a licença [MIT](https://opensource.org/licenses/MIT).
@@ -183,7 +138,7 @@ Este projeto é distribuído sob a licença [MIT](https://opensource.org/license
 
 | Membro | Função | GitHub |
 |--------|---------|--------|
-| Nome 1 | Programador(a) | [@nome1](https://github.com/nome1) |
+| Maria Eduarda Souza de Oliveira | Programador(a) | [@EduardaOL](https://github.com/EduardaSouzaOL) |
 | Nome 2 | Programador(a) | [@nome2](https://github.com/nome2) |
 | Nome 3 | Programador(a) | [@nome3](https://github.com/nome3) |
 
