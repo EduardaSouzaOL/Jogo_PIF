@@ -1,0 +1,21 @@
+# Compilação
+/build/
+*.o
+*.obj
+*.exe
+*.out
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# VSCode
+# .vscode/
+#!.vscode/settings.json
+#   !.vscode/tasks.json
+# !.vscode/launch.json
+
+# Outros
+*.log
