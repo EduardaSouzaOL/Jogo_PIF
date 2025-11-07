@@ -12,10 +12,10 @@ cmake_install.cmake
 Makefile
 
 # VSCode
-# .vscode/
-#!.vscode/settings.json
-#   !.vscode/tasks.json
-# !.vscode/launch.json
+ .vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 
 # Outros
 *.log
