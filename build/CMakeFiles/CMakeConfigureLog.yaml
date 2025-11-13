@@ -27,6 +27,7 @@ events:
     names:
       - "mingw32-make.exe"
     candidate_directories:
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -49,11 +50,14 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/mingw64/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "/REGISTRY-NOTFOUND/bin/"
       - "c:/MinGW/bin/"
       - "/MinGW/bin/"
       - "C:/Program Files/CodeBlocks/MinGW/bin/"
     searched_directories:
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/mingw32-make.exe.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/mingw32-make.exe"
       - "C:/MinGW/bin/mingw32-make.exe.com"
       - "C:/MinGW/bin/mingw32-make.exe"
       - "C:/Python312/Scripts/mingw32-make.exe.com"
@@ -100,6 +104,7 @@ events:
     found: "C:/mingw64/bin/mingw32-make.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -147,6 +152,576 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompiler.cmake:63 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCCompiler.cmake:64 (_cmake_find_compiler)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "C compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: false
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "cc"
+      - "gcc"
+      - "cl"
+      - "bcc"
+      - "xlc"
+      - "icx"
+      - "clang"
+    candidate_directories:
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
+      - "C:/MinGW/bin/"
+      - "C:/Python312/Scripts/"
+      - "C:/Python312/"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/"
+      - "C:/ProgramData/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files (x86)/dotnet/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/"
+      - "C:/Program Files/nodejs/"
+      - "C:/ProgramData/chocolatey/bin/"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/CMake/bin/"
+      - "C:/mingw64/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
+    searched_directories:
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/cc.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/cc.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/cc"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/cl.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/cl.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/cl"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/bcc.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/bcc.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/bcc"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/xlc.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/xlc.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/xlc"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/icx.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/icx.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/icx"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/clang.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/clang.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/clang"
+      - "C:/MinGW/bin/cc.com"
+      - "C:/MinGW/bin/cc.exe"
+      - "C:/MinGW/bin/cc"
+      - "C:/MinGW/bin/gcc.com"
+      - "C:/MinGW/bin/gcc.exe"
+      - "C:/MinGW/bin/gcc"
+      - "C:/MinGW/bin/cl.com"
+      - "C:/MinGW/bin/cl.exe"
+      - "C:/MinGW/bin/cl"
+      - "C:/MinGW/bin/bcc.com"
+      - "C:/MinGW/bin/bcc.exe"
+      - "C:/MinGW/bin/bcc"
+      - "C:/MinGW/bin/xlc.com"
+      - "C:/MinGW/bin/xlc.exe"
+      - "C:/MinGW/bin/xlc"
+      - "C:/MinGW/bin/icx.com"
+      - "C:/MinGW/bin/icx.exe"
+      - "C:/MinGW/bin/icx"
+      - "C:/MinGW/bin/clang.com"
+      - "C:/MinGW/bin/clang.exe"
+      - "C:/MinGW/bin/clang"
+      - "C:/Python312/Scripts/cc.com"
+      - "C:/Python312/Scripts/cc.exe"
+      - "C:/Python312/Scripts/cc"
+      - "C:/Python312/Scripts/gcc.com"
+      - "C:/Python312/Scripts/gcc.exe"
+      - "C:/Python312/Scripts/gcc"
+      - "C:/Python312/Scripts/cl.com"
+      - "C:/Python312/Scripts/cl.exe"
+      - "C:/Python312/Scripts/cl"
+      - "C:/Python312/Scripts/bcc.com"
+      - "C:/Python312/Scripts/bcc.exe"
+      - "C:/Python312/Scripts/bcc"
+      - "C:/Python312/Scripts/xlc.com"
+      - "C:/Python312/Scripts/xlc.exe"
+      - "C:/Python312/Scripts/xlc"
+      - "C:/Python312/Scripts/icx.com"
+      - "C:/Python312/Scripts/icx.exe"
+      - "C:/Python312/Scripts/icx"
+      - "C:/Python312/Scripts/clang.com"
+      - "C:/Python312/Scripts/clang.exe"
+      - "C:/Python312/Scripts/clang"
+      - "C:/Python312/cc.com"
+      - "C:/Python312/cc.exe"
+      - "C:/Python312/cc"
+      - "C:/Python312/gcc.com"
+      - "C:/Python312/gcc.exe"
+      - "C:/Python312/gcc"
+      - "C:/Python312/cl.com"
+      - "C:/Python312/cl.exe"
+      - "C:/Python312/cl"
+      - "C:/Python312/bcc.com"
+      - "C:/Python312/bcc.exe"
+      - "C:/Python312/bcc"
+      - "C:/Python312/xlc.com"
+      - "C:/Python312/xlc.exe"
+      - "C:/Python312/xlc"
+      - "C:/Python312/icx.com"
+      - "C:/Python312/icx.exe"
+      - "C:/Python312/icx"
+      - "C:/Python312/clang.com"
+      - "C:/Python312/clang.exe"
+      - "C:/Python312/clang"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/cc.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/cc.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/cc"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/gcc.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/gcc.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/gcc"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/cl.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/cl.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/cl"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/bcc.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/bcc.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/bcc"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/xlc.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/xlc.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/xlc"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/icx.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/icx.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/icx"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/clang.com"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/clang.exe"
+      - "C:/Program Files/Common Files/Oracle/Java/javapath/clang"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/gcc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cl.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cl.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/cl"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/bcc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/bcc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/bcc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/xlc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/xlc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/xlc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/icx.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/icx.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/icx"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/clang.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/clang.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/clang"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/cc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/cc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/cc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/gcc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/gcc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/gcc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/cl.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/cl.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/cl"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/bcc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/bcc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/bcc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/xlc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/xlc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/xlc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/icx.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/icx.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/icx"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/clang.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/clang.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/clang"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/cc.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/cc.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/cc"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/gcc.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/gcc.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/gcc"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/cl.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/cl.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/cl"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/bcc.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/bcc.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/bcc"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/xlc.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/xlc.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/xlc"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/icx.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/icx.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/icx"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/clang.com"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/clang.exe"
+      - "C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common/clang"
+      - "C:/ProgramData/Oracle/Java/javapath/cc.com"
+      - "C:/ProgramData/Oracle/Java/javapath/cc.exe"
+      - "C:/ProgramData/Oracle/Java/javapath/cc"
+      - "C:/ProgramData/Oracle/Java/javapath/gcc.com"
+      - "C:/ProgramData/Oracle/Java/javapath/gcc.exe"
+      - "C:/ProgramData/Oracle/Java/javapath/gcc"
+      - "C:/ProgramData/Oracle/Java/javapath/cl.com"
+      - "C:/ProgramData/Oracle/Java/javapath/cl.exe"
+      - "C:/ProgramData/Oracle/Java/javapath/cl"
+      - "C:/ProgramData/Oracle/Java/javapath/bcc.com"
+      - "C:/ProgramData/Oracle/Java/javapath/bcc.exe"
+      - "C:/ProgramData/Oracle/Java/javapath/bcc"
+      - "C:/ProgramData/Oracle/Java/javapath/xlc.com"
+      - "C:/ProgramData/Oracle/Java/javapath/xlc.exe"
+      - "C:/ProgramData/Oracle/Java/javapath/xlc"
+      - "C:/ProgramData/Oracle/Java/javapath/icx.com"
+      - "C:/ProgramData/Oracle/Java/javapath/icx.exe"
+      - "C:/ProgramData/Oracle/Java/javapath/icx"
+      - "C:/ProgramData/Oracle/Java/javapath/clang.com"
+      - "C:/ProgramData/Oracle/Java/javapath/clang.exe"
+      - "C:/ProgramData/Oracle/Java/javapath/clang"
+      - "C:/Windows/System32/cc.com"
+      - "C:/Windows/System32/cc.exe"
+      - "C:/Windows/System32/cc"
+      - "C:/Windows/System32/gcc.com"
+      - "C:/Windows/System32/gcc.exe"
+      - "C:/Windows/System32/gcc"
+      - "C:/Windows/System32/cl.com"
+      - "C:/Windows/System32/cl.exe"
+      - "C:/Windows/System32/cl"
+      - "C:/Windows/System32/bcc.com"
+      - "C:/Windows/System32/bcc.exe"
+      - "C:/Windows/System32/bcc"
+      - "C:/Windows/System32/xlc.com"
+      - "C:/Windows/System32/xlc.exe"
+      - "C:/Windows/System32/xlc"
+      - "C:/Windows/System32/icx.com"
+      - "C:/Windows/System32/icx.exe"
+      - "C:/Windows/System32/icx"
+      - "C:/Windows/System32/clang.com"
+      - "C:/Windows/System32/clang.exe"
+      - "C:/Windows/System32/clang"
+      - "C:/Windows/cc.com"
+      - "C:/Windows/cc.exe"
+      - "C:/Windows/cc"
+      - "C:/Windows/gcc.com"
+      - "C:/Windows/gcc.exe"
+      - "C:/Windows/gcc"
+      - "C:/Windows/cl.com"
+      - "C:/Windows/cl.exe"
+      - "C:/Windows/cl"
+      - "C:/Windows/bcc.com"
+      - "C:/Windows/bcc.exe"
+      - "C:/Windows/bcc"
+      - "C:/Windows/xlc.com"
+      - "C:/Windows/xlc.exe"
+      - "C:/Windows/xlc"
+      - "C:/Windows/icx.com"
+      - "C:/Windows/icx.exe"
+      - "C:/Windows/icx"
+      - "C:/Windows/clang.com"
+      - "C:/Windows/clang.exe"
+      - "C:/Windows/clang"
+      - "C:/Windows/System32/wbem/cc.com"
+      - "C:/Windows/System32/wbem/cc.exe"
+      - "C:/Windows/System32/wbem/cc"
+      - "C:/Windows/System32/wbem/gcc.com"
+      - "C:/Windows/System32/wbem/gcc.exe"
+      - "C:/Windows/System32/wbem/gcc"
+      - "C:/Windows/System32/wbem/cl.com"
+      - "C:/Windows/System32/wbem/cl.exe"
+      - "C:/Windows/System32/wbem/cl"
+      - "C:/Windows/System32/wbem/bcc.com"
+      - "C:/Windows/System32/wbem/bcc.exe"
+      - "C:/Windows/System32/wbem/bcc"
+      - "C:/Windows/System32/wbem/xlc.com"
+      - "C:/Windows/System32/wbem/xlc.exe"
+      - "C:/Windows/System32/wbem/xlc"
+      - "C:/Windows/System32/wbem/icx.com"
+      - "C:/Windows/System32/wbem/icx.exe"
+      - "C:/Windows/System32/wbem/icx"
+      - "C:/Windows/System32/wbem/clang.com"
+      - "C:/Windows/System32/wbem/clang.exe"
+      - "C:/Windows/System32/wbem/clang"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/cc.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/cc.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/cc"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/gcc.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/gcc.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/gcc"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/cl.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/cl.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/cl"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/bcc.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/bcc.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/bcc"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/xlc.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/xlc.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/xlc"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/icx.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/icx.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/icx"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/clang.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/clang.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/clang"
+      - "C:/Windows/System32/OpenSSH/cc.com"
+      - "C:/Windows/System32/OpenSSH/cc.exe"
+      - "C:/Windows/System32/OpenSSH/cc"
+      - "C:/Windows/System32/OpenSSH/gcc.com"
+      - "C:/Windows/System32/OpenSSH/gcc.exe"
+      - "C:/Windows/System32/OpenSSH/gcc"
+      - "C:/Windows/System32/OpenSSH/cl.com"
+      - "C:/Windows/System32/OpenSSH/cl.exe"
+      - "C:/Windows/System32/OpenSSH/cl"
+      - "C:/Windows/System32/OpenSSH/bcc.com"
+      - "C:/Windows/System32/OpenSSH/bcc.exe"
+      - "C:/Windows/System32/OpenSSH/bcc"
+      - "C:/Windows/System32/OpenSSH/xlc.com"
+      - "C:/Windows/System32/OpenSSH/xlc.exe"
+      - "C:/Windows/System32/OpenSSH/xlc"
+      - "C:/Windows/System32/OpenSSH/icx.com"
+      - "C:/Windows/System32/OpenSSH/icx.exe"
+      - "C:/Windows/System32/OpenSSH/icx"
+      - "C:/Windows/System32/OpenSSH/clang.com"
+      - "C:/Windows/System32/OpenSSH/clang.exe"
+      - "C:/Windows/System32/OpenSSH/clang"
+      - "C:/Program Files (x86)/dotnet/cc.com"
+      - "C:/Program Files (x86)/dotnet/cc.exe"
+      - "C:/Program Files (x86)/dotnet/cc"
+      - "C:/Program Files (x86)/dotnet/gcc.com"
+      - "C:/Program Files (x86)/dotnet/gcc.exe"
+      - "C:/Program Files (x86)/dotnet/gcc"
+      - "C:/Program Files (x86)/dotnet/cl.com"
+      - "C:/Program Files (x86)/dotnet/cl.exe"
+      - "C:/Program Files (x86)/dotnet/cl"
+      - "C:/Program Files (x86)/dotnet/bcc.com"
+      - "C:/Program Files (x86)/dotnet/bcc.exe"
+      - "C:/Program Files (x86)/dotnet/bcc"
+      - "C:/Program Files (x86)/dotnet/xlc.com"
+      - "C:/Program Files (x86)/dotnet/xlc.exe"
+      - "C:/Program Files (x86)/dotnet/xlc"
+      - "C:/Program Files (x86)/dotnet/icx.com"
+      - "C:/Program Files (x86)/dotnet/icx.exe"
+      - "C:/Program Files (x86)/dotnet/icx"
+      - "C:/Program Files (x86)/dotnet/clang.com"
+      - "C:/Program Files (x86)/dotnet/clang.exe"
+      - "C:/Program Files (x86)/dotnet/clang"
+      - "C:/Program Files/dotnet/cc.com"
+      - "C:/Program Files/dotnet/cc.exe"
+      - "C:/Program Files/dotnet/cc"
+      - "C:/Program Files/dotnet/gcc.com"
+      - "C:/Program Files/dotnet/gcc.exe"
+      - "C:/Program Files/dotnet/gcc"
+      - "C:/Program Files/dotnet/cl.com"
+      - "C:/Program Files/dotnet/cl.exe"
+      - "C:/Program Files/dotnet/cl"
+      - "C:/Program Files/dotnet/bcc.com"
+      - "C:/Program Files/dotnet/bcc.exe"
+      - "C:/Program Files/dotnet/bcc"
+      - "C:/Program Files/dotnet/xlc.com"
+      - "C:/Program Files/dotnet/xlc.exe"
+      - "C:/Program Files/dotnet/xlc"
+      - "C:/Program Files/dotnet/icx.com"
+      - "C:/Program Files/dotnet/icx.exe"
+      - "C:/Program Files/dotnet/icx"
+      - "C:/Program Files/dotnet/clang.com"
+      - "C:/Program Files/dotnet/clang.exe"
+      - "C:/Program Files/dotnet/clang"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/cc.com"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/cc.exe"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/cc"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/gcc.com"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/gcc.exe"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/gcc"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/cl.com"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/cl.exe"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/cl"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/bcc.com"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/bcc.exe"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/bcc"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/xlc.com"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/xlc.exe"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/xlc"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/icx.com"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/icx.exe"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/icx"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/clang.com"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/clang.exe"
+      - "C:/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/clang"
+      - "C:/Program Files/nodejs/cc.com"
+      - "C:/Program Files/nodejs/cc.exe"
+      - "C:/Program Files/nodejs/cc"
+      - "C:/Program Files/nodejs/gcc.com"
+      - "C:/Program Files/nodejs/gcc.exe"
+      - "C:/Program Files/nodejs/gcc"
+      - "C:/Program Files/nodejs/cl.com"
+      - "C:/Program Files/nodejs/cl.exe"
+      - "C:/Program Files/nodejs/cl"
+      - "C:/Program Files/nodejs/bcc.com"
+      - "C:/Program Files/nodejs/bcc.exe"
+      - "C:/Program Files/nodejs/bcc"
+      - "C:/Program Files/nodejs/xlc.com"
+      - "C:/Program Files/nodejs/xlc.exe"
+      - "C:/Program Files/nodejs/xlc"
+      - "C:/Program Files/nodejs/icx.com"
+      - "C:/Program Files/nodejs/icx.exe"
+      - "C:/Program Files/nodejs/icx"
+      - "C:/Program Files/nodejs/clang.com"
+      - "C:/Program Files/nodejs/clang.exe"
+      - "C:/Program Files/nodejs/clang"
+      - "C:/ProgramData/chocolatey/bin/cc.com"
+      - "C:/ProgramData/chocolatey/bin/cc.exe"
+      - "C:/ProgramData/chocolatey/bin/cc"
+      - "C:/ProgramData/chocolatey/bin/gcc.com"
+      - "C:/ProgramData/chocolatey/bin/gcc.exe"
+      - "C:/ProgramData/chocolatey/bin/gcc"
+      - "C:/ProgramData/chocolatey/bin/cl.com"
+      - "C:/ProgramData/chocolatey/bin/cl.exe"
+      - "C:/ProgramData/chocolatey/bin/cl"
+      - "C:/ProgramData/chocolatey/bin/bcc.com"
+      - "C:/ProgramData/chocolatey/bin/bcc.exe"
+      - "C:/ProgramData/chocolatey/bin/bcc"
+      - "C:/ProgramData/chocolatey/bin/xlc.com"
+      - "C:/ProgramData/chocolatey/bin/xlc.exe"
+      - "C:/ProgramData/chocolatey/bin/xlc"
+      - "C:/ProgramData/chocolatey/bin/icx.com"
+      - "C:/ProgramData/chocolatey/bin/icx.exe"
+      - "C:/ProgramData/chocolatey/bin/icx"
+      - "C:/ProgramData/chocolatey/bin/clang.com"
+      - "C:/ProgramData/chocolatey/bin/clang.exe"
+      - "C:/ProgramData/chocolatey/bin/clang"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/cc.com"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/cc.exe"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/cc"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/gcc.com"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/gcc.exe"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/gcc"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/cl.com"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/cl.exe"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/cl"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/bcc.com"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/bcc.exe"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/bcc"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/xlc.com"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/xlc.exe"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/xlc"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/icx.com"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/icx.exe"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/icx"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/clang.com"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/clang.exe"
+      - "C:/ProgramData/UNIVALI/Portugol Studio/clang"
+      - "C:/Program Files/Git/cmd/cc.com"
+      - "C:/Program Files/Git/cmd/cc.exe"
+      - "C:/Program Files/Git/cmd/cc"
+      - "C:/Program Files/Git/cmd/gcc.com"
+      - "C:/Program Files/Git/cmd/gcc.exe"
+      - "C:/Program Files/Git/cmd/gcc"
+      - "C:/Program Files/Git/cmd/cl.com"
+      - "C:/Program Files/Git/cmd/cl.exe"
+      - "C:/Program Files/Git/cmd/cl"
+      - "C:/Program Files/Git/cmd/bcc.com"
+      - "C:/Program Files/Git/cmd/bcc.exe"
+      - "C:/Program Files/Git/cmd/bcc"
+      - "C:/Program Files/Git/cmd/xlc.com"
+      - "C:/Program Files/Git/cmd/xlc.exe"
+      - "C:/Program Files/Git/cmd/xlc"
+      - "C:/Program Files/Git/cmd/icx.com"
+      - "C:/Program Files/Git/cmd/icx.exe"
+      - "C:/Program Files/Git/cmd/icx"
+      - "C:/Program Files/Git/cmd/clang.com"
+      - "C:/Program Files/Git/cmd/clang.exe"
+      - "C:/Program Files/Git/cmd/clang"
+      - "C:/Program Files/CMake/bin/cc.com"
+      - "C:/Program Files/CMake/bin/cc.exe"
+      - "C:/Program Files/CMake/bin/cc"
+      - "C:/Program Files/CMake/bin/gcc.com"
+      - "C:/Program Files/CMake/bin/gcc.exe"
+      - "C:/Program Files/CMake/bin/gcc"
+      - "C:/Program Files/CMake/bin/cl.com"
+      - "C:/Program Files/CMake/bin/cl.exe"
+      - "C:/Program Files/CMake/bin/cl"
+      - "C:/Program Files/CMake/bin/bcc.com"
+      - "C:/Program Files/CMake/bin/bcc.exe"
+      - "C:/Program Files/CMake/bin/bcc"
+      - "C:/Program Files/CMake/bin/xlc.com"
+      - "C:/Program Files/CMake/bin/xlc.exe"
+      - "C:/Program Files/CMake/bin/xlc"
+      - "C:/Program Files/CMake/bin/icx.com"
+      - "C:/Program Files/CMake/bin/icx.exe"
+      - "C:/Program Files/CMake/bin/icx"
+      - "C:/Program Files/CMake/bin/clang.com"
+      - "C:/Program Files/CMake/bin/clang.exe"
+      - "C:/Program Files/CMake/bin/clang"
+      - "C:/mingw64/bin/cc.com"
+      - "C:/mingw64/bin/cc.exe"
+      - "C:/mingw64/bin/cc"
+      - "C:/mingw64/bin/gcc.com"
+    found: "C:/mingw64/bin/gcc.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
+        - "C:\\MinGW\\bin"
+        - "C:\\Python312\\Scripts\\"
+        - "C:\\Python312\\"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\ProgramData\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\dotnet\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\Bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\ProgramData\\UNIVALI\\Portugol Studio"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\MinGW\\bin"
+        - "C:\\Python312\\Scripts\\"
+        - "C:\\Python312\\"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\ProgramData\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\dotnet\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\Bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\ProgramData\\UNIVALI\\Portugol Studio"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -174,6 +749,7 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -221,6 +797,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "message-v1"
     backtrace:
@@ -264,6 +841,7 @@ events:
       - "ar"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -285,11 +863,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/ar.com"
     found: "C:/mingw64/bin/ar.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -337,6 +917,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -358,6 +939,7 @@ events:
       - "ranlib"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -379,11 +961,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/ranlib.com"
     found: "C:/mingw64/bin/ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -431,6 +1015,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -452,6 +1037,7 @@ events:
       - "strip"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -473,11 +1059,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/strip.com"
     found: "C:/mingw64/bin/strip.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -525,6 +1113,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -546,6 +1135,7 @@ events:
       - "ld"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -567,11 +1157,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/ld.com"
     found: "C:/mingw64/bin/ld.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -619,6 +1211,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -640,6 +1233,7 @@ events:
       - "nm"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -661,11 +1255,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/nm.com"
     found: "C:/mingw64/bin/nm.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -713,6 +1309,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -734,6 +1331,7 @@ events:
       - "objdump"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -755,11 +1353,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/objdump.com"
     found: "C:/mingw64/bin/objdump.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -807,6 +1407,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -828,6 +1429,7 @@ events:
       - "objcopy"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -849,11 +1451,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/objcopy.com"
     found: "C:/mingw64/bin/objcopy.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -901,6 +1505,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -922,6 +1527,7 @@ events:
       - "readelf"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -943,11 +1549,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/readelf.com"
     found: "C:/mingw64/bin/readelf.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -995,6 +1603,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1016,6 +1625,7 @@ events:
       - "dlltool"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -1037,11 +1647,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/dlltool.com"
     found: "C:/mingw64/bin/dlltool.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -1089,6 +1701,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1110,6 +1723,7 @@ events:
       - "addr2line"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -1131,11 +1745,13 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/addr2line.com"
     found: "C:/mingw64/bin/addr2line.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -1183,6 +1799,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1204,6 +1821,7 @@ events:
       - "tapi"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -1225,10 +1843,14 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/tapi.com"
       - "C:/mingw64/bin/tapi.exe"
       - "C:/mingw64/bin/tapi"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/tapi.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/tapi.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/tapi"
       - "C:/MinGW/bin/tapi.com"
       - "C:/MinGW/bin/tapi.exe"
       - "C:/MinGW/bin/tapi"
@@ -1292,9 +1914,13 @@ events:
       - "C:/Program Files/CMake/bin/tapi.com"
       - "C:/Program Files/CMake/bin/tapi.exe"
       - "C:/Program Files/CMake/bin/tapi"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/tapi.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/tapi.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/tapi"
     found: false
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -1342,6 +1968,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1366,6 +1993,7 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -1387,10 +2015,14 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/gcc-ar-15.2.com"
       - "C:/mingw64/bin/gcc-ar-15.2.exe"
       - "C:/mingw64/bin/gcc-ar-15.2"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.2.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.2.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.2"
       - "C:/MinGW/bin/gcc-ar-15.2.com"
       - "C:/MinGW/bin/gcc-ar-15.2.exe"
       - "C:/MinGW/bin/gcc-ar-15.2"
@@ -1454,9 +2086,15 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.2.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.2.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.2"
       - "C:/mingw64/bin/gcc-ar-15.com"
       - "C:/mingw64/bin/gcc-ar-15.exe"
       - "C:/mingw64/bin/gcc-ar-15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15"
       - "C:/MinGW/bin/gcc-ar-15.com"
       - "C:/MinGW/bin/gcc-ar-15.exe"
       - "C:/MinGW/bin/gcc-ar-15"
@@ -1520,9 +2158,15 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15"
       - "C:/mingw64/bin/gcc-ar15.com"
       - "C:/mingw64/bin/gcc-ar15.exe"
       - "C:/mingw64/bin/gcc-ar15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar15"
       - "C:/MinGW/bin/gcc-ar15.com"
       - "C:/MinGW/bin/gcc-ar15.exe"
       - "C:/MinGW/bin/gcc-ar15"
@@ -1586,10 +2230,14 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar15.com"
       - "C:/Program Files/CMake/bin/gcc-ar15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar15"
       - "C:/mingw64/bin/gcc-ar.com"
     found: "C:/mingw64/bin/gcc-ar.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -1637,6 +2285,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1661,6 +2310,7 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -1682,10 +2332,14 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
     searched_directories:
       - "C:/mingw64/bin/gcc-ranlib-15.2.com"
       - "C:/mingw64/bin/gcc-ranlib-15.2.exe"
       - "C:/mingw64/bin/gcc-ranlib-15.2"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.2.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.2"
       - "C:/MinGW/bin/gcc-ranlib-15.2.com"
       - "C:/MinGW/bin/gcc-ranlib-15.2.exe"
       - "C:/MinGW/bin/gcc-ranlib-15.2"
@@ -1749,9 +2403,15 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.2.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.2.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.2"
       - "C:/mingw64/bin/gcc-ranlib-15.com"
       - "C:/mingw64/bin/gcc-ranlib-15.exe"
       - "C:/mingw64/bin/gcc-ranlib-15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15"
       - "C:/MinGW/bin/gcc-ranlib-15.com"
       - "C:/MinGW/bin/gcc-ranlib-15.exe"
       - "C:/MinGW/bin/gcc-ranlib-15"
@@ -1815,9 +2475,15 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15"
       - "C:/mingw64/bin/gcc-ranlib15.com"
       - "C:/mingw64/bin/gcc-ranlib15.exe"
       - "C:/mingw64/bin/gcc-ranlib15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib15"
       - "C:/MinGW/bin/gcc-ranlib15.com"
       - "C:/MinGW/bin/gcc-ranlib15.exe"
       - "C:/MinGW/bin/gcc-ranlib15"
@@ -1881,10 +2547,14 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib15"
       - "C:/mingw64/bin/gcc-ranlib.com"
     found: "C:/mingw64/bin/gcc-ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -1932,6 +2602,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1955,6 +2626,7 @@ events:
       - "windres"
       - "windres"
     candidate_directories:
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -1977,6 +2649,7 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/mingw64/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -1990,6 +2663,9 @@ events:
       - "C:/Program Files (x86)/Jogo_PIF/sbin/"
       - "C:/Program Files (x86)/Jogo_PIF/"
     searched_directories:
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/windres.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/windres.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/windres"
       - "C:/MinGW/bin/windres.com"
       - "C:/MinGW/bin/windres.exe"
       - "C:/MinGW/bin/windres"
@@ -2057,6 +2733,7 @@ events:
     found: "C:/mingw64/bin/windres.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -2104,6 +2781,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/Jogo_PIF"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -2119,8 +2797,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-v461ix"
-      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-v461ix"
+      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g75jj4"
+      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g75jj4"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -2129,13 +2807,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-v461ix'
+        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g75jj4'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_42dd0/fast
-        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_42dd0.dir\\build.make CMakeFiles/cmTC_42dd0.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-v461ix'
-        Building C object CMakeFiles/cmTC_42dd0.dir/CMakeCCompilerABI.c.obj
-        C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_a3117/fast
+        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a3117.dir\\build.make CMakeFiles/cmTC_a3117.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g75jj4'
+        Building C object CMakeFiles/cmTC_a3117.dir/CMakeCCompilerABI.c.obj
+        C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -2144,8 +2822,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_42dd0.dir\\'
-         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_42dd0.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\ccTM37e2.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_a3117.dir\\'
+         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_a3117.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\cc6jgoR8.s
         GNU C23 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -2164,14 +2842,14 @@ events:
          C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include
         End of search list.
         Compiler executable checksum: ca70cde86c34679ec4b1235eab217851
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_42dd0.dir\\'
-         C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj C:\\Users\\User\\AppData\\Local\\Temp\\ccTM37e2.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_a3117.dir\\'
+         C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj C:\\Users\\User\\AppData\\Local\\Temp\\cc6jgoR8.s
         GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r3) 2.45
         COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../libexec/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../lib/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.'
-        Linking C executable cmTC_42dd0.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_42dd0.dir\\link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.'
+        Linking C executable cmTC_a3117.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_a3117.dir\\link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe
         COLLECT_LTO_WRAPPER=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe
@@ -2183,16 +2861,16 @@ events:
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 
         COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../libexec/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../lib/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_42dd0.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_42dd0.'
-         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccnUVcUb.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_42dd0.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_42dd0.dir/objects.a --no-whole-archive --out-implib libcmTC_42dd0.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a3117.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a3117.'
+         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccn6J8ze.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_a3117.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_a3117.dir/objects.a --no-whole-archive --out-implib libcmTC_a3117.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         collect2 version 15.2.0
-        C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccnUVcUb.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_42dd0.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_42dd0.dir/objects.a --no-whole-archive --out-implib libcmTC_42dd0.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccn6J8ze.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_a3117.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_a3117.dir/objects.a --no-whole-archive --out-implib libcmTC_a3117.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         GNU ld (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r3) 2.45
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_42dd0.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_42dd0.'
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_42dd0.dir/objects.a
-        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_42dd0.dir/objects.a @CMakeFiles\\cmTC_42dd0.dir\\objects1.rsp
-        C:\\mingw64\\bin\\gcc.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_42dd0.dir/objects.a -Wl,--no-whole-archive -o cmTC_42dd0.exe -Wl,--out-implib,libcmTC_42dd0.dll.a -Wl,--major-image-version,0,--minor-image-version,0
-        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-v461ix'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a3117.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a3117.'
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_a3117.dir/objects.a
+        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_a3117.dir/objects.a @CMakeFiles\\cmTC_a3117.dir\\objects1.rsp
+        C:\\mingw64\\bin\\gcc.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_a3117.dir/objects.a -Wl,--no-whole-archive -o cmTC_a3117.exe -Wl,--out-implib,libcmTC_a3117.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g75jj4'
         
       exitCode: 0
   -
@@ -2227,13 +2905,13 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-v461ix']
+        ignore line: [Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g75jj4']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_42dd0/fast]
-        ignore line: [C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_42dd0.dir\\build.make CMakeFiles/cmTC_42dd0.dir/build]
-        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-v461ix']
-        ignore line: [Building C object CMakeFiles/cmTC_42dd0.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"]
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_a3117/fast]
+        ignore line: [C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_a3117.dir\\build.make CMakeFiles/cmTC_a3117.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g75jj4']
+        ignore line: [Building C object CMakeFiles/cmTC_a3117.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:\\mingw64\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -2242,8 +2920,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r3) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_42dd0.dir\\']
-        ignore line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_42dd0.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\ccTM37e2.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_a3117.dir\\']
+        ignore line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\\cmTC_a3117.dir\\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\cc6jgoR8.s]
         ignore line: [GNU C23 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r3) version 15.2.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -2262,8 +2940,8 @@ events:
         ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: ca70cde86c34679ec4b1235eab217851]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_42dd0.dir\\']
-        ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj C:\\Users\\User\\AppData\\Local\\Temp\\ccTM37e2.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_a3117.dir\\']
+        ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj C:\\Users\\User\\AppData\\Local\\Temp\\cc6jgoR8.s]
         ignore line: [GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64  built by Brecht Sanders  r3) 2.45]
         ignore line: [COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/]
         ignore line: [C:/mingw64/bin/../libexec/gcc/]
@@ -2274,9 +2952,9 @@ events:
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_42dd0.dir\\CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_42dd0.exe]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_42dd0.dir\\link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_a3117.dir\\CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_a3117.exe]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_a3117.dir\\link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\gcc.exe]
         ignore line: [COLLECT_LTO_WRAPPER=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe]
@@ -2295,13 +2973,13 @@ events:
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_42dd0.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_42dd0.']
-        link line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccnUVcUb.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_42dd0.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_42dd0.dir/objects.a --no-whole-archive --out-implib libcmTC_42dd0.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a3117.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a3117.']
+        link line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccn6J8ze.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_a3117.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_a3117.dir/objects.a --no-whole-archive --out-implib libcmTC_a3117.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
           arg [C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccnUVcUb.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccn6J8ze.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -2323,7 +3001,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_42dd0.exe] ==> ignore
+          arg [cmTC_a3117.exe] ==> ignore
           arg [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o] ==> obj [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o]
           arg [-LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0] ==> dir [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0]
@@ -2334,10 +3012,10 @@ events:
           arg [-LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..] ==> dir [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..]
           arg [-v] ==> ignore
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\cmTC_42dd0.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\cmTC_a3117.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_42dd0.dll.a] ==> ignore
+          arg [libcmTC_a3117.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -2413,6 +3091,92 @@ events:
   -
     kind: "find-v1"
     backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
+      - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCXXCompiler.cmake:69 (_cmake_find_compiler)"
+      - "external/raylib/CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "CXX compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "c++"
+      - "g++"
+      - "cl"
+      - "bcc"
+      - "icx"
+      - "clang++"
+    candidate_directories:
+      - "C:/mingw64/bin/"
+    searched_directories:
+      - "C:/mingw64/bin/c++.com"
+    found: "C:/mingw64/bin/c++.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
+        - "C:\\MinGW\\bin"
+        - "C:\\Python312\\Scripts\\"
+        - "C:\\Python312\\"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\ProgramData\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\dotnet\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\Bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\ProgramData\\UNIVALI\\Portugol Studio"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\MinGW\\bin"
+        - "C:\\Python312\\Scripts\\"
+        - "C:\\Python312\\"
+        - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common"
+        - "C:\\ProgramData\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files (x86)\\dotnet\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files (x86)\\IVI Foundation\\VISA\\WinNT\\Bin"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\ProgramData\\chocolatey\\bin"
+        - "C:\\ProgramData\\UNIVALI\\Portugol Studio"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/Jogo_PIF"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/Program Files/CMake"
+        - "C:/Program Files (x86)/Jogo_PIF"
+  -
+    kind: "find-v1"
+    backtrace:
       - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
       - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
       - "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
@@ -2437,6 +3201,7 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.2/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -2484,6 +3249,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/Jogo_PIF"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -2499,7 +3265,7 @@ events:
       - "external/raylib/CMakeLists.txt:3 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-      Compiler: C:/mingw64/bin/g++.exe 
+      Compiler: C:/mingw64/bin/c++.exe 
       Build flags: 
       Id flags:  
       
@@ -2536,6 +3302,7 @@ events:
       - "gcc-ar"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -2557,6 +3324,7 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -2573,6 +3341,9 @@ events:
       - "C:/mingw64/bin/gcc-ar-15.2.com"
       - "C:/mingw64/bin/gcc-ar-15.2.exe"
       - "C:/mingw64/bin/gcc-ar-15.2"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.2.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.2.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.2"
       - "C:/MinGW/bin/gcc-ar-15.2.com"
       - "C:/MinGW/bin/gcc-ar-15.2.exe"
       - "C:/MinGW/bin/gcc-ar-15.2"
@@ -2636,6 +3407,9 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15.2"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.2.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.2.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.2"
       - "C:/Program Files/bin/gcc-ar-15.2.com"
       - "C:/Program Files/bin/gcc-ar-15.2.exe"
       - "C:/Program Files/bin/gcc-ar-15.2"
@@ -2675,6 +3449,9 @@ events:
       - "C:/mingw64/bin/gcc-ar-15.com"
       - "C:/mingw64/bin/gcc-ar-15.exe"
       - "C:/mingw64/bin/gcc-ar-15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar-15"
       - "C:/MinGW/bin/gcc-ar-15.com"
       - "C:/MinGW/bin/gcc-ar-15.exe"
       - "C:/MinGW/bin/gcc-ar-15"
@@ -2738,6 +3515,9 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar-15.com"
       - "C:/Program Files/CMake/bin/gcc-ar-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar-15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar-15"
       - "C:/Program Files/bin/gcc-ar-15.com"
       - "C:/Program Files/bin/gcc-ar-15.exe"
       - "C:/Program Files/bin/gcc-ar-15"
@@ -2777,6 +3557,9 @@ events:
       - "C:/mingw64/bin/gcc-ar15.com"
       - "C:/mingw64/bin/gcc-ar15.exe"
       - "C:/mingw64/bin/gcc-ar15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ar15"
       - "C:/MinGW/bin/gcc-ar15.com"
       - "C:/MinGW/bin/gcc-ar15.exe"
       - "C:/MinGW/bin/gcc-ar15"
@@ -2840,6 +3623,9 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ar15.com"
       - "C:/Program Files/CMake/bin/gcc-ar15.exe"
       - "C:/Program Files/CMake/bin/gcc-ar15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ar15"
       - "C:/Program Files/bin/gcc-ar15.com"
       - "C:/Program Files/bin/gcc-ar15.exe"
       - "C:/Program Files/bin/gcc-ar15"
@@ -2880,6 +3666,7 @@ events:
     found: "C:/mingw64/bin/gcc-ar.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -2927,6 +3714,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/Jogo_PIF"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -2957,6 +3745,7 @@ events:
       - "gcc-ranlib"
     candidate_directories:
       - "C:/mingw64/bin/"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/"
       - "C:/MinGW/bin/"
       - "C:/Python312/Scripts/"
       - "C:/Python312/"
@@ -2978,6 +3767,7 @@ events:
       - "C:/ProgramData/UNIVALI/Portugol Studio/"
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -2994,6 +3784,9 @@ events:
       - "C:/mingw64/bin/gcc-ranlib-15.2.com"
       - "C:/mingw64/bin/gcc-ranlib-15.2.exe"
       - "C:/mingw64/bin/gcc-ranlib-15.2"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.2.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.2.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.2"
       - "C:/MinGW/bin/gcc-ranlib-15.2.com"
       - "C:/MinGW/bin/gcc-ranlib-15.2.exe"
       - "C:/MinGW/bin/gcc-ranlib-15.2"
@@ -3057,6 +3850,9 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.2"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.2.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.2.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.2"
       - "C:/Program Files/bin/gcc-ranlib-15.2.com"
       - "C:/Program Files/bin/gcc-ranlib-15.2.exe"
       - "C:/Program Files/bin/gcc-ranlib-15.2"
@@ -3096,6 +3892,9 @@ events:
       - "C:/mingw64/bin/gcc-ranlib-15.com"
       - "C:/mingw64/bin/gcc-ranlib-15.exe"
       - "C:/mingw64/bin/gcc-ranlib-15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib-15"
       - "C:/MinGW/bin/gcc-ranlib-15.com"
       - "C:/MinGW/bin/gcc-ranlib-15.exe"
       - "C:/MinGW/bin/gcc-ranlib-15"
@@ -3159,6 +3958,9 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib-15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib-15"
       - "C:/Program Files/bin/gcc-ranlib-15.com"
       - "C:/Program Files/bin/gcc-ranlib-15.exe"
       - "C:/Program Files/bin/gcc-ranlib-15"
@@ -3198,6 +4000,9 @@ events:
       - "C:/mingw64/bin/gcc-ranlib15.com"
       - "C:/mingw64/bin/gcc-ranlib15.exe"
       - "C:/mingw64/bin/gcc-ranlib15"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib15.com"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib15.exe"
+      - "C:/Program Files/BraveSoftware/Brave-Browser/Application/gcc-ranlib15"
       - "C:/MinGW/bin/gcc-ranlib15.com"
       - "C:/MinGW/bin/gcc-ranlib15.exe"
       - "C:/MinGW/bin/gcc-ranlib15"
@@ -3261,6 +4066,9 @@ events:
       - "C:/Program Files/CMake/bin/gcc-ranlib15.com"
       - "C:/Program Files/CMake/bin/gcc-ranlib15.exe"
       - "C:/Program Files/CMake/bin/gcc-ranlib15"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib15.com"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib15.exe"
+      - "C:/Users/User/AppData/Local/Programs/Microsoft VS Code/bin/gcc-ranlib15"
       - "C:/Program Files/bin/gcc-ranlib15.com"
       - "C:/Program Files/bin/gcc-ranlib15.exe"
       - "C:/Program Files/bin/gcc-ranlib15"
@@ -3301,6 +4109,7 @@ events:
     found: "C:/mingw64/bin/gcc-ranlib.exe"
     search_context:
       ENV{PATH}:
+        - "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application"
         - "C:\\MinGW\\bin"
         - "C:\\Python312\\Scripts\\"
         - "C:\\Python312\\"
@@ -3348,6 +4157,7 @@ events:
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
         - "C:\\mingw64\\bin"
+        - "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/Jogo_PIF"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -3363,8 +4173,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g7uocs"
-      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g7uocs"
+      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-54n1s5"
+      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-54n1s5"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -3374,23 +4184,23 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g7uocs'
+        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-54n1s5'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_e01af/fast
-        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_e01af.dir\\build.make CMakeFiles/cmTC_e01af.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g7uocs'
-        Building CXX object CMakeFiles/cmTC_e01af.dir/CMakeCXXCompilerABI.cpp.obj
-        C:\\mingw64\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_765d8/fast
+        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_765d8.dir\\build.make CMakeFiles/cmTC_765d8.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-54n1s5'
+        Building CXX object CMakeFiles/cmTC_765d8.dir/CMakeCXXCompilerABI.cpp.obj
+        C:\\mingw64\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
         Using built-in specs.
-        COLLECT_GCC=C:\\mingw64\\bin\\g++.exe
+        COLLECT_GCC=C:\\mingw64\\bin\\c++.exe
         OFFLOAD_TARGET_NAMES=nvptx-none
         Target: x86_64-w64-mingw32
         Configured with: ../configure --prefix=/R/winlibs_staging_ucrt64/inst_gcc-15.2.0/share/gcc --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-offload-targets=nvptx-none --with-pkgversion='MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3' --with-tune=generic --enable-checking=release --enable-threads=posix --disable-sjlj-exceptions --disable-libunwind-exceptions --disable-serial-configure --disable-bootstrap --enable-host-shared --enable-plugin --disable-default-ssp --disable-rpath --disable-libstdcxx-debug --disable-version-specific-runtime-libs --disable-symvers --enable-languages=c,c++,fortran,lto,objc,obj-c++ --disable-gold --disable-nls --disable-stage1-checking --disable-win32-registry --disable-multilib --enable-ld --enable-libquadmath --enable-libada --enable-libssp --enable-libstdcxx --enable-lto --enable-fully-dynamic-string --enable-libgomp --enable-graphite --enable-mingw-wildcard --enable-libstdcxx-time --enable-libstdcxx-pch --with-mpc=/c/Prog/winlibs_staging_ucrt/custombuilt64 --with-mpfr=/c/Prog/winlibs_staging_ucrt/custombuilt64 --with-gmp=/c/Prog/winlibs_staging_ucrt/custombuilt64 --with-isl=/c/Prog/winlibs_staging_ucrt/custombuilt64 --disable-libstdcxx-backtrace --enable-install-libiberty --enable-__cxa_atexit --without-included-gettext --with-diagnostics-color=auto --enable-clocale=generic --enable-libgdiagnostics --with-libiconv --with-system-zlib --with-build-sysroot=/R/winlibs_staging_ucrt64/gcc-15.2.0/build_mingw/mingw-w64 CFLAGS='-I/c/Prog/winlibs_staging_ucrt/custombuilt64/include/libdl-win32   -march=nocona -msahf -mtune=generic -O2 -Wno-error=format' CXXFLAGS='-Wno-int-conversion  -march=nocona -msahf -mtune=generic -O2' LDFLAGS='-pthread -Wl,--no-insert-timestamp -Wl,--dynamicbase -Wl,--high-entropy-va -Wl,--nxcompat -Wl,--tsaware' LD=/c/Prog/winlibs_staging_ucrt/custombuilt64/share/binutils/bin/ld.exe
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_e01af.dir\\'
-         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_e01af.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\ccEiBQpU.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_765d8.dir\\'
+         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_765d8.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\ccwif81n.s
         GNU C++17 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) version 15.2.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -3415,16 +4225,16 @@ events:
          C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include
         End of search list.
         Compiler executable checksum: fab19ce240fdc8cb44132d0f6268a841
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_e01af.dir\\'
-         C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\User\\AppData\\Local\\Temp\\ccEiBQpU.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_765d8.dir\\'
+         C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\User\\AppData\\Local\\Temp\\ccwif81n.s
         GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r3) 2.45
         COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../libexec/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../lib/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_e01af.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_e01af.dir\\link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_765d8.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_765d8.dir\\link.txt --verbose=1
         Using built-in specs.
-        COLLECT_GCC=C:\\mingw64\\bin\\g++.exe
+        COLLECT_GCC=C:\\mingw64\\bin\\c++.exe
         COLLECT_LTO_WRAPPER=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe
         OFFLOAD_TARGET_NAMES=nvptx-none
         Target: x86_64-w64-mingw32
@@ -3434,16 +4244,16 @@ events:
         gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3) 
         COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../libexec/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/;C:/mingw64/bin/../lib/gcc/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/;C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e01af.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e01af.'
-         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccWZumI2.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_e01af.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_e01af.dir/objects.a --no-whole-archive --out-implib libcmTC_e01af.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_765d8.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_765d8.'
+         C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccE2SGFz.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_765d8.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_765d8.dir/objects.a --no-whole-archive --out-implib libcmTC_765d8.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         collect2 version 15.2.0
-        C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccWZumI2.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_e01af.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_e01af.dir/objects.a --no-whole-archive --out-implib libcmTC_e01af.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
+        C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccE2SGFz.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_765d8.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_765d8.dir/objects.a --no-whole-archive --out-implib libcmTC_765d8.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o
         GNU ld (Binutils for MinGW-W64 x86_64, built by Brecht Sanders, r3) 2.45
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e01af.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e01af.'
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_e01af.dir/objects.a
-        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_e01af.dir/objects.a @CMakeFiles\\cmTC_e01af.dir\\objects1.rsp
-        C:\\mingw64\\bin\\g++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_e01af.dir/objects.a -Wl,--no-whole-archive -o cmTC_e01af.exe -Wl,--out-implib,libcmTC_e01af.dll.a -Wl,--major-image-version,0,--minor-image-version,0
-        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g7uocs'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_765d8.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_765d8.'
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_765d8.dir/objects.a
+        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_765d8.dir/objects.a @CMakeFiles\\cmTC_765d8.dir\\objects1.rsp
+        C:\\mingw64\\bin\\c++.exe  -v -Wl,-v -Wl,--whole-archive CMakeFiles\\cmTC_765d8.dir/objects.a -Wl,--no-whole-archive -o cmTC_765d8.exe -Wl,--out-implib,libcmTC_765d8.dll.a -Wl,--major-image-version,0,--minor-image-version,0
+        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-54n1s5'
         
       exitCode: 0
   -
@@ -3484,23 +4294,23 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g7uocs']
+        ignore line: [Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-54n1s5']
         ignore line: []
-        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_e01af/fast]
-        ignore line: [C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_e01af.dir\\build.make CMakeFiles/cmTC_e01af.dir/build]
-        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-g7uocs']
-        ignore line: [Building CXX object CMakeFiles/cmTC_e01af.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [C:\\mingw64\\bin\\g++.exe   -v -o CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"]
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_765d8/fast]
+        ignore line: [C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_765d8.dir\\build.make CMakeFiles/cmTC_765d8.dir/build]
+        ignore line: [mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-54n1s5']
+        ignore line: [Building CXX object CMakeFiles/cmTC_765d8.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:\\mingw64\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"]
         ignore line: [Using built-in specs.]
-        ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\g++.exe]
+        ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\c++.exe]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
         ignore line: [Target: x86_64-w64-mingw32]
         ignore line: [Configured with: ../configure --prefix=/R/winlibs_staging_ucrt64/inst_gcc-15.2.0/share/gcc --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-offload-targets=nvptx-none --with-pkgversion='MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r3' --with-tune=generic --enable-checking=release --enable-threads=posix --disable-sjlj-exceptions --disable-libunwind-exceptions --disable-serial-configure --disable-bootstrap --enable-host-shared --enable-plugin --disable-default-ssp --disable-rpath --disable-libstdcxx-debug --disable-version-specific-runtime-libs --disable-symvers --enable-languages=c,c++,fortran,lto,objc,obj-c++ --disable-gold --disable-nls --disable-stage1-checking --disable-win32-registry --disable-multilib --enable-ld --enable-libquadmath --enable-libada --enable-libssp --enable-libstdcxx --enable-lto --enable-fully-dynamic-string --enable-libgomp --enable-graphite --enable-mingw-wildcard --enable-libstdcxx-time --enable-libstdcxx-pch --with-mpc=/c/Prog/winlibs_staging_ucrt/custombuilt64 --with-mpfr=/c/Prog/winlibs_staging_ucrt/custombuilt64 --with-gmp=/c/Prog/winlibs_staging_ucrt/custombuilt64 --with-isl=/c/Prog/winlibs_staging_ucrt/custombuilt64 --disable-libstdcxx-backtrace --enable-install-libiberty --enable-__cxa_atexit --without-included-gettext --with-diagnostics-color=auto --enable-clocale=generic --enable-libgdiagnostics --with-libiconv --with-system-zlib --with-build-sysroot=/R/winlibs_staging_ucrt64/gcc-15.2.0/build_mingw/mingw-w64 CFLAGS='-I/c/Prog/winlibs_staging_ucrt/custombuilt64/include/libdl-win32   -march=nocona -msahf -mtune=generic -O2 -Wno-error=format' CXXFLAGS='-Wno-int-conversion  -march=nocona -msahf -mtune=generic -O2' LDFLAGS='-pthread -Wl,--no-insert-timestamp -Wl,--dynamicbase -Wl,--high-entropy-va -Wl,--nxcompat -Wl,--tsaware' LD=/c/Prog/winlibs_staging_ucrt/custombuilt64/share/binutils/bin/ld.exe]
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 15.2.0 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r3) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_e01af.dir\\']
-        ignore line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_e01af.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\ccEiBQpU.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_765d8.dir\\']
+        ignore line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/cc1plus.exe -quiet -v -iprefix C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\\cmTC_765d8.dir\\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\\Users\\User\\AppData\\Local\\Temp\\ccwif81n.s]
         ignore line: [GNU C++17 (MinGW-W64 x86_64-ucrt-posix-seh  built by Brecht Sanders  r3) version 15.2.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 15.2.0  GMP version 6.3.0  MPFR version 4.2.2  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -3525,8 +4335,8 @@ events:
         ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: fab19ce240fdc8cb44132d0f6268a841]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_e01af.dir\\']
-        ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\User\\AppData\\Local\\Temp\\ccEiBQpU.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_765d8.dir\\']
+        ignore line: [ C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\User\\AppData\\Local\\Temp\\ccwif81n.s]
         ignore line: [GNU assembler version 2.45 (x86_64-w64-mingw32) using BFD version (Binutils for MinGW-W64 x86_64  built by Brecht Sanders  r3) 2.45]
         ignore line: [COMPILER_PATH=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/]
         ignore line: [C:/mingw64/bin/../libexec/gcc/]
@@ -3537,11 +4347,11 @@ events:
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_e01af.dir\\CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_e01af.exe]
-        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_e01af.dir\\link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\\cmTC_765d8.dir\\CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_765d8.exe]
+        ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_765d8.dir\\link.txt --verbose=1]
         ignore line: [Using built-in specs.]
-        ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\g++.exe]
+        ignore line: [COLLECT_GCC=C:\\mingw64\\bin\\c++.exe]
         ignore line: [COLLECT_LTO_WRAPPER=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
         ignore line: [Target: x86_64-w64-mingw32]
@@ -3558,13 +4368,13 @@ events:
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e01af.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e01af.']
-        link line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccWZumI2.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_e01af.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_e01af.dir/objects.a --no-whole-archive --out-implib libcmTC_e01af.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_765d8.exe' '-foffload-options=-l_GCC_stdc++' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_765d8.']
+        link line: [ C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe -plugin C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll -plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccE2SGFz.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_765d8.exe C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0 -LC:/mingw64/bin/../lib/gcc -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib -LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../.. -v --whole-archive CMakeFiles\\cmTC_765d8.dir/objects.a --no-whole-archive --out-implib libcmTC_765d8.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmingwex -lmsvcrt -lkernel32 C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtend.o]
           arg [C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/liblto_plugin.dll] ==> ignore
           arg [-plugin-opt=C:/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.2.0/lto-wrapper.exe] ==> ignore
-          arg [-plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccWZumI2.res] ==> ignore
+          arg [-plugin-opt=-fresolution=C:\\Users\\User\\AppData\\Local\\Temp\\ccE2SGFz.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -3586,7 +4396,7 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_e01af.exe] ==> ignore
+          arg [cmTC_765d8.exe] ==> ignore
           arg [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o] ==> obj [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/crtbegin.o]
           arg [-LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0] ==> dir [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0]
@@ -3597,10 +4407,10 @@ events:
           arg [-LC:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..] ==> dir [C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../..]
           arg [-v] ==> ignore
           arg [--whole-archive] ==> ignore
-          arg [CMakeFiles\\cmTC_e01af.dir/objects.a] ==> ignore
+          arg [CMakeFiles\\cmTC_765d8.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_e01af.dll.a] ==> ignore
+          arg [libcmTC_765d8.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -3684,8 +4494,8 @@ events:
     checks:
       - "Performing Test COMPILER_HAS_THOSE_TOGGLES"
     directories:
-      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-edf290"
-      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-edf290"
+      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-z0safh"
+      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-z0safh"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -3695,19 +4505,19 @@ events:
       variable: "COMPILER_HAS_THOSE_TOGGLES"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-edf290'
+        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-z0safh'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_bc21a/fast
-        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_bc21a.dir\\build.make CMakeFiles/cmTC_bc21a.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-edf290'
-        Building C object CMakeFiles/cmTC_bc21a.dir/src.c.obj
-        C:\\mingw64\\bin\\gcc.exe -DCOMPILER_HAS_THOSE_TOGGLES  -std=gnu99   -Werror=pointer-arith -o CMakeFiles\\cmTC_bc21a.dir\\src.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-edf290\\src.c"
-        Linking C executable cmTC_bc21a.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_bc21a.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_bc21a.dir/objects.a
-        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_bc21a.dir/objects.a @CMakeFiles\\cmTC_bc21a.dir\\objects1.rsp
-        C:\\mingw64\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_bc21a.dir/objects.a -Wl,--no-whole-archive -o cmTC_bc21a.exe -Wl,--out-implib,libcmTC_bc21a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_bc21a.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-edf290'
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_5de39/fast
+        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_5de39.dir\\build.make CMakeFiles/cmTC_5de39.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-z0safh'
+        Building C object CMakeFiles/cmTC_5de39.dir/src.c.obj
+        C:\\mingw64\\bin\\gcc.exe -DCOMPILER_HAS_THOSE_TOGGLES  -std=gnu99   -Werror=pointer-arith -o CMakeFiles\\cmTC_5de39.dir\\src.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-z0safh\\src.c"
+        Linking C executable cmTC_5de39.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_5de39.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_5de39.dir/objects.a
+        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_5de39.dir/objects.a @CMakeFiles\\cmTC_5de39.dir\\objects1.rsp
+        C:\\mingw64\\bin\\gcc.exe -Wl,--whole-archive CMakeFiles\\cmTC_5de39.dir/objects.a -Wl,--no-whole-archive -o cmTC_5de39.exe -Wl,--out-implib,libcmTC_5de39.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_5de39.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-z0safh'
         
       exitCode: 0
   -
@@ -3721,8 +4531,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-c0ue69"
-      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-c0ue69"
+      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-q1oxnm"
+      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-q1oxnm"
     cmakeVariables:
       CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -3732,19 +4542,19 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-c0ue69'
+        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-q1oxnm'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_42d2a/fast
-        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_42d2a.dir\\build.make CMakeFiles/cmTC_42d2a.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-c0ue69'
-        Building C object CMakeFiles/cmTC_42d2a.dir/src.c.obj
-        C:\\mingw64\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles\\cmTC_42d2a.dir\\src.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-c0ue69\\src.c"
-        Linking C executable cmTC_42d2a.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_42d2a.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_42d2a.dir/objects.a
-        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_42d2a.dir/objects.a @CMakeFiles\\cmTC_42d2a.dir\\objects1.rsp
-        C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -Wl,--whole-archive CMakeFiles\\cmTC_42d2a.dir/objects.a -Wl,--no-whole-archive -o cmTC_42d2a.exe -Wl,--out-implib,libcmTC_42d2a.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_42d2a.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-c0ue69'
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_ca18d/fast
+        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_ca18d.dir\\build.make CMakeFiles/cmTC_ca18d.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-q1oxnm'
+        Building C object CMakeFiles/cmTC_ca18d.dir/src.c.obj
+        C:\\mingw64\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD  -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles\\cmTC_ca18d.dir\\src.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-q1oxnm\\src.c"
+        Linking C executable cmTC_ca18d.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_ca18d.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_ca18d.dir/objects.a
+        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_ca18d.dir/objects.a @CMakeFiles\\cmTC_ca18d.dir\\objects1.rsp
+        C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -Wl,--whole-archive CMakeFiles\\cmTC_ca18d.dir/objects.a -Wl,--no-whole-archive -o cmTC_ca18d.exe -Wl,--out-implib,libcmTC_ca18d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_ca18d.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-q1oxnm'
         
       exitCode: 0
   -
@@ -3755,8 +4565,8 @@ events:
     checks:
       - "Looking for dinput.h"
     directories:
-      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-d04an2"
-      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-d04an2"
+      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-vm4no1"
+      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-vm4no1"
     cmakeVariables:
       CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -3766,19 +4576,19 @@ events:
       variable: "DINPUT_H_FOUND"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-d04an2'
+        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-vm4no1'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_13672/fast
-        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_13672.dir\\build.make CMakeFiles/cmTC_13672.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-d04an2'
-        Building C object CMakeFiles/cmTC_13672.dir/CheckIncludeFile.c.obj
-        C:\\mingw64\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles\\cmTC_13672.dir\\CheckIncludeFile.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-d04an2\\CheckIncludeFile.c"
-        Linking C executable cmTC_13672.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_13672.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_13672.dir/objects.a
-        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_13672.dir/objects.a @CMakeFiles\\cmTC_13672.dir\\objects1.rsp
-        C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -Wl,--whole-archive CMakeFiles\\cmTC_13672.dir/objects.a -Wl,--no-whole-archive -o cmTC_13672.exe -Wl,--out-implib,libcmTC_13672.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_13672.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-d04an2'
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_f5396/fast
+        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_f5396.dir\\build.make CMakeFiles/cmTC_f5396.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-vm4no1'
+        Building C object CMakeFiles/cmTC_f5396.dir/CheckIncludeFile.c.obj
+        C:\\mingw64\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles\\cmTC_f5396.dir\\CheckIncludeFile.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vm4no1\\CheckIncludeFile.c"
+        Linking C executable cmTC_f5396.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_f5396.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_f5396.dir/objects.a
+        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_f5396.dir/objects.a @CMakeFiles\\cmTC_f5396.dir\\objects1.rsp
+        C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -Wl,--whole-archive CMakeFiles\\cmTC_f5396.dir/objects.a -Wl,--no-whole-archive -o cmTC_f5396.exe -Wl,--out-implib,libcmTC_f5396.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_f5396.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-vm4no1'
         
       exitCode: 0
   -
@@ -3789,8 +4599,8 @@ events:
     checks:
       - "Looking for xinput.h"
     directories:
-      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-005dd1"
-      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-005dd1"
+      source: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-dk6kjc"
+      binary: "C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-dk6kjc"
     cmakeVariables:
       CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -3800,19 +4610,19 @@ events:
       variable: "XINPUT_H_FOUND"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-005dd1'
+        Change Dir: 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-dk6kjc'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_860bb/fast
-        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_860bb.dir\\build.make CMakeFiles/cmTC_860bb.dir/build
-        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-005dd1'
-        Building C object CMakeFiles/cmTC_860bb.dir/CheckIncludeFile.c.obj
-        C:\\mingw64\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles\\cmTC_860bb.dir\\CheckIncludeFile.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-005dd1\\CheckIncludeFile.c"
-        Linking C executable cmTC_860bb.exe
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_860bb.dir\\link.txt --verbose=1
-        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_860bb.dir/objects.a
-        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_860bb.dir/objects.a @CMakeFiles\\cmTC_860bb.dir\\objects1.rsp
-        C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -Wl,--whole-archive CMakeFiles\\cmTC_860bb.dir/objects.a -Wl,--no-whole-archive -o cmTC_860bb.exe -Wl,--out-implib,libcmTC_860bb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_860bb.dir\\linkLibs.rsp
-        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-005dd1'
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/mingw64/bin/mingw32-make.exe -f Makefile cmTC_4e784/fast
+        C:/mingw64/bin/mingw32-make.exe  -f CMakeFiles\\cmTC_4e784.dir\\build.make CMakeFiles/cmTC_4e784.dir/build
+        mingw32-make[1]: Entering directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-dk6kjc'
+        Building C object CMakeFiles/cmTC_4e784.dir/CheckIncludeFile.c.obj
+        C:\\mingw64\\bin\\gcc.exe   -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -o CMakeFiles\\cmTC_4e784.dir\\CheckIncludeFile.c.obj -c "C:\\Users\\User\\Desktop\\Nova pasta (7)\\Jogo_PIF\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dk6kjc\\CheckIncludeFile.c"
+        Linking C executable cmTC_4e784.exe
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_4e784.dir\\link.txt --verbose=1
+        "C:\\Program Files\\CMake\\bin\\cmake.exe" -E rm -f CMakeFiles\\cmTC_4e784.dir/objects.a
+        C:\\mingw64\\bin\\ar.exe qc CMakeFiles\\cmTC_4e784.dir/objects.a @CMakeFiles\\cmTC_4e784.dir\\objects1.rsp
+        C:\\mingw64\\bin\\gcc.exe -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -Wl,--whole-archive CMakeFiles\\cmTC_4e784.dir/objects.a -Wl,--no-whole-archive -o cmTC_4e784.exe -Wl,--out-implib,libcmTC_4e784.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\\cmTC_4e784.dir\\linkLibs.rsp
+        mingw32-make[1]: Leaving directory 'C:/Users/User/Desktop/Nova pasta (7)/Jogo_PIF/build/CMakeFiles/CMakeScratch/TryCompile-dk6kjc'
         
       exitCode: 0
 ...

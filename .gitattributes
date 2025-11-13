@@ -1,0 +1,10 @@
+# Normaliza fim de linha
+* text=auto
+
+# Arquivos de código-fonte
+*.c text
+*.h text
+*.cpp text
+*.hpp text
+*.txt text
+*.cmake text

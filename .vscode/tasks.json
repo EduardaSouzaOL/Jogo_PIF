@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-raylib",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "main.c",
+        "-o",
+        "main",
+        "-I",
+        "C:\\Users\\walti\\raylib\\include",
+        "-L",
+        "C:\\Users\\walti\\raylib\\lib",
+        "-lraylib",
+        "-lopengl32",
+        "-lgdi32",
+        "-lwinmm"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": "$gcc",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "build-and-run-raylib",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "gcc main.c -o main -I C:\\Users\\walti\\raylib\\include -L C:\\Users\\walti\\raylib\\lib -lraylib -lopengl32 -lgdi32 -lwinmm; .\\main.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": "$gcc"
+    }
+  ]
+}

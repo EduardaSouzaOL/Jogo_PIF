@@ -1,80 +1,147 @@
-# 🚀 Nome do Projeto
+# 🎮 Projeto Raylib - Jogo Colaborativo
 
-![Badge de Status](URL_DO_BADGE)
-## 🌟 Visão Geral
-
-> Uma breve descrição do projeto, seu objetivo e a principal funcionalidade.
+Este é um projeto desenvolvido em **C** usando a biblioteca **[Raylib](https://www.raylib.com/)**, com suporte multiplataforma (**Windows + Linux**) e gerenciamento colaborativo via **Git**.
 
 ---
 
-## ⚙️ Instalação e Execução (Instruções de Compilação e Uso)
+## 🧩 Estrutura do Projeto
 
-### Pré-requisitos
-
-* Pré-requisito 1
-* Pré-requisito 2
-
-### Compilação (Se Aplicável)
-
-1.  Passo para compilar o código (Ex: `make all`).
-    ```bash
-    [COMANDO DE COMPILAÇÃO AQUI]
-    ```
-
-### Execução
-
-1.  Passo para executar o projeto ou jogo.
-    ```bash
-    [COMANDO DE EXECUÇÃO AQUI]
-    ```
-2.  Instruções básicas de uso e interação com o sistema/jogo.
+```
+📦 projeto-raylib/
+├── src/              # Código-fonte (.c, .h)
+├── assets/           # Imagens, sons, fontes etc.
+├── CMakeLists.txt    # Configuração do build
+├── build/            # Pasta gerada pelo CMake (IGNORADA no git)
+├── .gitignore
+└── README.md
+```
 
 ---
 
-## 📖 Documentação Detalhada (Slides em PDF)
+## 🧱 Requisitos
 
-Para uma **apresentação completa**, detalhes técnicos aprofundados e a documentação de implementação, consulte o arquivo PDF de slides do projeto.
+### 🔹 Windows (MSYS2 + MinGW + Raylib)
 
-Este documento em PDF contém:
+1. Baixe e instale o [MSYS2](https://www.msys2.org/)
+2. Abra o terminal **MSYS2 UCRT64** e rode:
 
-* **Apresentação do Jogo:** Contexto, objetivos e regras.
-* **Instruções de Compilação e Uso:** Detalhes de setup (complementando a seção acima).
-* **Detalhes de Implementação:**
-    * Lista e descrição das funções/classes principais.
-    * *Highlights* do código (partes cruciais ou inovadoras).
-    * Dificuldades encontradas e soluções.
+   ```bash
+   pacman -Syu
+   pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-make
+   ```
 
-[Clique aqui para acessar os Slides em PDF](LINK_PARA_O_PDF)
+3. Baixe a **Raylib 5.5 para Windows (MinGW)** e extraia em:
+   ```
+   C:\raylib\raylib-5.5_win64_mingw-w64
+   ```
 
----
+### 🔹 Linux (Debian/Ubuntu ou derivados)
 
-## 🛠️ Tecnologias Utilizadas
+1. Instale Raylib e dependências:
+   ```bash
+   sudo apt update
+   sudo apt install build-essential cmake git libgl1-mesa-dev libopenal-dev libpthread-stubs0-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev libraylib-dev
+   ```
 
-* [Tecnologia 1](Link para documentação)
-* [Tecnologia 2](Link para documentação)
-
----
-
-## 🧑‍💻 Contribuição
-
-1.  Faça um fork do projeto.
-2.  Crie sua *branch* de *feature* (`git checkout -b feature/nome-da-feature`).
-3.  Comite suas mudanças (`git commit -m 'Adiciona nova feature'`).
-4.  Faça o *push* para a *branch* (`git push origin feature/nome-da-feature`).
-5.  Abra um *Pull Request*.
+2. Verifique se o Raylib está disponível:
+   ```bash
+   pkg-config --libs raylib
+   ```
 
 ---
 
-## ⚖️ Licença
+## 🧠 Configurando no VSCode
 
-Distribuído sob a Licença [MIT]. Veja `[LICENSE]` para mais informações.
+1. Instale as extensões:
+   - **C/C++** (Microsoft)
+   - **CMake Tools**
+   - **CodeLLDB** (opcional para debug)
+2. Abra o projeto no VSCode
+3. Pressione `Ctrl + Shift + P` e selecione:
+   ```
+   CMake: Configure
+   CMake: Build
+   ```
+4. O executável será gerado dentro de `build/`
 
 ---
 
-## 📧 Contato
+## 🚀 Como Rodar o Jogo
 
-Maria Eduarda Souza de Oliveira - [meso@cesar.school]
-Danilo Araújo Duleba - [dad@cesar.school]
-Giovanna Nascimento - [gksn@cesar.school]
+No terminal do VSCode (ou MSYS2/Linux):
 
-Link do Projeto: https://github.com/EduardaSouzaOL/Jogo_PIF
+```bash
+cd build
+./Jogo_PIF.exe     # Windows
+./Jogo_PIF         # Linux
+```
+
+---
+
+## 👥 Fluxo Colaborativo (Git)
+
+### 🌳 Branches principais
+| Branch | Função |
+|---------|--------|
+| `main` | Versão estável (entregas testadas) |
+| `dev` | Integração de recursos em desenvolvimento |
+| `feature/*` | Branches individuais de cada pessoa |
+
+---
+
+### 🧭 Passo a passo para contribuir
+
+1. Atualize o projeto:
+   ```bash
+   git checkout dev
+   git pull origin dev
+   ```
+
+2. Crie sua branch:
+   ```bash
+   git checkout -b feature/nome-da-tarefa
+   ```
+
+3. Faça as alterações e commits:
+   ```bash
+   git add .
+   git commit -m "feat: adiciona tela inicial"
+   git push origin feature/nome-da-tarefa
+   ```
+
+4. Abra um **Pull Request** para `dev`
+5. Após revisão, o líder faz o merge
+
+---
+
+## 🧹 Convenções
+
+- Nunca commitar arquivos de build (`/build`, `.exe`, `.dll`, `.o`, etc)
+- Commits padronizados:
+  ```
+  feat: adiciona menu inicial
+  fix: corrige erro na colisão
+  refactor: melhora loop principal
+  chore: atualiza dependências
+  ```
+- Código deve **compilar antes de enviar**
+
+---
+
+## 📜 Licença
+
+Este projeto é distribuído sob a licença [MIT](https://opensource.org/licenses/MIT).
+
+---
+
+### 👩‍💻 Equipe
+
+| Membro | Função | GitHub |
+|--------|---------|--------|
+| Maria Eduarda Souza de Oliveira | Programador(a) | [@EduardaOL](https://github.com/EduardaSouzaOL) |
+| Danilo Araujo Duleba | Programador(a) | [@danduleba](https://github.com/danduleba) |
+| Nome 3 | Programador(a) | [@nome3](https://github.com/nome3) |
+
+---
+
+> 🧡 Desenvolvido com Raylib e trabalho em equipe!

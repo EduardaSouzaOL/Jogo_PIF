@@ -26,7 +26,7 @@ int main(void)
 
     // ==== JOGADOR ====
     Player player = { 0 };
-    player.rect = (Rectangle){ 100, 400, 40, 50 };
+    player.rect = (Rectangle){ 100, 300, 40, 50 };
     player.velocity = (Vector2){ 0, 0 };
     player.isJumping = false;
     player.isAlive = true;
