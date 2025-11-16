@@ -18,6 +18,7 @@ include_directories(include)
 add_executable(Jogo_PIF
     src/main.c
     src/menu.c
+    src/inimigo.c
 )
 
 # Linkar raylib
