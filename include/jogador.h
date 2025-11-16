@@ -5,13 +5,13 @@
 #include <stdbool.h>
 
 typedef struct Jogador {
-    Rectangle caixa_colisao;
+    Rectangle hitbox;
     Vector2 velocidade;
     bool pulando;
     bool vivo;
 } Jogador;
 
-void InicializarJogador(Jogador *jogador);
-void AtualizarJogador(Jogador *jogador, float delta);
+void InitJogador(Jogador *jogador);
+void AtualizarJogador(Jogador *jogador, float dt);
 
 #endif
