@@ -9,6 +9,8 @@ typedef struct {
     int direcao;      // -1 = esquerda, +1 = direita
     float LimiteEsquerda;    // Limite da esquerda da plataforma
     float LimiteDireita;   // Limite da direita da plataforma
+    bool ta_vivo; // voltar 1 se estiver vivo, 0 se morto
+    int colisao_lateral_comJogador; // acumulador de colisões laterais com o jogador
 } Inimigo;
 
 // Inicializa um inimigo na posição desejada com patrol horizontal

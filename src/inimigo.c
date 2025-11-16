@@ -1,14 +1,16 @@
 #include "inimigo.h"
 
-void Inimigo_Init(Inimigo *i, float x, float y, float width, float height,
-                float LimiteEsquerda, float LimiteDireita)
+void Inimigo_Init(Inimigo *i, float x, float y, float w, float h, float esq, float dir)
 {
-    i->rect = (Rectangle){ x, y, width, height };
-    i->velocidade = 60.0f;
-    i->direcao = 1; // começa indo para a direita
-    i->LimiteEsquerda = LimiteEsquerda;
-    i->LimiteDireita = LimiteDireita;
+    i->rect = (Rectangle){x, y, w, h};
+    i->velocidade = 60;
+    i->direcao = 1;
+    i->LimiteEsquerda = esq;
+    i->LimiteDireita  = dir;
+    i->ta_vivo = true;
+    i->colisao_lateral_comJogador = 0;
 }
+
 
 void Inimigo_Update(Inimigo *i, float dt)
 {
