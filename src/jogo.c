@@ -13,17 +13,18 @@ void RodarJogo(int dificuldade)
     int qtdPlataformas;
     int qtdInimigos;
 
-    if (dificuldade == 1)
+    // Quantidades por dificuldade
+    if (dificuldade == 1)       // FÁCIL
     {
         qtdPlataformas = 110;
         qtdInimigos = 100;
     }
-    else if (dificuldade == 2)
+    else if (dificuldade == 2)  // MÉDIO
     {
         qtdPlataformas = 80;
         qtdInimigos = 200;
     }
-    else
+    else                         // DIFÍCIL (3)
     {
         qtdPlataformas = 50;
         qtdInimigos = 350;
@@ -52,6 +53,7 @@ void RodarJogo(int dificuldade)
     float limiteEsquerdo = jogador.caixa.x;
 
     int dano = 0;
+    int danoMax = 3;
     float cooldown = 0;
 
     while (!WindowShouldClose())
@@ -61,6 +63,7 @@ void RodarJogo(int dificuldade)
         UpdateJogador(&jogador, dt, gravidade, forcaPulo);
         cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
 
+        // Parede invisível atrás do player
         if (jogador.caixa.x < limiteEsquerdo)
             jogador.caixa.x = limiteEsquerdo;
 
@@ -74,6 +77,7 @@ void RodarJogo(int dificuldade)
                                    &jogador.pulando, descer);
 
         if (cooldown > 0) cooldown -= dt;
+
         AtualizarInimigos(inimigos, qtdInimigos, dt);
 
         for (int i = 0; i < qtdInimigos; i++)
@@ -85,7 +89,7 @@ void RodarJogo(int dificuldade)
                 float fundo = jogador.caixa.y + jogador.caixa.height;
                 float topo  = inimigos[i].caixa.y;
 
-                // pulo na cabeça
+                // JOGADOR PISA NO INIMIGO
                 if (fundo <= topo + 10 && jogador.velocidade.y > 0)
                 {
                     inimigos[i].vida--;
@@ -99,7 +103,7 @@ void RodarJogo(int dificuldade)
                     cooldown = 0.6f;
                     dano++;
 
-                    int direcao = (jogador.caixa.x < inimigos[i].caixa.x) ? -1 : 1;
+                    float direcao = (jogador.caixa.x < inimigos[i].caixa.x) ? -1 : 1;
 
                     AplicarKnockbackJogador(&jogador, direcao);
                     inimigos[i].velocidade.x = direcao * 250;
@@ -107,8 +111,7 @@ void RodarJogo(int dificuldade)
             }
         }
 
-        // 🍁 FECHAR O JOGO AO LEVAR 3 DANOS
-        if (dano >= 3)
+        if (dano >= danoMax)
         {
             CloseWindow();
             return;
@@ -119,7 +122,7 @@ void RodarJogo(int dificuldade)
 
         BeginMode2D(cam);
 
-        DrawRectangleRec(chao, DARKGREEN);  
+        DrawRectangleRec(chao, DARKGREEN);
         DrawRectangle(-5000, 650, 200000, 2000, DARKGREEN);
 
         DesenharPlataformas(plataformas, qtdPlataformas);
@@ -128,7 +131,8 @@ void RodarJogo(int dificuldade)
 
         EndMode2D();
 
-        DrawText(TextFormat("Dano: %d", dano), 20, 20, 30, RED);
+        DrawText(TextFormat("Dano: %d/%d", dano, danoMax), 
+                 20, 20, 30, RED);
 
         EndDrawing();
     }
