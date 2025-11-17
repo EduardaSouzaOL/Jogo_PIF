@@ -1,5 +1,5 @@
-#ifndef PLATAFORMA_H
-#define PLATAFORMA_H
+#ifndef PLATAFORMAS_H
+#define PLATAFORMAS_H
 
 #include "raylib.h"
 

@@ -2,22 +2,21 @@
 #define INIMIGO_H
 
 #include "raylib.h"
+#include <stdbool.h>
 
-typedef struct {
-    Rectangle rect;     // Posição e tamanho do inimigo
-    float velocidade;        // Velocidade de movimento
-    int direcao;      // -1 = esquerda, +1 = direita
-    float LimiteEsquerda;    // Limite da esquerda da plataforma
-    float LimiteDireita;   // Limite da direita da plataforma
+typedef struct Inimigo {
+    Rectangle caixa;
+    Vector2 velocidade;
+
+    float limiteEsq;
+    float limiteDir;
+
+    bool vivo;
+    int vida;   // quantos pulos precisa pra morrer
 } Inimigo;
 
-// Inicializa um inimigo na posição desejada com patrol horizontal
-void Inimigo_Init(Inimigo *i, float x, float y, float width, float height, float LimiteEsquerda, float LimiteDireita);
-
-// Atualiza o movimento do inimigo
-void Inimigo_Update(Inimigo *i, float dt);
-
-// Desenha o inimigo
-void Inimigo_Draw(const Inimigo *i);
+void IniciarInimigos(Inimigo *v, int qtd, int dificuldade);
+void AtualizarInimigos(Inimigo *v, int qtd, float dt);
+void DesenharInimigos(Inimigo *v, int qtd);
 
 #endif

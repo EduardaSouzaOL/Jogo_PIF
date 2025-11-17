@@ -3,131 +3,132 @@
 #include "jogador.h"
 #include "inimigo.h"
 #include "plataformas.h"
+#include "colisoes.h"
 
-#define MAX_PLATFORMS 60
-#define MAX_INIMIGOS  80
+#define MAX_PLAT 200
+#define MAX_INI  1000
 
-void RodarJogo(void)
+void RodarJogo(int dificuldade)
 {
-    int dificuldade = 10;
+    int qtdPlataformas;
+    int qtdInimigos;
 
-    int qtdPlataformas = 5 + (10 - dificuldade) * 2;
-    int qtdInimigos    = 5 + dificuldade * 3;
+    if (dificuldade == 1)
+    {
+        qtdPlataformas = 110;
+        qtdInimigos = 100;
+    }
+    else if (dificuldade == 2)
+    {
+        qtdPlataformas = 80;
+        qtdInimigos = 200;
+    }
+    else
+    {
+        qtdPlataformas = 50;
+        qtdInimigos = 350;
+    }
 
-    if (qtdPlataformas > MAX_PLATFORMS) qtdPlataformas = MAX_PLATFORMS;
-    if (qtdInimigos > MAX_INIMIGOS) qtdInimigos = MAX_INIMIGOS;
+    if (qtdPlataformas > MAX_PLAT) qtdPlataformas = MAX_PLAT;
+    if (qtdInimigos > MAX_INI) qtdInimigos = MAX_INI;
 
-    // Jogador
     Jogador jogador;
     InitJogador(&jogador);
 
-    // Chão
-    Rectangle chao = { 0, 650, 60000, 70 };
+    Rectangle chao = (Rectangle){ -5000, 650, 200000, 2000 };
+    float gravidade = 520.0f;
+    float forcaPulo = -500.0f;
 
-    // Físicas
-    float gravidade = 500;
-    float forcaPulo = -350;
-
-    // Plataformas
-    Rectangle plataformas[MAX_PLATFORMS];
+    Rectangle plataformas[MAX_PLAT];
     InitPlataformas(plataformas, qtdPlataformas, dificuldade);
 
-    // Inimigos
-    Inimigo inimigos[MAX_INIMIGOS];
-    InitInimigos(inimigos, qtdInimigos, dificuldade);
+    Inimigo inimigos[MAX_INI];
+    IniciarInimigos(inimigos, qtdInimigos, dificuldade);
 
-    // Sistema de Dano
-    int dano = 0;
-    int danoMax = 3;
-    float cooldown = 0;
-
-    // Câmera
-    Camera2D cam = { 0 };
-    cam.offset = (Vector2){ 1280/2, 720/2 };
+    Camera2D cam = {0};
+    cam.offset = (Vector2){ 640, 360 };
     cam.zoom = 1.3f;
 
-    // Loop do jogo
+    float limiteEsquerdo = jogador.caixa.x;
+
+    int dano = 0;
+    float cooldown = 0;
+
     while (!WindowShouldClose())
     {
         float dt = GetFrameTime();
 
         UpdateJogador(&jogador, dt, gravidade, forcaPulo);
-
-        // Atualiza câmera
         cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
 
-        // ===== COLISÃO COM O CHÃO =====
-        if (CheckCollisionRecs(jogador.caixa, chao))
-        {
-            jogador.caixa.y = chao.y - jogador.caixa.height;
-            jogador.velocidade.y = 0;
-            jogador.pulando = false;
-        }
+        if (jogador.caixa.x < limiteEsquerdo)
+            jogador.caixa.x = limiteEsquerdo;
 
-        // ===== COLISÃO COM PLATAFORMAS =====
-        bool descendo = IsKeyDown(KEY_DOWN);
+        bool descer = IsKeyDown(KEY_DOWN);
 
-        for (int i = 0; i < qtdPlataformas; i++)
-        {
-            if (descendo) break;
+        ResolverColisaoChao(&jogador.caixa, &jogador.velocidade,
+                            chao, &jogador.pulando);
 
-            Rectangle p = plataformas[i];
+        ResolverColisaoPlataformas(&jogador.caixa, &jogador.velocidade,
+                                   plataformas, qtdPlataformas,
+                                   &jogador.pulando, descer);
 
-            if (CheckCollisionRecs(jogador.caixa, p) && jogador.velocidade.y > 0)
-            {
-                jogador.caixa.y = p.y - jogador.caixa.height;
-                jogador.velocidade.y = 0;
-                jogador.pulando = false;
-            }
-        }
-
-        // ===== INIMIGOS =====
         if (cooldown > 0) cooldown -= dt;
-
-        UpdateInimigos(inimigos, qtdInimigos, dt);
+        AtualizarInimigos(inimigos, qtdInimigos, dt);
 
         for (int i = 0; i < qtdInimigos; i++)
         {
             if (!inimigos[i].vivo) continue;
 
-            if (CheckCollisionRecs(jogador.caixa, inimigos[i].caixa))
+            if (ColisaoTotal(jogador.caixa, inimigos[i].caixa))
             {
-                float bot = jogador.caixa.y + jogador.caixa.height;
-                float top = inimigos[i].caixa.y;
+                float fundo = jogador.caixa.y + jogador.caixa.height;
+                float topo  = inimigos[i].caixa.y;
 
-                // Pisa no inimigo
-                if (bot <= top + 10 && jogador.velocidade.y > 0)
+                // pulo na cabeça
+                if (fundo <= topo + 10 && jogador.velocidade.y > 0)
                 {
-                    inimigos[i].vivo = false;
-                    jogador.velocidade.y = forcaPulo / 1.5f;
+                    inimigos[i].vida--;
+                    jogador.velocidade.y = forcaPulo * 1.25f;
+
+                    if (inimigos[i].vida <= 0)
+                        inimigos[i].vivo = false;
                 }
                 else if (cooldown <= 0)
                 {
+                    cooldown = 0.6f;
                     dano++;
-                    cooldown = 0.7;
+
+                    int direcao = (jogador.caixa.x < inimigos[i].caixa.x) ? -1 : 1;
+
+                    AplicarKnockbackJogador(&jogador, direcao);
+                    inimigos[i].velocidade.x = direcao * 250;
                 }
             }
         }
 
-        if (dano >= danoMax)
+        // 🍁 FECHAR O JOGO AO LEVAR 3 DANOS
+        if (dano >= 3)
+        {
+            CloseWindow();
             return;
+        }
 
-        // ============================================
-        //                    DESENHO
-        // ============================================
         BeginDrawing();
         ClearBackground(SKYBLUE);
 
         BeginMode2D(cam);
 
-        DrawRectangleRec(chao, DARKGREEN);
+        DrawRectangleRec(chao, DARKGREEN);  
+        DrawRectangle(-5000, 650, 200000, 2000, DARKGREEN);
+
         DesenharPlataformas(plataformas, qtdPlataformas);
         DesenharJogador(&jogador);
         DesenharInimigos(inimigos, qtdInimigos);
 
         EndMode2D();
 
-        DrawText(TextFormat("Dano: %d/%d", dano, danoMax), 20, 20, 30, MAROON);
+        DrawText(TextFormat("Dano: %d", dano), 20, 20, 30, RED);
 
         EndDrawing();
     }

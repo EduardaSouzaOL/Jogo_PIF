@@ -1,34 +1,67 @@
 #include "inimigo.h"
+#include <stdlib.h>
 
-void Inimigo_Init(Inimigo *i, float x, float y, float width, float height,
-                float LimiteEsquerda, float LimiteDireita)
+void IniciarInimigos(Inimigo *v, int qtd, int dificuldade)
 {
-    i->rect = (Rectangle){ x, y, width, height };
-    i->velocidade = 60.0f;
-    i->direcao = 1; // começa indo para a direita
-    i->LimiteEsquerda = LimiteEsquerda;
-    i->LimiteDireita = LimiteDireita;
+    float x = 500;
+
+    float distMin = 350;
+    float distMax = 550;
+
+    for (int i = 0; i < qtd; i++)
+    {
+        x += distMin + (rand() % (int)(distMax - distMin));
+
+        float y = 610;
+
+        v[i].caixa = (Rectangle){ x, y, 40, 40 };
+
+        // --------------------
+        // VELOCIDADE ESCALADA POR DIFICULDADE
+        // --------------------
+        float velBase = 80.0f;
+        float velFinal = velBase;
+
+        for (int d = 1; d < dificuldade; d++)
+            velFinal *= 1.15f; // +15% acumulativo
+
+        v[i].velocidade = (Vector2){
+            (rand() % 2 == 0) ? velFinal : -velFinal,
+            0
+        };
+
+        // área de patrulha aumenta com dificuldade
+        float faixa = 200 + dificuldade * 80;
+
+        v[i].limiteEsq = x - faixa;
+        v[i].limiteDir = x + faixa;
+
+        v[i].vivo = true;
+        v[i].vida = dificuldade; // 1, 2 ou 3 hits
+    }
 }
 
-void Inimigo_Update(Inimigo *i, float dt)
+void AtualizarInimigos(Inimigo *v, int qtd, float dt)
 {
-    // Move inimigo
-    // *i ponteiro para a struct Inimigo, NAO É INDICE PELO AMOR DE DEUS
-    i->rect.x += i->velocidade * i->direcao * dt;
+    for (int i = 0; i < qtd; i++)
+    {
+        if (!v[i].vivo) continue;
 
-    // Checa limites da plataforma
-    if (i->rect.x <= i->LimiteEsquerda) {
-        i->rect.x = i->LimiteEsquerda;
-        i->direcao = 1; // vira para a direita
-    }
+        v[i].caixa.x += v[i].velocidade.x * dt;
 
-    if (i->rect.x + i->rect.width >= i->LimiteDireita) {
-        i->rect.x = i->LimiteDireita - i->rect.width;
-        i->direcao = -1; // vira para a esquerda
+        if (v[i].caixa.x < v[i].limiteEsq ||
+            v[i].caixa.x + v[i].caixa.width > v[i].limiteDir)
+        {
+            v[i].velocidade.x *= -1;
+        }
     }
 }
 
-void Inimigo_Draw(const Inimigo *i)
+void DesenharInimigos(Inimigo *v, int qtd)
 {
-    DrawRectangleRec(i->rect, RED);
+    for (int i = 0; i < qtd; i++)
+    {
+        if (v[i].vivo)
+            DrawRectangleRec(v[i].caixa, RED);
+    }
 }
