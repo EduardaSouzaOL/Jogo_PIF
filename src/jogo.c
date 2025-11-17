@@ -2,7 +2,7 @@
 #include "raylib.h"
 #include "jogador.h"
 #include "inimigo.h"
-#include "plataformas.h"
+#include "plataforma.h"
 
 #define MAX_PLATFORMS 60
 #define MAX_INIMIGOS  80
@@ -54,12 +54,12 @@ void RodarJogo(void)
         UpdateJogador(&jogador, dt, gravidade, forcaPulo);
 
         // Atualiza câmera
-        cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
+        cam.target = (Vector2){ jogador.hitbox.x, jogador.hitbox.y };
 
         // ===== COLISÃO COM O CHÃO =====
-        if (CheckCollisionRecs(jogador.caixa, chao))
+        if (CheckCollisionRecs(jogador.hitbox, chao))
         {
-            jogador.caixa.y = chao.y - jogador.caixa.height;
+            jogador.hitbox.y = chao.y - jogador.hitbox.height;
             jogador.velocidade.y = 0;
             jogador.pulando = false;
         }
@@ -73,9 +73,9 @@ void RodarJogo(void)
 
             Rectangle p = plataformas[i];
 
-            if (CheckCollisionRecs(jogador.caixa, p) && jogador.velocidade.y > 0)
+            if (CheckCollisionRecs(jogador.hitbox, p) && jogador.velocidade.y > 0)
             {
-                jogador.caixa.y = p.y - jogador.caixa.height;
+                jogador.hitbox.y = p.y - jogador.hitbox.height;
                 jogador.velocidade.y = 0;
                 jogador.pulando = false;
             }
@@ -88,17 +88,17 @@ void RodarJogo(void)
 
         for (int i = 0; i < qtdInimigos; i++)
         {
-            if (!inimigos[i].vivo) continue;
+            if (!inimigos[i].hitbox) continue;
 
-            if (CheckCollisionRecs(jogador.caixa, inimigos[i].caixa))
+            if (CheckCollisionRecs(jogador.hitbox, inimigos[i].hitbox))
             {
-                float bot = jogador.caixa.y + jogador.caixa.height;
-                float top = inimigos[i].caixa.y;
+                float bot = jogador.hitbox.y + jogador.hitbox.height;
+                float top = inimigos[i].hitbox.y;
 
                 // Pisa no inimigo
                 if (bot <= top + 10 && jogador.velocidade.y > 0)
                 {
-                    inimigos[i].vivo = false;
+                    inimigos[i].ta_vivo = false;
                     jogador.velocidade.y = forcaPulo / 1.5f;
                 }
                 else if (cooldown <= 0)
