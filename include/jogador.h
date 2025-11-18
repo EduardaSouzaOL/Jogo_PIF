@@ -9,16 +9,15 @@ typedef struct Jogador {
     Vector2 velocidade;
     bool pulando;
 
-    /* campos para knockback */
-    float tempoKnockback;   // tempo restante de knockback
-    float forcaKnockback;   // força atual do knockback
+    float tempoKnockback;
+    float forcaKnockback;
+
+    int chave;    // <--- chave coletada de inimigo especial
 } Jogador;
 
 void InitJogador(Jogador *j);
 void UpdateJogador(Jogador *j, float dt, float gravidade, float forcaPulo);
 void DesenharJogador(Jogador *j);
-
-/* aplica knockback ao jogador; direcao = -1 ou 1 (use conforme seu jogo) */
 void AplicarKnockbackJogador(Jogador *j, int direcao);
 
 #endif

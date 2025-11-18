@@ -4,17 +4,9 @@
 #include "raylib.h"
 #include <stdbool.h>
 
-void ResolverColisaoChao(Rectangle *jogador,
-                         Vector2   *velocidade,
-                         Rectangle  chao,
-                         bool      *pulando);
+void ResolverColisaoChao(Rectangle *jogador, Vector2 *velocidade, Rectangle  chao, bool *pulando);
 
-void ResolverColisaoPlataformas(Rectangle *jogador,
-                                Vector2   *velocidade,
-                                Rectangle *plataformas,
-                                int        qtd,
-                                bool      *pulando,
-                                bool       descer);
+void ResolverColisaoPlataformas(Rectangle *jogador, Vector2   *velocidade, Rectangle *plataformas, int qtd, bool *pulando, bool descer);
 
 bool ColisaoTotal(Rectangle a, Rectangle b);
 

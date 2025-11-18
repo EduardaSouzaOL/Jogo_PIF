@@ -12,7 +12,12 @@ typedef struct Inimigo {
     float limiteDir;
 
     bool vivo;
-    int vida;   // quantos pulos precisa pra morrer
+    int vida;
+
+    bool especial;
+    struct Inimigo *next;
+
+    float tempoKnockback;   // <— ADICIONADO
 } Inimigo;
 
 void IniciarInimigos(Inimigo *v, int qtd, int dificuldade);
