@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 
-void InitPlataformas(Rectangle *p, int qtd, int dificuldade);
+void InitPlataformas(Rectangle *p, int qtd, int dificuldade, float limiteGeracao);
 void DesenharPlataformas(Rectangle *p, int qtd);
 
 #endif

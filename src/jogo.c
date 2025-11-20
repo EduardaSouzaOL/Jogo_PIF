@@ -5,87 +5,99 @@
 #include "plataformas.h"
 #include "colisoes.h"
 #include <stdlib.h>
+#include <time.h>
 
 #define MAX_PLAT 200
 #define MAX_INI  1000
 
 void RodarJogo(int dificuldade)
 {
-    int qtdPlataformas;
-    int qtdInimigos;
+    int danoMax;
 
-    // Quantidades por dificuldade
-    if (dificuldade == 1)
-    {
-        qtdPlataformas = 210;
-        qtdInimigos = 300;
-    }
-    else if (dificuldade == 2)
-    {
-        qtdPlataformas = 80;
-        qtdInimigos = 200;
-    }
-    else
-    {
-        qtdPlataformas = 50;
-        qtdInimigos = 350;
-    }
+    
+    if (dificuldade == 0) danoMax = 5;   // fácil
+    else if (dificuldade == 1) danoMax = 3; // médio
+    else danoMax = 1; // difícil
+
+
+    int qtdPlataformas = 89;
+    int qtdInimigos    = 74;
 
     if (qtdPlataformas > MAX_PLAT) qtdPlataformas = MAX_PLAT;
-    if (qtdInimigos > MAX_INI) qtdInimigos = MAX_INI;
+    if (qtdInimigos > MAX_INI)     qtdInimigos = MAX_INI;
+
+    srand((unsigned)time(NULL));
 
     Jogador jogador;
     InitJogador(&jogador);
 
-    // ---------- MUNDO EXPANDIDO ----------
-    float tamanhoMapa = 200000 * 2;   // dobra o tamanho do mundo original
+    float tamanhoMapa = 50000;
     Rectangle chao = (Rectangle){ -5000, 650, tamanhoMapa, 2000 };
 
-    // Posição da parede final
-    float posParede = tamanhoMapa - 2000;  
-    Rectangle paredeFinal = { posParede, 450, 80, 300 };
-
+    float posParede = (-5000 + tamanhoMapa) - 2000;
+    Rectangle paredeFinal = { posParede, 250, 128, 1024 };
     bool paredeAberta = false;
+
+    jogador.caixa.x = 100;
+    float limiteEsquerdo = jogador.caixa.x;
 
     float gravidade = 520.0f;
     float forcaPulo = -500.0f;
 
+    float margemParede = 200.0f;
+    float limiteGeracao = posParede - margemParede - 300.0f;
+
     Rectangle plataformas[MAX_PLAT];
-    InitPlataformas(plataformas, qtdPlataformas, dificuldade);
+    InitPlataformas(plataformas, qtdPlataformas, 1, limiteGeracao);
+
+    for (int i = 0; i < qtdPlataformas; i++) {
+        if (plataformas[i].x >= limiteGeracao)
+            plataformas[i].x = limiteGeracao - (rand() % 600);
+    }
 
     Inimigo inimigos[MAX_INI];
-    IniciarInimigos(inimigos, qtdInimigos, dificuldade);
+    IniciarInimigos(inimigos, qtdInimigos, 1, limiteGeracao);
 
     Camera2D cam = {0};
     cam.offset = (Vector2){ 640, 360 };
     cam.zoom = 1.3f;
 
-    float limiteEsquerdo = jogador.caixa.x;
-
     int dano = 0;
-    int danoMax = 3;
     float cooldown = 0;
 
-    // ---------- SORTEIO DE CHAVE ----------
-    int inimigoChave = rand() % qtdInimigos;
+    int inimigoChave = (qtdInimigos > 0) ? (rand() % qtdInimigos) : -1;
     bool chaveColetada = false;
+
+    bool deathMessageShown = false;
+    float deathTimer = 0.0f;
+    const float deathDuration = 10.0f;
+    float fadeAlpha = 0.0f;
+
+    Rectangle npcCubo = { posParede + 200.0f, jogador.caixa.y, jogador.caixa.width, jogador.caixa.height };
+    bool showCongrats = false;
+
+    // -------- FINAL BOM --------
+    bool finalBomIniciado = false;
+    float finalBomTimer = 0.0f;
+    const float finalBomDuracao = 6.0f;
+    float finalBomAlpha = 0.0f;
 
     while (!WindowShouldClose())
     {
         float dt = GetFrameTime();
 
-        UpdateJogador(&jogador, dt, gravidade, forcaPulo);
+        // SE FINAL BOM COMEÇOU → JOGADOR NÃO SE MOVE
+        if (!finalBomIniciado)
+            UpdateJogador(&jogador, dt, gravidade, forcaPulo);
+
         cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
 
-        // Parede invisível atrás
         if (jogador.caixa.x < limiteEsquerdo)
             jogador.caixa.x = limiteEsquerdo;
 
         bool descer = IsKeyDown(KEY_DOWN);
 
-        ResolverColisaoChao(&jogador.caixa, &jogador.velocidade,
-                            chao, &jogador.pulando);
-
+        ResolverColisaoChao(&jogador.caixa, &jogador.velocidade, chao, &jogador.pulando);
         ResolverColisaoPlataformas(&jogador.caixa, &jogador.velocidade,
                                    plataformas, qtdPlataformas,
                                    &jogador.pulando, descer);
@@ -94,78 +106,162 @@ void RodarJogo(int dificuldade)
 
         AtualizarInimigos(inimigos, qtdInimigos, dt);
 
-        // ---------- COLISÃO JOGADOR x INIMIGO ----------
-        for (int i = 0; i < qtdInimigos; i++)
+        // -------------------------
+        // COLISÃO JOGADOR x INIMIGOS
+        // -------------------------
+        if (!finalBomIniciado)
         {
-            if (!inimigos[i].vivo) continue;
+            for (int i = 0; i < qtdInimigos; i++) {
 
-            if (ColisaoTotal(jogador.caixa, inimigos[i].caixa))
-            {
-                float fundo = jogador.caixa.y + jogador.caixa.height;
-                float topo  = inimigos[i].caixa.y;
+                if (!inimigos[i].vivo) continue;
 
-                // PISOU NO INIMIGO
-                if (fundo <= topo + 10 && jogador.velocidade.y > 0)
-                {
-                    inimigos[i].vida--;
-                    jogador.velocidade.y = forcaPulo * 1.25f;
+                if (ColisaoTotal(jogador.caixa, inimigos[i].caixa)) {
 
-                    if (i == inimigoChave && inimigos[i].vida <= 0)
-                        chaveColetada = true;
+                    float fundo = jogador.caixa.y + jogador.caixa.height;
+                    float topo  = inimigos[i].caixa.y;
 
-                    if (inimigos[i].vida <= 0)
-                        inimigos[i].vivo = false;
-                }
-                else if (cooldown <= 0)
-                {
-                    cooldown = 0.6f;
-                    dano++;
+                    if (fundo <= topo + 10 && jogador.velocidade.y > 0) {
 
-                    float direcao = (jogador.caixa.x < inimigos[i].caixa.x) ? -1 : 1;
+                        inimigos[i].vida--;
+                        jogador.velocidade.y = forcaPulo * 1.25f;
 
-                    AplicarKnockbackJogador(&jogador, direcao);
-                    inimigos[i].velocidade.x = direcao * 250;
+                        if (i == inimigoChave && inimigos[i].vida <= 0)
+                            chaveColetada = true;
+
+                        if (inimigos[i].vida <= 0)
+                            inimigos[i].vivo = false;
+                    }
+                    else if (cooldown <= 0) {
+
+                        cooldown = 0.6f;
+                        dano++;
+
+                        int dir = (jogador.caixa.x > inimigos[i].caixa.x) ? 1 : -1;
+
+                        if (inimigos[i].velocidade.x > 0 && dir > 0)
+                            inimigos[i].velocidade.x = -inimigos[i].velocidade.x;
+                        if (inimigos[i].velocidade.x < 0 && dir < 0)
+                            inimigos[i].velocidade.x = -inimigos[i].velocidade.x;
+
+                        AplicarKnockbackJogador(&jogador, dir);
+                        inimigos[i].tempoKnockback = 0.25f;
+                    }
                 }
             }
         }
 
-        // ---------- INTERAÇÃO COM A PAREDE FINAL ----------
-        if (!paredeAberta && ColisaoTotal(jogador.caixa, paredeFinal))
+        // --------------------------------------------
+        // COLISÃO ENTRE INIMIGOS (SEM RESETAR)
+        // --------------------------------------------
+        for (int a = 0; a < qtdInimigos; a++)
         {
-            if (IsKeyPressed(KEY_E))  // abre o buraco
+            if (!inimigos[a].vivo) continue;
+
+            for (int b = a + 1; b < qtdInimigos; b++)
             {
-                paredeAberta = true;
+                if (!inimigos[b].vivo) continue;
+
+                if (ColisaoTotal(inimigos[a].caixa, inimigos[b].caixa))
+                {
+                    inimigos[a].caixa.x -= 4;
+                    inimigos[b].caixa.x += 4;
+
+                    if (inimigos[a].velocidade.x > 0)
+                        inimigos[a].velocidade.x = -inimigos[a].velocidade.x;
+
+                    if (inimigos[b].velocidade.x < 0)
+                        inimigos[b].velocidade.x = -inimigos[b].velocidade.x;
+                }
             }
         }
 
-        // Remove a parede se estiver aberta
-        if (paredeAberta)
+        // -------------------------
+        // INTERAÇÃO COM A PAREDE
+        // -------------------------
+        bool tocandoParede = ColisaoTotal(jogador.caixa, paredeFinal);
+
+        if (!finalBomIniciado)
         {
-            paredeFinal.height = 0;
-            paredeFinal.width = 0;
+            if (!paredeAberta)
+            {
+                if (tocandoParede)
+                {
+                    if (!chaveColetada)
+                    {
+                        if (IsKeyPressed(KEY_E) && !deathMessageShown) {
+                            deathMessageShown = true;
+                            deathTimer = deathDuration;
+                            fadeAlpha = 0.0f;
+                        }
+
+                        jogador.caixa.x = paredeFinal.x - jogador.caixa.width - 1;
+                    }
+                    else
+                    {
+                        // FINAL BOM ATIVADO
+                        if (IsKeyPressed(KEY_E))
+                        {
+                            paredeAberta = true;
+                            paredeFinal.x = -999999;
+                            paredeFinal.width = 0;
+                            paredeFinal.height = 0;
+
+                            finalBomIniciado = true;
+                            finalBomTimer = finalBomDuracao;
+                            finalBomAlpha = 0.0f;
+
+                            // congelar movimento
+                            jogador.velocidade.x = 0;
+                            jogador.velocidade.y = 0;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            // RODANDO FINAL BOM
+            finalBomTimer -= dt;
+
+            float p = (finalBomDuracao - finalBomTimer) / finalBomDuracao;
+            if (p < 0) p = 0;
+            if (p > 1) p = 1;
+            finalBomAlpha = p;
+
+            if (finalBomTimer <= 0.0f)
+                return;
         }
 
-        // ---------- GAME OVER ----------
-        if (dano >= danoMax && chaveColetada)
-        {
-            CloseWindow();
+        // FINAL RUIM
+        if (deathMessageShown) {
+
+            deathTimer -= dt;
+
+            float p = (deathDuration - deathTimer) / deathDuration;
+            if (p < 0) p = 0;
+            if (p > 1) p = 1;
+            fadeAlpha = p;
+
+            if (deathTimer <= 0.0f)
+                return;
+        }
+
+        if (dano >= danoMax)
             return;
-        }
 
-        // ---------- DESENHO ----------
+        // -------------------------
+        // DESENHO
+        // -------------------------
         BeginDrawing();
         ClearBackground(SKYBLUE);
 
         BeginMode2D(cam);
 
         DrawRectangleRec(chao, DARKGREEN);
-        DrawRectangle(-5000, 650, tamanhoMapa, 2000, DARKGREEN);
-
         DesenharPlataformas(plataformas, qtdPlataformas);
         DesenharJogador(&jogador);
         DesenharInimigos(inimigos, qtdInimigos);
 
-        // Desenhar parede final (se não estiver aberta)
         if (!paredeAberta)
             DrawRectangleRec(paredeFinal, BLACK);
 
@@ -176,10 +272,27 @@ void RodarJogo(int dificuldade)
         if (chaveColetada)
             DrawText("ITEM CHAVE COLETADO!", 20, 70, 30, YELLOW);
 
-        if (!paredeAberta &&
-            ColisaoTotal(jogador.caixa, paredeFinal))
+        if (!paredeAberta && tocandoParede && !chaveColetada)
+            DrawText("Pressione E para interagir com a muralha", 20, 110, 22, WHITE);
+
+        if (deathMessageShown) {
+            DrawText("E apos tocar a muralha amaldiçoada, a heroina caiu e nunca mais levantou...",
+                     20, 140, 20, WHITE);
+
+            Color fadeColor = (Color){0, 0, 0, (unsigned char)(fadeAlpha * 255)};
+            DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), fadeColor);
+        }
+
+        // -----------------------------
+        // FINAL BOM: TEXTO + FADE BRANCO
+        // -----------------------------
+        if (finalBomIniciado)
         {
-            DrawText("Pressione E para abrir a passagem", 20, 120, 28, WHITE);
+            DrawText("E ao atravessar a muralha selada, a heroina enfim estava livre...",
+                     20, 140, 20, BLACK);
+
+            Color fadeBranco = (Color){255, 255, 255, (unsigned char)(finalBomAlpha * 255)};
+            DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), fadeBranco);
         }
 
         EndDrawing();
