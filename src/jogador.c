@@ -25,8 +25,8 @@ void UpdateJogador(Jogador *j, float dt, float gravidade, float forcaPulo)
         j->tempoKnockback -= dt;
     else
     {
-        if (IsKeyDown(KEY_RIGHT))      j->velocidade.x = 1000;
-        else if (IsKeyDown(KEY_LEFT))  j->velocidade.x = -200;
+        if (IsKeyDown(KEY_RIGHT))      j->velocidade.x = 18000;
+        else if (IsKeyDown(KEY_LEFT))  j->velocidade.x = -180;
         else                           j->velocidade.x = 0;
 
         if (IsKeyPressed(KEY_UP) && !j->pulando)

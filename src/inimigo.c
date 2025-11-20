@@ -1,15 +1,22 @@
 #include "inimigo.h"
 #include <stdlib.h>
 
-void IniciarInimigos(Inimigo *v, int qtd, int dificuldade)
+void IniciarInimigos(Inimigo *v, int qtd, int dificuldade, float limiteGeracao)
 {
     float x = 500;
+
     float distMin = 350;
     float distMax = 550;
+
+    float limiteReal = limiteGeracao - 300.0f;
 
     for (int i = 0; i < qtd; i++)
     {
         x += distMin + (rand() % (int)(distMax - distMin));
+
+        // BLOQUEIO REAL
+        if (x >= limiteReal)
+            x = limiteReal - (rand() % 600 + 300);
 
         float y = 610;
 
@@ -17,7 +24,6 @@ void IniciarInimigos(Inimigo *v, int qtd, int dificuldade)
 
         float velBase = 80.0f;
         float velFinal = velBase;
-
         for (int d = 1; d < dificuldade; d++)
             velFinal *= 1.15f;
 
@@ -31,10 +37,15 @@ void IniciarInimigos(Inimigo *v, int qtd, int dificuldade)
         v[i].limiteEsq = x - faixa;
         v[i].limiteDir = x + faixa;
 
+        if (v[i].limiteDir > limiteReal)
+            v[i].limiteDir = limiteReal - 5;
+
         v[i].vivo = true;
         v[i].vida = dificuldade;
 
-        v[i].tempoKnockback = 0;   // <— ADICIONADO
+        v[i].especial = false;
+        v[i].next = NULL;
+        v[i].tempoKnockback = 0.0f;
     }
 }
 
@@ -44,18 +55,19 @@ void AtualizarInimigos(Inimigo *v, int qtd, float dt)
     {
         if (!v[i].vivo) continue;
 
-        if (v[i].tempoKnockback > 0)
+        if (v[i].tempoKnockback > 0.0f)
+        {
             v[i].tempoKnockback -= dt;
+            v[i].caixa.x += v[i].velocidade.x * dt;
+            continue;
+        }
 
         v[i].caixa.x += v[i].velocidade.x * dt;
 
-        if (v[i].tempoKnockback <= 0)
+        if (v[i].caixa.x < v[i].limiteEsq ||
+            v[i].caixa.x + v[i].caixa.width > v[i].limiteDir)
         {
-            if (v[i].caixa.x < v[i].limiteEsq ||
-                v[i].caixa.x + v[i].caixa.width > v[i].limiteDir)
-            {
-                v[i].velocidade.x *= -1;
-            }
+            v[i].velocidade.x *= -1;
         }
     }
 }

@@ -17,7 +17,7 @@ typedef struct Inimigo {
     bool especial;
     struct Inimigo *next;
 
-    float tempoKnockback;   // <— ADICIONADO
+    float tempoKnockback;
 } Inimigo;
 
 void IniciarInimigos(Inimigo *v, int qtd, int dificuldade);
