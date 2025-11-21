@@ -8,14 +8,12 @@ void InitPlataformas(Rectangle *p, int qtd, int dificuldade, float limiteGeracao
     float distMin = 380;
     float distMax = 520;
 
-    // limite real (300px antes da parede)
     float limiteReal = limiteGeracao - 300.0f;
 
     for (int i = 0; i < qtd; i++)
     {
         x += distMin + (rand() % (int)(distMax - distMin));
 
-        // ⚠ BLOQUEAR geração perto da parede
         if (x >= limiteReal)
             x = limiteReal - (rand() % 600 + 400);
 
@@ -44,4 +42,11 @@ void InitPlataformas(Rectangle *p, int qtd, int dificuldade, float limiteGeracao
 
         p[i] = (Rectangle){ x, yFinal, w, 20 };
     }
+}
+
+// 🟢 FUNÇÃO QUE FALTAVA!
+void DesenharPlataformas(Rectangle *p, int qtd)
+{
+    for (int i = 0; i < qtd; i++)
+        DrawRectangleRec(p[i], DARKGRAY);
 }

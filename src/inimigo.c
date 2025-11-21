@@ -3,48 +3,51 @@
 
 void IniciarInimigos(Inimigo *v, int qtd, int dificuldade, float limiteGeracao)
 {
-    float x = 500;
+    float inicioMapa = 600.0f;     // 500 px depois do player
+    float fimMapa    = limiteGeracao - 200.0f;
 
-    float distMin = 350;
-    float distMax = 550;
+    float espacoTotal = fimMapa - inicioMapa;
+    if (espacoTotal <= 0) espacoTotal = 1000;
 
-    float limiteReal = limiteGeracao - 300.0f;
+    // Distribuição uniforme total
+    float dist = espacoTotal / qtd;
 
     for (int i = 0; i < qtd; i++)
     {
-        x += distMin + (rand() % (int)(distMax - distMin));
+        float x = inicioMapa + i * dist;
 
-        // BLOQUEIO REAL
-        if (x >= limiteReal)
-            x = limiteReal - (rand() % 600 + 300);
+        // INIMIGO NO CHÃO REAL !!
+        float chaoY = 650.0f;                   // y do chão no seu jogo
+        float tam   = 40.0f;                   // tamanho inimigo
+        float y     = chaoY - tam;             // encostado no chão
 
-        float y = 610;
+        // Caixa de colisão
+        v[i].caixa.x = x;
+        v[i].caixa.y = y;
+        v[i].caixa.width  = tam;
+        v[i].caixa.height = tam;
 
-        v[i].caixa = (Rectangle){ x, y, 40, 40 };
+        // Velocidade inicial alternada
+        v[i].velocidade.x = (i % 2 == 0) ? 80.0f : -80.0f;
+        v[i].velocidade.y = 0;
 
-        float velBase = 80.0f;
-        float velFinal = velBase;
-        for (int d = 1; d < dificuldade; d++)
-            velFinal *= 1.15f;
+        // -------------------------------------------
+        // NOVA RONDA DE PATRULHA: AGORA 300 px p/ cada lado
+        // -------------------------------------------
+        float patrulha = 300.0f;
 
-        v[i].velocidade = (Vector2){
-            (rand() % 2 == 0) ? velFinal : -velFinal,
-            0
-        };
+        v[i].limiteEsq = x - patrulha;
+        v[i].limiteDir = x + patrulha;
 
-        float faixa = 200 + dificuldade * 80;
+        if (v[i].limiteEsq < inicioMapa)
+            v[i].limiteEsq = inicioMapa;
 
-        v[i].limiteEsq = x - faixa;
-        v[i].limiteDir = x + faixa;
+        if (v[i].limiteDir > fimMapa)
+            v[i].limiteDir = fimMapa;
 
-        if (v[i].limiteDir > limiteReal)
-            v[i].limiteDir = limiteReal - 5;
-
+        // Atributos gerais
         v[i].vivo = true;
-        v[i].vida = dificuldade;
-
-        v[i].especial = false;
-        v[i].next = NULL;
+        v[i].vida = 1;
         v[i].tempoKnockback = 0.0f;
     }
 }
@@ -55,19 +58,22 @@ void AtualizarInimigos(Inimigo *v, int qtd, float dt)
     {
         if (!v[i].vivo) continue;
 
-        if (v[i].tempoKnockback > 0.0f)
-        {
+        if (v[i].tempoKnockback > 0)
             v[i].tempoKnockback -= dt;
-            v[i].caixa.x += v[i].velocidade.x * dt;
-            continue;
-        }
 
         v[i].caixa.x += v[i].velocidade.x * dt;
 
-        if (v[i].caixa.x < v[i].limiteEsq ||
-            v[i].caixa.x + v[i].caixa.width > v[i].limiteDir)
+        // inverter lado manualmente (sem math.h)
+        if (v[i].caixa.x < v[i].limiteEsq)
         {
-            v[i].velocidade.x *= -1;
+            if (v[i].velocidade.x < 0)
+                v[i].velocidade.x = -v[i].velocidade.x;
+        }
+
+        if (v[i].caixa.x + v[i].caixa.width > v[i].limiteDir)
+        {
+            if (v[i].velocidade.x > 0)
+                v[i].velocidade.x = -v[i].velocidade.x;
         }
     }
 }

@@ -11,7 +11,7 @@ int main(void) {
     Menu menu;
     MenuInit(&menu);
 
-    int dificuldade = 1;  // padrão
+    int dificuldade = 1;
 
     while (!WindowShouldClose()) {
 
@@ -19,20 +19,16 @@ int main(void) {
 
         case ESTADO_MENU:
             estado = MenuUpdate(&menu);
+            break;
 
-            if (estado == ESTADO_PLAY) {
-                dificuldade = 1;  // por enquanto sempre 1
-            }
+        case ESTADO_DIFICULDADE:
+            estado = MenuDificuldadeUpdate(&menu);
             break;
 
         case ESTADO_PLAY:
+            dificuldade = MenuGetDificuldade(&menu);
             RodarJogo(dificuldade);
             estado = ESTADO_MENU;
-            break;
-
-        case ESTADO_SETTINGS:
-            if (IsKeyPressed(KEY_ESCAPE))
-                estado = ESTADO_MENU;
             break;
 
         case ESTADO_EXIT:
@@ -44,16 +40,8 @@ int main(void) {
         ClearBackground(BLACK);
 
         switch (estado) {
-        case ESTADO_MENU:
-            MenuDraw(&menu);
-            break;
-
-        case ESTADO_SETTINGS:
-            DrawText("CONFIGURACOES (aperte ESC para voltar)", 40, 40, 26, WHITE);
-            break;
-
-        default:
-            break;
+        case ESTADO_MENU:          MenuDraw(&menu); break;
+        case ESTADO_DIFICULDADE:   MenuDificuldadeDraw(&menu); break;
         }
 
         EndDrawing();

@@ -1,20 +1,19 @@
 #include "menu.h"
 #include <string.h>
 
-// Textura estática para o fundo do menu
 static Texture2D fundoMenu;
 
-// Inicialização do menu
 void MenuInit(Menu *m) {
     static const char *opts[] = {
         "Jogar",
-        "Configurações",
+        "Dificuldade",
         "Sair"
     };
 
     m->options = opts;
-    m->optionCount = sizeof(opts) / sizeof(opts[0]);
+    m->optionCount = 3;
     m->selecionado = 0;
+    m->dificuldade = 1;     // ← padrão: médio
     m->pos = (Vector2){40, 140};
     m->lineSpacing = 50;
     m->initialized = true;
@@ -22,70 +21,100 @@ void MenuInit(Menu *m) {
     fundoMenu = LoadTexture("assets/images/fundo_menu.png");
 }
 
-// Atualização da lógica do menu
 GameState MenuUpdate(Menu *m) {
-    if (!m || !m->initialized)
-        return ESTADO_MENU;
+    if (!m->initialized) return ESTADO_MENU;
 
-    // Navegação com teclado — seta para baixo
     if (IsKeyPressed(KEY_DOWN)) {
-        m->selecionado++;
-        if (m->selecionado >= m->optionCount)
-            m->selecionado = 0;
+        m->selecionado = (m->selecionado + 1) % m->optionCount;
     }
 
-    // Navegação com teclado — seta para cima
     if (IsKeyPressed(KEY_UP)) {
         m->selecionado--;
-        if (m->selecionado < 0)
-            m->selecionado = m->optionCount - 1;
+        if (m->selecionado < 0) m->selecionado = m->optionCount - 1;
     }
 
-    // Seleção com ENTER
     if (IsKeyPressed(KEY_ENTER)) {
-        const char *opt = m->options[m->selecionado];
-
-        if (strcmp(opt, "Jogar") == 0)         return ESTADO_PLAY;
-        if (strcmp(opt, "Configurações") == 0) return ESTADO_SETTINGS;
-        if (strcmp(opt, "Sair") == 0)          return ESTADO_EXIT;
+        switch (m->selecionado) {
+        case 0: return ESTADO_PLAY;
+        case 1: return ESTADO_DIFICULDADE;   // ← nova tela
+        case 2: return ESTADO_EXIT;
+        }
     }
 
     return ESTADO_MENU;
 }
 
-// Desenho do menu
 void MenuDraw(const Menu *m) {
-    int fontSize = 24;
-
-    // Fundo com imagem proporcional à tela
     DrawTexturePro(
         fundoMenu,
-        (Rectangle){0, 0, fundoMenu.width, fundoMenu.height},
-        (Rectangle){0, 0, GetScreenWidth(), GetScreenHeight()},
-        (Vector2){0, 0},
+        (Rectangle){0,0,fundoMenu.width,fundoMenu.height},
+        (Rectangle){0,0,GetScreenWidth(),GetScreenHeight()},
+        (Vector2){0,0},
         0.0f,
         WHITE
     );
 
-    // Título
     DrawText("AMOR & ENDERECO", 40, 60, 32, WHITE);
 
-    // Lista de opções
     for (int i = 0; i < m->optionCount; i++) {
-        float x = m->pos.x;
-        float y = m->pos.y + i * m->lineSpacing;
-
-        if (i == m->selecionado) {
-            DrawText("<3", x - 30, y, fontSize, YELLOW);
-            DrawText(m->options[i], x, y, fontSize, YELLOW);
-        } else {
-            DrawText(m->options[i], x, y, fontSize, LIGHTGRAY);
-        }
+        Color c = (i == m->selecionado) ? YELLOW : LIGHTGRAY;
+        DrawText(m->options[i], m->pos.x, m->pos.y + i * m->lineSpacing, 28, c);
     }
+
+    DrawText(TextFormat("Dificuldade atual: %s",
+        m->dificuldade == 0 ? "Fácil" :
+        m->dificuldade == 1 ? "Médio" : "Difícil"),
+        40, 320, 24, WHITE
+    );
 }
 
-// Descarregamento do menu
-void MenuUnload(Menu *m) {
+
+// -----------------------
+//  TELA DE DIFICULDADE
+// -----------------------
+GameState MenuDificuldadeUpdate(Menu *m)
+{
+    if (IsKeyPressed(KEY_UP)) {
+        m->dificuldade--;
+        if (m->dificuldade < 0) m->dificuldade = 2;
+    }
+    if (IsKeyPressed(KEY_DOWN)) {
+        m->dificuldade = (m->dificuldade + 1) % 3;
+    }
+
+    if (IsKeyPressed(KEY_ENTER)) {
+        return ESTADO_MENU;
+    }
+
+    if (IsKeyPressed(KEY_ESCAPE)) {
+        return ESTADO_MENU;
+    }
+
+    return ESTADO_DIFICULDADE;
+}
+
+void MenuDificuldadeDraw(const Menu *m)
+{
+    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), BLACK);
+    DrawText("ESCOLHA A DIFICULDADE", 40, 60, 32, WHITE);
+
+    const char *nomes[] = {"Fácil", "Médio", "Difícil"};
+
+    for (int i = 0; i < 3; i++) {
+        Color c = (i == m->dificuldade) ? YELLOW : LIGHTGRAY;
+        DrawText(nomes[i], 40, 160 + i * 50, 28, c);
+    }
+
+    DrawText("ENTER para confirmar", 40, 400, 24, WHITE);
+}
+
+int MenuGetDificuldade(const Menu *m)
+{
+    return m->dificuldade;
+}
+
+void MenuUnload(Menu *m)
+{
     UnloadTexture(fundoMenu);
     m->initialized = false;
 }

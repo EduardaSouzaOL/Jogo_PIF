@@ -6,31 +6,25 @@
 #include "colisoes.h"
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
 
 #define MAX_PLAT 200
 #define MAX_INI  1000
 
 void RodarJogo(int dificuldade)
 {
-    int qtdPlataformas;
-    int qtdInimigos;
+    int danoMax;
 
-    if (dificuldade == 1) {
-        qtdPlataformas = 210;
-        qtdInimigos = 300;
-    }
-    else if (dificuldade == 2) {
-        qtdPlataformas = 80;
-        qtdInimigos = 200;
-    }
-    else {
-        qtdPlataformas = 50;
-        qtdInimigos = 350;
-    }
+    
+    if (dificuldade == 0) danoMax = 5;   // fácil
+    else if (dificuldade == 1) danoMax = 3; // médio
+    else danoMax = 1; // difícil
+
+
+    int qtdPlataformas = 89;
+    int qtdInimigos    = 74;
 
     if (qtdPlataformas > MAX_PLAT) qtdPlataformas = MAX_PLAT;
-    if (qtdInimigos > MAX_INI) qtdInimigos = MAX_INI;
+    if (qtdInimigos > MAX_INI)     qtdInimigos = MAX_INI;
 
     srand((unsigned)time(NULL));
 
@@ -51,10 +45,10 @@ void RodarJogo(int dificuldade)
     float forcaPulo = -500.0f;
 
     float margemParede = 200.0f;
-    float limiteGeracao = posParede - margemParede - 300.0f;   // <----- DO JEITO QUE VOCÊ PEDIU
+    float limiteGeracao = posParede - margemParede - 300.0f;
 
     Rectangle plataformas[MAX_PLAT];
-    InitPlataformas(plataformas, qtdPlataformas, dificuldade);
+    InitPlataformas(plataformas, qtdPlataformas, 1, limiteGeracao);
 
     for (int i = 0; i < qtdPlataformas; i++) {
         if (plataformas[i].x >= limiteGeracao)
@@ -62,34 +56,13 @@ void RodarJogo(int dificuldade)
     }
 
     Inimigo inimigos[MAX_INI];
-    IniciarInimigos(inimigos, qtdInimigos, dificuldade);
-
-    for (int i = 0; i < qtdInimigos; i++) {
-
-        if (inimigos[i].caixa.x >= limiteGeracao)
-            inimigos[i].caixa.x = limiteGeracao - (rand() % 800);
-
-        if (inimigos[i].limiteDir > limiteGeracao)
-            inimigos[i].limiteDir = limiteGeracao;
-
-        if (inimigos[i].limiteEsq >= inimigos[i].limiteDir)
-            inimigos[i].limiteEsq = inimigos[i].caixa.x - 100.0f;
-    }
-
-    static float inimigoSpawnX[MAX_INI];
-    static float inimigoSpawnY[MAX_INI];
-
-    for (int i = 0; i < qtdInimigos; i++) {
-        inimigoSpawnX[i] = inimigos[i].caixa.x;
-        inimigoSpawnY[i] = inimigos[i].caixa.y;
-    }
+    IniciarInimigos(inimigos, qtdInimigos, 1, limiteGeracao);
 
     Camera2D cam = {0};
     cam.offset = (Vector2){ 640, 360 };
     cam.zoom = 1.3f;
 
     int dano = 0;
-    int danoMax = 3;
     float cooldown = 0;
 
     int inimigoChave = (qtdInimigos > 0) ? (rand() % qtdInimigos) : -1;
@@ -103,11 +76,20 @@ void RodarJogo(int dificuldade)
     Rectangle npcCubo = { posParede + 200.0f, jogador.caixa.y, jogador.caixa.width, jogador.caixa.height };
     bool showCongrats = false;
 
+    // -------- FINAL BOM --------
+    bool finalBomIniciado = false;
+    float finalBomTimer = 0.0f;
+    const float finalBomDuracao = 6.0f;
+    float finalBomAlpha = 0.0f;
+
     while (!WindowShouldClose())
     {
         float dt = GetFrameTime();
 
-        UpdateJogador(&jogador, dt, gravidade, forcaPulo);
+        // SE FINAL BOM COMEÇOU → JOGADOR NÃO SE MOVE
+        if (!finalBomIniciado)
+            UpdateJogador(&jogador, dt, gravidade, forcaPulo);
+
         cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
 
         if (jogador.caixa.x < limiteEsquerdo)
@@ -116,129 +98,160 @@ void RodarJogo(int dificuldade)
         bool descer = IsKeyDown(KEY_DOWN);
 
         ResolverColisaoChao(&jogador.caixa, &jogador.velocidade, chao, &jogador.pulando);
-        ResolverColisaoPlataformas(&jogador.caixa, &jogador.velocidade, plataformas, qtdPlataformas, &jogador.pulando, descer);
+        ResolverColisaoPlataformas(&jogador.caixa, &jogador.velocidade,
+                                   plataformas, qtdPlataformas,
+                                   &jogador.pulando, descer);
 
         if (cooldown > 0) cooldown -= dt;
 
         AtualizarInimigos(inimigos, qtdInimigos, dt);
 
-        // COLISÕES
-        for (int i = 0; i < qtdInimigos; i++) {
+        // -------------------------
+        // COLISÃO JOGADOR x INIMIGOS
+        // -------------------------
+        if (!finalBomIniciado)
+        {
+            for (int i = 0; i < qtdInimigos; i++) {
 
-            if (!inimigos[i].vivo) continue;
+                if (!inimigos[i].vivo) continue;
 
-            if (ColisaoTotal(jogador.caixa, inimigos[i].caixa)) {
+                if (ColisaoTotal(jogador.caixa, inimigos[i].caixa)) {
 
-                float fundo = jogador.caixa.y + jogador.caixa.height;
-                float topo  = inimigos[i].caixa.y;
+                    float fundo = jogador.caixa.y + jogador.caixa.height;
+                    float topo  = inimigos[i].caixa.y;
 
-                if (fundo <= topo + 10 && jogador.velocidade.y > 0) {
+                    if (fundo <= topo + 10 && jogador.velocidade.y > 0) {
 
-                    inimigos[i].vida--;
-                    jogador.velocidade.y = forcaPulo * 1.25f;
+                        inimigos[i].vida--;
+                        jogador.velocidade.y = forcaPulo * 1.25f;
 
-                    if (i == inimigoChave && inimigos[i].vida <= 0)
-                        chaveColetada = true;
+                        if (i == inimigoChave && inimigos[i].vida <= 0)
+                            chaveColetada = true;
 
-                    if (inimigos[i].vida <= 0)
-                        inimigos[i].vivo = false;
-                }
-                else if (cooldown <= 0) {
+                        if (inimigos[i].vida <= 0)
+                            inimigos[i].vivo = false;
+                    }
+                    else if (cooldown <= 0) {
 
-                    cooldown = 0.6f;
-                    dano++;
+                        cooldown = 0.6f;
+                        dano++;
 
-                    int dir = (jogador.caixa.x > inimigos[i].caixa.x) ? 1 : -1;
+                        int dir = (jogador.caixa.x > inimigos[i].caixa.x) ? 1 : -1;
 
-                    AplicarKnockbackJogador(&jogador, dir);
+                        if (inimigos[i].velocidade.x > 0 && dir > 0)
+                            inimigos[i].velocidade.x = -inimigos[i].velocidade.x;
+                        if (inimigos[i].velocidade.x < 0 && dir < 0)
+                            inimigos[i].velocidade.x = -inimigos[i].velocidade.x;
 
-                    inimigos[i].velocidade.x = -dir * fabsf(inimigos[i].velocidade.x);
-                    inimigos[i].tempoKnockback = 0.25f;
+                        AplicarKnockbackJogador(&jogador, dir);
+                        inimigos[i].tempoKnockback = 0.25f;
+                    }
                 }
             }
         }
 
-        // ENTRE INIMIGOS
-        for (int a = 0; a < qtdInimigos; a++) {
-
+        // --------------------------------------------
+        // COLISÃO ENTRE INIMIGOS (SEM RESETAR)
+        // --------------------------------------------
+        for (int a = 0; a < qtdInimigos; a++)
+        {
             if (!inimigos[a].vivo) continue;
 
-            if (inimigos[a].caixa.x > limiteGeracao)
-                inimigos[a].caixa.x = limiteGeracao - 10.0f;
-
-            for (int b = a + 1; b < qtdInimigos; b++) {
-
+            for (int b = a + 1; b < qtdInimigos; b++)
+            {
                 if (!inimigos[b].vivo) continue;
 
-                if (ColisaoTotal(inimigos[a].caixa, inimigos[b].caixa)) {
+                if (ColisaoTotal(inimigos[a].caixa, inimigos[b].caixa))
+                {
+                    inimigos[a].caixa.x -= 4;
+                    inimigos[b].caixa.x += 4;
 
-                    inimigos[a].caixa.x = inimigoSpawnX[a];
-                    inimigos[a].caixa.y = inimigoSpawnY[a];
+                    if (inimigos[a].velocidade.x > 0)
+                        inimigos[a].velocidade.x = -inimigos[a].velocidade.x;
 
-                    inimigos[b].caixa.x = inimigoSpawnX[b];
-                    inimigos[b].caixa.y = inimigoSpawnY[b];
-
-                    inimigos[a].velocidade.x *= -1;
-                    inimigos[b].velocidade.x *= -1;
-
-                    inimigos[a].tempoKnockback = 0.0f;
-                    inimigos[b].tempoKnockback = 0.0f;
+                    if (inimigos[b].velocidade.x < 0)
+                        inimigos[b].velocidade.x = -inimigos[b].velocidade.x;
                 }
             }
         }
 
+        // -------------------------
         // INTERAÇÃO COM A PAREDE
+        // -------------------------
         bool tocandoParede = ColisaoTotal(jogador.caixa, paredeFinal);
 
-        if (tocandoParede) {
+        if (!finalBomIniciado)
+        {
+            if (!paredeAberta)
+            {
+                if (tocandoParede)
+                {
+                    if (!chaveColetada)
+                    {
+                        if (IsKeyPressed(KEY_E) && !deathMessageShown) {
+                            deathMessageShown = true;
+                            deathTimer = deathDuration;
+                            fadeAlpha = 0.0f;
+                        }
 
-            if (!chaveColetada) {
+                        jogador.caixa.x = paredeFinal.x - jogador.caixa.width - 1;
+                    }
+                    else
+                    {
+                        // FINAL BOM ATIVADO
+                        if (IsKeyPressed(KEY_E))
+                        {
+                            paredeAberta = true;
+                            paredeFinal.x = -999999;
+                            paredeFinal.width = 0;
+                            paredeFinal.height = 0;
 
-                if (IsKeyPressed(KEY_E) && !deathMessageShown) {
-                    deathMessageShown = true;
-                    deathTimer = deathDuration;
-                    fadeAlpha = 0.0f;
+                            finalBomIniciado = true;
+                            finalBomTimer = finalBomDuracao;
+                            finalBomAlpha = 0.0f;
+
+                            // congelar movimento
+                            jogador.velocidade.x = 0;
+                            jogador.velocidade.y = 0;
+                        }
+                    }
                 }
-
-                jogador.caixa.x = paredeFinal.x - jogador.caixa.width - 1;
-            }
-            else {
-                if (!paredeAberta && IsKeyPressed(KEY_E))
-                    paredeAberta = true;
             }
         }
+        else
+        {
+            // RODANDO FINAL BOM
+            finalBomTimer -= dt;
 
+            float p = (finalBomDuracao - finalBomTimer) / finalBomDuracao;
+            if (p < 0) p = 0;
+            if (p > 1) p = 1;
+            finalBomAlpha = p;
+
+            if (finalBomTimer <= 0.0f)
+                return;
+        }
+
+        // FINAL RUIM
         if (deathMessageShown) {
 
             deathTimer -= dt;
 
-            float progress = (deathDuration - deathTimer) / deathDuration;
-            if (progress < 0) progress = 0;
-            if (progress > 1) progress = 1;
-            fadeAlpha = progress;
+            float p = (deathDuration - deathTimer) / deathDuration;
+            if (p < 0) p = 0;
+            if (p > 1) p = 1;
+            fadeAlpha = p;
 
             if (deathTimer <= 0.0f)
                 return;
         }
 
-        if (paredeAberta) {
-            paredeFinal.width = 0;
-            paredeFinal.height = 0;
-            npcCubo.y = jogador.caixa.y;
-        }
-
-        if (dano >= danoMax && chaveColetada)
+        if (dano >= danoMax)
             return;
 
-        if (paredeAberta) {
-
-            if (jogador.caixa.x > posParede + 10 && ColisaoTotal(jogador.caixa, npcCubo)) {
-                if (IsKeyPressed(KEY_E))
-                    showCongrats = true;
-            }
-        }
-
+        // -------------------------
         // DESENHO
+        // -------------------------
         BeginDrawing();
         ClearBackground(SKYBLUE);
 
@@ -252,12 +265,6 @@ void RodarJogo(int dificuldade)
         if (!paredeAberta)
             DrawRectangleRec(paredeFinal, BLACK);
 
-        if (paredeAberta) {
-            DrawRectangleRec(npcCubo, GREEN);
-            if (showCongrats)
-                DrawText("PARABENS! VOCE DESCOBRIU A PASSAGEM!", npcCubo.x - 120, npcCubo.y - 60, 20, YELLOW);
-        }
-
         EndMode2D();
 
         DrawText(TextFormat("Dano: %d/%d", dano, danoMax), 20, 20, 30, RED);
@@ -269,12 +276,23 @@ void RodarJogo(int dificuldade)
             DrawText("Pressione E para interagir com a muralha", 20, 110, 22, WHITE);
 
         if (deathMessageShown) {
+            DrawText("E apos tocar a muralha amaldiçoada, a heroina caiu e nunca mais levantou...",
+                     20, 140, 20, WHITE);
 
-            const char *msg = "E apos tocar a muralha amaldiçoada, a heroina caiu e nunca mais levantou...";
-            DrawText(msg, 20, 140, 20, WHITE);
-
-            Color fadeColor = (Color){ 0, 0, 0, (unsigned char)(fadeAlpha * 255) };
+            Color fadeColor = (Color){0, 0, 0, (unsigned char)(fadeAlpha * 255)};
             DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), fadeColor);
+        }
+
+        // -----------------------------
+        // FINAL BOM: TEXTO + FADE BRANCO
+        // -----------------------------
+        if (finalBomIniciado)
+        {
+            DrawText("E ao atravessar a muralha selada, a heroina enfim estava livre...",
+                     20, 140, 20, BLACK);
+
+            Color fadeBranco = (Color){255, 255, 255, (unsigned char)(finalBomAlpha * 255)};
+            DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), fadeBranco);
         }
 
         EndDrawing();
