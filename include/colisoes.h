@@ -4,9 +4,19 @@
 #include "raylib.h"
 #include <stdbool.h>
 
-void ResolverColisaoChao(Rectangle *jogador, Vector2 *velocidade, Rectangle  chao, bool *pulando);
+// Para usar struct Plataforma*
+struct Plataforma;
 
-void ResolverColisaoPlataformas(Rectangle *jogador, Vector2   *velocidade, Rectangle *plataformas, int qtd, bool *pulando, bool descer);
+void ResolverColisaoChao(Rectangle *jogador, Vector2 *velocidade, Rectangle chao, bool *pulando);
+
+void ResolverColisaoPlataformas(Rectangle *jogador, Vector2 *velocidade,
+                                Rectangle *plataformas, int qtd,
+                                bool *pulando, bool descer);
+
+// ✔ nova função com lista encadeada
+void ResolverColisaoPlataformasLista(Rectangle *jogador, Vector2 *velocidade,
+                                     struct Plataforma *lista,
+                                     bool *pulando, bool descer);
 
 bool ColisaoTotal(Rectangle a, Rectangle b);
 

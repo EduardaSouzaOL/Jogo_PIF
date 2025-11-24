@@ -14,11 +14,9 @@ void RodarJogo(int dificuldade)
 {
     int danoMax;
 
-    
-    if (dificuldade == 0) danoMax = 5;   // fácil
-    else if (dificuldade == 1) danoMax = 3; // médio
-    else danoMax = 1; // difícil
-
+    if (dificuldade == 0) danoMax = 5;
+    else if (dificuldade == 1) danoMax = 3;
+    else danoMax = 1;
 
     int qtdPlataformas = 89;
     int qtdInimigos    = 74;
@@ -47,12 +45,11 @@ void RodarJogo(int dificuldade)
     float margemParede = 200.0f;
     float limiteGeracao = posParede - margemParede - 300.0f;
 
-    Rectangle plataformas[MAX_PLAT];
-    InitPlataformas(plataformas, qtdPlataformas, 1, limiteGeracao);
-
-    for (int i = 0; i < qtdPlataformas; i++) {
-        if (plataformas[i].x >= limiteGeracao)
-            plataformas[i].x = limiteGeracao - (rand() % 600);
+    // --- LISTA ENCADEADA (gera e ajusta como no seu código) ---
+    Plataforma *plataformas = GerarPlataformas(qtdPlataformas, dificuldade, limiteGeracao);
+    for (Plataforma *p = plataformas; p != NULL; p = p->next) {
+        if (p->rect.x >= limiteGeracao)
+            p->rect.x = limiteGeracao - (rand() % 600);
     }
 
     Inimigo inimigos[MAX_INI];
@@ -76,7 +73,6 @@ void RodarJogo(int dificuldade)
     Rectangle npcCubo = { posParede + 200.0f, jogador.caixa.y, jogador.caixa.width, jogador.caixa.height };
     bool showCongrats = false;
 
-    // -------- FINAL BOM --------
     bool finalBomIniciado = false;
     float finalBomTimer = 0.0f;
     const float finalBomDuracao = 6.0f;
@@ -86,7 +82,6 @@ void RodarJogo(int dificuldade)
     {
         float dt = GetFrameTime();
 
-        // SE FINAL BOM COMEÇOU → JOGADOR NÃO SE MOVE
         if (!finalBomIniciado)
             UpdateJogador(&jogador, dt, gravidade, forcaPulo);
 
@@ -98,9 +93,15 @@ void RodarJogo(int dificuldade)
         bool descer = IsKeyDown(KEY_DOWN);
 
         ResolverColisaoChao(&jogador.caixa, &jogador.velocidade, chao, &jogador.pulando);
-        ResolverColisaoPlataformas(&jogador.caixa, &jogador.velocidade,
-                                   plataformas, qtdPlataformas,
-                                   &jogador.pulando, descer);
+
+        // --- COLISÃO COM LISTA ---
+        ResolverColisaoPlataformasLista(
+            &jogador.caixa,
+            &jogador.velocidade,
+            plataformas,
+            &jogador.pulando,
+            descer
+        );
 
         if (cooldown > 0) cooldown -= dt;
 
@@ -151,33 +152,8 @@ void RodarJogo(int dificuldade)
         }
 
         // --------------------------------------------
-        // COLISÃO ENTRE INIMIGOS (SEM RESETAR)
+        // INTERAÇÃO COM A PAREDE (recalcula a cada frame)
         // --------------------------------------------
-        for (int a = 0; a < qtdInimigos; a++)
-        {
-            if (!inimigos[a].vivo) continue;
-
-            for (int b = a + 1; b < qtdInimigos; b++)
-            {
-                if (!inimigos[b].vivo) continue;
-
-                if (ColisaoTotal(inimigos[a].caixa, inimigos[b].caixa))
-                {
-                    inimigos[a].caixa.x -= 4;
-                    inimigos[b].caixa.x += 4;
-
-                    if (inimigos[a].velocidade.x > 0)
-                        inimigos[a].velocidade.x = -inimigos[a].velocidade.x;
-
-                    if (inimigos[b].velocidade.x < 0)
-                        inimigos[b].velocidade.x = -inimigos[b].velocidade.x;
-                }
-            }
-        }
-
-        // -------------------------
-        // INTERAÇÃO COM A PAREDE
-        // -------------------------
         bool tocandoParede = ColisaoTotal(jogador.caixa, paredeFinal);
 
         if (!finalBomIniciado)
@@ -210,7 +186,6 @@ void RodarJogo(int dificuldade)
                             finalBomTimer = finalBomDuracao;
                             finalBomAlpha = 0.0f;
 
-                            // congelar movimento
                             jogador.velocidade.x = 0;
                             jogador.velocidade.y = 0;
                         }
@@ -229,7 +204,7 @@ void RodarJogo(int dificuldade)
             finalBomAlpha = p;
 
             if (finalBomTimer <= 0.0f)
-                return;
+                goto FIM;
         }
 
         // FINAL RUIM
@@ -243,11 +218,11 @@ void RodarJogo(int dificuldade)
             fadeAlpha = p;
 
             if (deathTimer <= 0.0f)
-                return;
+                goto FIM;
         }
 
         if (dano >= danoMax)
-            return;
+            goto FIM;
 
         // -------------------------
         // DESENHO
@@ -258,7 +233,7 @@ void RodarJogo(int dificuldade)
         BeginMode2D(cam);
 
         DrawRectangleRec(chao, DARKGREEN);
-        DesenharPlataformas(plataformas, qtdPlataformas);
+        DesenharPlataformas(plataformas);   // <— lista
         DesenharJogador(&jogador);
         DesenharInimigos(inimigos, qtdInimigos);
 
@@ -283,9 +258,6 @@ void RodarJogo(int dificuldade)
             DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), fadeColor);
         }
 
-        // -----------------------------
-        // FINAL BOM: TEXTO + FADE BRANCO
-        // -----------------------------
         if (finalBomIniciado)
         {
             DrawText("E ao atravessar a muralha selada, a heroina enfim estava livre...",
@@ -297,4 +269,8 @@ void RodarJogo(int dificuldade)
 
         EndDrawing();
     }
+
+FIM:
+    // garante liberação mesmo saindo no meio do loop
+    LiberarPlataformas(plataformas);
 }
