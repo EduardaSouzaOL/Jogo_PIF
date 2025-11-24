@@ -1,8 +1,24 @@
 #include "plataformas.h"
 #include <stdlib.h>
 
-void InitPlataformas(Rectangle *p, int qtd, int dificuldade, float limiteGeracao)
+
+
+static Plataforma *CriarPlataforma(Rectangle r)
 {
+    Plataforma *p = malloc(sizeof(Plataforma));
+    if (!p) return NULL;
+
+    p->rect = r;
+    p->next = NULL;
+    return p;
+}
+
+
+Plataforma *GerarPlataformas(int qtd, int dificuldade, float limiteGeracao)
+{
+    Plataforma *head = NULL;
+    Plataforma *tail = NULL;
+
     float x = 300;
 
     float distMin = 380;
@@ -40,13 +56,42 @@ void InitPlataformas(Rectangle *p, int qtd, int dificuldade, float limiteGeracao
 
         float w = 160 + (rand() % 100);
 
-        p[i] = (Rectangle){ x, yFinal, w, 20 };
+        Rectangle rect = (Rectangle){ x, yFinal, w, 20 };
+
+        // cria nó
+        Plataforma *nova = CriarPlataforma(rect);
+
+        // adiciona na lista
+        if (!head) {
+            head = tail = nova;
+        } else {
+            tail->next = nova;
+            tail = nova;
+        }
+    }
+
+    return head;
+}
+
+
+void DesenharPlataformas(Plataforma *lista)
+{
+    Plataforma *p = lista;
+
+    while (p != NULL) {
+        DrawRectangleRec(p->rect, DARKGRAY);
+        p = p->next;
     }
 }
 
-// 🟢 FUNÇÃO QUE FALTAVA!
-void DesenharPlataformas(Rectangle *p, int qtd)
+
+void LiberarPlataformas(Plataforma *lista)
 {
-    for (int i = 0; i < qtd; i++)
-        DrawRectangleRec(p[i], DARKGRAY);
+    Plataforma *p = lista;
+
+    while (p != NULL) {
+        Plataforma *tmp = p;
+        p = p->next;
+        free(tmp);
+    }
 }

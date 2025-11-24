@@ -21,17 +21,16 @@ int main(void) {
             estado = MenuUpdate(&menu);
             break;
 
-        case ESTADO_DIFICULDADE:
-            estado = MenuDificuldadeUpdate(&menu);
-            break;
-
         case ESTADO_PLAY:
             dificuldade = MenuGetDificuldade(&menu);
             RodarJogo(dificuldade);
+
+            // ao terminar o jogo, voltar ao menu
             estado = ESTADO_MENU;
             break;
 
         case ESTADO_EXIT:
+            MenuUnload(&menu);
             CloseWindow();
             return 0;
         }
@@ -40,8 +39,13 @@ int main(void) {
         ClearBackground(BLACK);
 
         switch (estado) {
-        case ESTADO_MENU:          MenuDraw(&menu); break;
-        case ESTADO_DIFICULDADE:   MenuDificuldadeDraw(&menu); break;
+        case ESTADO_MENU:
+            MenuDraw(&menu);
+            break;
+
+        case ESTADO_PLAY:
+            // nada a desenhar aqui, RodarJogo já desenha
+            break;
         }
 
         EndDrawing();
