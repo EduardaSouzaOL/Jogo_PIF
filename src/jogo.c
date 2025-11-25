@@ -12,6 +12,7 @@
 
 void RodarJogo(int dificuldade)
 {
+    CarregarTexturasInimigos();
     int danoMax;
 
     if (dificuldade == 0) danoMax = 5;
@@ -273,4 +274,5 @@ void RodarJogo(int dificuldade)
 FIM:
     // garante liberação mesmo saindo no meio do loop
     LiberarPlataformas(plataformas);
+DescarregarTexturasInimigos(); 
 }
