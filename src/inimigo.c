@@ -1,17 +1,16 @@
 #include "inimigo.h"
 #include <stdlib.h>
 
-
-// Texturas globais
+// Definição das variáveis globais das texturas
 Texture2D texCoelho;
 Texture2D texLobo;
 Texture2D texLeao;
 
 void CarregarTexturasInimigos(void)
 {
-    texCoelho = LoadTexture("../assets/images/coelho.png");
-    texLobo = LoadTexture("../assets/images/lobo.png");
-    texLeao = LoadTexture("../assets/images/leao.png");
+    texCoelho = LoadTexture("assets/images/coelho.png");
+    texLobo   = LoadTexture("assets/images/lobo.png");
+    texLeao   = LoadTexture("assets/images/leao.png");
 }
 
 void DescarregarTexturasInimigos(void)
@@ -24,80 +23,47 @@ void DescarregarTexturasInimigos(void)
 void IniciarInimigos(Inimigo *v, int qtd, int dificuldade, float limiteGeracao)
 {
     float inicioMapa = 600.0f;
-    float fimMapa = limiteGeracao - 200.0f;
+    float fimMapa    = limiteGeracao - 200.0f;
     float espacoTotal = fimMapa - inicioMapa;
+    
     if (espacoTotal <= 0) espacoTotal = 1000;
-
     float dist = espacoTotal / qtd;
 
     for (int i = 0; i < qtd; i++)
     {
         float x = inicioMapa + i * dist;
-
-        //TIPO BASEADO NA POSIÇÃO (ZONAS)
-        TipoInimigo tipo;
-        int r = rand() % 100;
-
-        if (x < 5000) {
-            // ZONA 1: Maioria COELHOS
-            if (r < 70)         tipo = TIPO_COELHO;
-            else if (r < 95)    tipo = TIPO_LOBO;
-            else                tipo = TIPO_LEAO;
-        }
-        else if (x < 15000) {
-            // ZONA 2: Maioria LOBOS
-            if (r < 20)         tipo = TIPO_COELHO;
-            else if (r < 85)    tipo = TIPO_LOBO;
-            else                tipo = TIPO_LEAO;
-        }
-        else {
-            // ZONA 3: Maioria LEÕES
-            if (r < 10)         tipo = TIPO_COELHO;
-            else if (r < 40)    tipo = TIPO_LOBO;
-            else                tipo = TIPO_LEAO;
-         }
-
-        v[i].tipo = tipo;
-
-        // ========== TAMANHO BASEADO NO TIPO ==========
-        float tam;
-        if (tipo == TIPO_COELHO)        tam = 30.0f;
-        else if (tipo == TIPO_LOBO)     tam = 45.0f;
-        else                            tam = 70.0f;
-
         float chaoY = 650.0f;
+        
+        // Define o tamanho da caixa de colisão (pode ajustar conforme a imagem)
+        float tam = 50.0f; 
         float y = chaoY - tam;
 
-        v[i].caixa.x = x;
-        v[i].caixa.y = y;
-        v[i].caixa.width = tam;
-        v[i].caixa.height = tam;
+        v[i].caixa = (Rectangle){ x, y, tam, tam };
 
-        // ========== VELOCIDADE BASEADA NO TIPO ==========
-        float velBase = 80.0f;
-        if (tipo == TIPO_COELHO)        velBase = 100.0f;
-        else if (tipo == TIPO_LOBO)     velBase = 80.0f;
-        else                            velBase = 50.0f;
-
-        v[i].velocidade.x = (i % 2 == 0) ? velBase : -velBase;
+        // Define a velocidade base
+        v[i].velocidade.x = (i % 2 == 0) ? 80.0f : -80.0f;
         v[i].velocidade.y = 0;
 
+        // --- Lógica de Tipo de Inimigo ---
+        // Distribui os tipos: Coelho, Lobo, Leão sequencialmente
+        int resto = i % 3;
+        if (resto == 0)      v[i].tipo = TIPO_COELHO;
+        else if (resto == 1) v[i].tipo = TIPO_LOBO;
+        else                 v[i].tipo = TIPO_LEAO;
+
+        // Opcional: Ajustar velocidade ou vida baseado no tipo
+        if (v[i].tipo == TIPO_LEAO) v[i].velocidade.x *= 1.5f; // Leão corre mais
+
+        // Configuração da patrulha
         float patrulha = 300.0f;
         v[i].limiteEsq = x - patrulha;
         v[i].limiteDir = x + patrulha;
 
-        if (v[i].limiteEsq < inicioMapa)
-            v[i].limiteEsq = inicioMapa;
-        if (v[i].limiteDir > fimMapa)
-            v[i].limiteDir = fimMapa;
+        if (v[i].limiteEsq < inicioMapa) v[i].limiteEsq = inicioMapa;
+        if (v[i].limiteDir > fimMapa)    v[i].limiteDir = fimMapa;
 
         v[i].vivo = true;
-
-        // ========== VIDA BASEADA NO TIPO ==========
-        if (tipo == TIPO_COELHO)        v[i].vida = 1;
-        else if (tipo == TIPO_LOBO)     v[i].vida = 3;
-        else                            v[i].vida = 8;
-
+        v[i].vida = 1;
         v[i].tempoKnockback = 0.0f;
     }
 }
@@ -113,16 +79,16 @@ void AtualizarInimigos(Inimigo *v, int qtd, float dt)
 
         v[i].caixa.x += v[i].velocidade.x * dt;
 
+        // Inverte direção nos limites
         if (v[i].caixa.x < v[i].limiteEsq)
         {
-            if (v[i].velocidade.x < 0)
-                v[i].velocidade.x = -v[i].velocidade.x;
+            v[i].caixa.x = v[i].limiteEsq;
+            if (v[i].velocidade.x < 0) v[i].velocidade.x = -v[i].velocidade.x;
         }
-
-        if (v[i].caixa.x + v[i].caixa.width > v[i].limiteDir)
+        else if (v[i].caixa.x + v[i].caixa.width > v[i].limiteDir)
         {
-            if (v[i].velocidade.x > 0)
-                v[i].velocidade.x = -v[i].velocidade.x;
+            v[i].caixa.x = v[i].limiteDir - v[i].caixa.width;
+            if (v[i].velocidade.x > 0) v[i].velocidade.x = -v[i].velocidade.x;
         }
     }
 }
@@ -133,25 +99,38 @@ void DesenharInimigos(Inimigo *v, int qtd)
     {
         if (v[i].vivo)
         {
-            float x = v[i].caixa.x;
-            float y = v[i].caixa.y;
-            float w = v[i].caixa.width;
-            float h = v[i].caixa.height;
+            // Seleciona a textura correta baseada no tipo
+            Texture2D texAtual;
+            switch (v[i].tipo) {
+                case TIPO_COELHO: texAtual = texCoelho; break;
+                case TIPO_LOBO:   texAtual = texLobo; break;
+                case TIPO_LEAO:   texAtual = texLeao; break;
+                default:          texAtual = texCoelho; break;
+            }
 
-            Texture2D tex;
-            if (v[i].tipo == TIPO_COELHO)
-                tex = texCoelho;
-            else if (v[i].tipo == TIPO_LOBO)
-                tex = texLobo;
-            else
-                tex = texLeao;
+            // Verifica se a textura foi carregada corretamente
+            if (texAtual.id > 0) 
+            {
+                // Inverte a imagem se o inimigo estiver indo para a esquerda
+                Rectangle sourceRec = { 0.0f, 0.0f, (float)texAtual.width, (float)texAtual.height };
+                
+                // Se velocidade for negativa (esquerda), espelha a textura
+                if (v[i].velocidade.x < 0) sourceRec.width = -sourceRec.width;
 
-            // Desenha a textura escalada para o tamanho da caixa
-            Rectangle source = { 0, 0, tex.width, tex.height };
-            Rectangle dest = { x, y, w, h };
-            Vector2 origin = { 0, 0 };
-     
-            DrawTexturePro(tex, source, dest, origin, 0.0f, WHITE);
+                DrawTexturePro(
+                    texAtual,
+                    sourceRec,
+                    v[i].caixa, // Desenha esticado no tamanho da hitbox
+                    (Vector2){0, 0},
+                    0.0f,
+                    WHITE
+                );
+            }
+            else 
+            {
+                // Fallback: desenha retângulo vermelho se a textura falhar
+                DrawRectangleRec(v[i].caixa, RED);
+            }
         }
     }
 }
