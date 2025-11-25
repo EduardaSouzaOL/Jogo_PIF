@@ -6,6 +6,7 @@
 #include "colisoes.h"
 #include <stdlib.h>
 #include <time.h>
+#include "placar.h" 
 
 #define MAX_PLAT 200
 #define MAX_INI  1000
@@ -29,6 +30,11 @@ void RodarJogo(int dificuldade)
     Jogador jogador;
     InitJogador(&jogador);
 
+    // --- SISTEMA DE PLACAR ---
+    int recordeAtual = CarregarRecorde(); 
+    int score = 0; // Agora representará o número de abates
+    // -------------------------
+
     float tamanhoMapa = 50000;
     Rectangle chao = (Rectangle){ -5000, 650, tamanhoMapa, 2000 };
 
@@ -45,7 +51,6 @@ void RodarJogo(int dificuldade)
     float margemParede = 200.0f;
     float limiteGeracao = posParede - margemParede - 300.0f;
 
-    // --- LISTA ENCADEADA (gera e ajusta como no seu código) ---
     Plataforma *plataformas = GerarPlataformas(qtdPlataformas, dificuldade, limiteGeracao);
     for (Plataforma *p = plataformas; p != NULL; p = p->next) {
         if (p->rect.x >= limiteGeracao)
@@ -70,9 +75,6 @@ void RodarJogo(int dificuldade)
     const float deathDuration = 10.0f;
     float fadeAlpha = 0.0f;
 
-    Rectangle npcCubo = { posParede + 200.0f, jogador.caixa.y, jogador.caixa.width, jogador.caixa.height };
-    bool showCongrats = false;
-
     bool finalBomIniciado = false;
     float finalBomTimer = 0.0f;
     const float finalBomDuracao = 6.0f;
@@ -85,6 +87,8 @@ void RodarJogo(int dificuldade)
         if (!finalBomIniciado)
             UpdateJogador(&jogador, dt, gravidade, forcaPulo);
 
+        // (REMOVIDO) Lógica antiga de score por distância foi apagada daqui
+
         cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
 
         if (jogador.caixa.x < limiteEsquerdo)
@@ -94,7 +98,6 @@ void RodarJogo(int dificuldade)
 
         ResolverColisaoChao(&jogador.caixa, &jogador.velocidade, chao, &jogador.pulando);
 
-        // --- COLISÃO COM LISTA ---
         ResolverColisaoPlataformasLista(
             &jogador.caixa,
             &jogador.velocidade,
@@ -107,9 +110,6 @@ void RodarJogo(int dificuldade)
 
         AtualizarInimigos(inimigos, qtdInimigos, dt);
 
-        // -------------------------
-        // COLISÃO JOGADOR x INIMIGOS
-        // -------------------------
         if (!finalBomIniciado)
         {
             for (int i = 0; i < qtdInimigos; i++) {
@@ -121,6 +121,7 @@ void RodarJogo(int dificuldade)
                     float fundo = jogador.caixa.y + jogador.caixa.height;
                     float topo  = inimigos[i].caixa.y;
 
+                    // Colisão por cima (pulo no inimigo)
                     if (fundo <= topo + 10 && jogador.velocidade.y > 0) {
 
                         inimigos[i].vida--;
@@ -129,11 +130,15 @@ void RodarJogo(int dificuldade)
                         if (i == inimigoChave && inimigos[i].vida <= 0)
                             chaveColetada = true;
 
-                        if (inimigos[i].vida <= 0)
+                        // --- AQUI CONTA O ABATE ---
+                        if (inimigos[i].vida <= 0) {
                             inimigos[i].vivo = false;
+                            score++; // Incrementa 1 ponto por inimigo morto
+                        }
+                        // --------------------------
                     }
                     else if (cooldown <= 0) {
-
+                        // Dano no jogador
                         cooldown = 0.6f;
                         dano++;
 
@@ -151,9 +156,7 @@ void RodarJogo(int dificuldade)
             }
         }
 
-        // --------------------------------------------
-        // INTERAÇÃO COM A PAREDE (recalcula a cada frame)
-        // --------------------------------------------
+        // ... (Código de colisão com parede igual ao anterior)
         bool tocandoParede = ColisaoTotal(jogador.caixa, paredeFinal);
 
         if (!finalBomIniciado)
@@ -169,12 +172,10 @@ void RodarJogo(int dificuldade)
                             deathTimer = deathDuration;
                             fadeAlpha = 0.0f;
                         }
-
                         jogador.caixa.x = paredeFinal.x - jogador.caixa.width - 1;
                     }
                     else
                     {
-                        // FINAL BOM ATIVADO
                         if (IsKeyPressed(KEY_E))
                         {
                             paredeAberta = true;
@@ -195,9 +196,7 @@ void RodarJogo(int dificuldade)
         }
         else
         {
-            // RODANDO FINAL BOM
             finalBomTimer -= dt;
-
             float p = (finalBomDuracao - finalBomTimer) / finalBomDuracao;
             if (p < 0) p = 0;
             if (p > 1) p = 1;
@@ -207,11 +206,8 @@ void RodarJogo(int dificuldade)
                 goto FIM;
         }
 
-        // FINAL RUIM
         if (deathMessageShown) {
-
             deathTimer -= dt;
-
             float p = (deathDuration - deathTimer) / deathDuration;
             if (p < 0) p = 0;
             if (p > 1) p = 1;
@@ -224,36 +220,36 @@ void RodarJogo(int dificuldade)
         if (dano >= danoMax)
             goto FIM;
 
-        // -------------------------
-        // DESENHO
-        // -------------------------
         BeginDrawing();
         ClearBackground(SKYBLUE);
 
         BeginMode2D(cam);
-
         DrawRectangleRec(chao, DARKGREEN);
-        DesenharPlataformas(plataformas);   // <— lista
+        DesenharPlataformas(plataformas);
         DesenharJogador(&jogador);
         DesenharInimigos(inimigos, qtdInimigos);
 
         if (!paredeAberta)
             DrawRectangleRec(paredeFinal, BLACK);
-
         EndMode2D();
 
+        // --- HUD ATUALIZADO ---
         DrawText(TextFormat("Dano: %d/%d", dano, danoMax), 20, 20, 30, RED);
+        
+        // Mostra 'Abates' e 'Recorde'
+        DrawText(TextFormat("Abates: %d", score), 20, 60, 20, WHITE);
+        DrawText(TextFormat("Recorde: %d", (score > recordeAtual ? score : recordeAtual)), 20, 85, 20, GOLD);
+        // ----------------------
 
         if (chaveColetada)
-            DrawText("ITEM CHAVE COLETADO!", 20, 70, 30, YELLOW);
+            DrawText("ITEM CHAVE COLETADO!", 20, 120, 30, YELLOW);
 
         if (!paredeAberta && tocandoParede && !chaveColetada)
-            DrawText("Pressione E para interagir com a muralha", 20, 110, 22, WHITE);
+            DrawText("Pressione E para interagir com a muralha", 20, 160, 22, WHITE);
 
         if (deathMessageShown) {
             DrawText("E apos tocar a muralha amaldiçoada, a heroina caiu e nunca mais levantou...",
                      20, 140, 20, WHITE);
-
             Color fadeColor = (Color){0, 0, 0, (unsigned char)(fadeAlpha * 255)};
             DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), fadeColor);
         }
@@ -262,7 +258,6 @@ void RodarJogo(int dificuldade)
         {
             DrawText("E ao atravessar a muralha selada, a heroina enfim estava livre...",
                      20, 140, 20, BLACK);
-
             Color fadeBranco = (Color){255, 255, 255, (unsigned char)(finalBomAlpha * 255)};
             DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), fadeBranco);
         }
@@ -271,6 +266,6 @@ void RodarJogo(int dificuldade)
     }
 
 FIM:
-    // garante liberação mesmo saindo no meio do loop
+    SalvarRecorde(score);
     LiberarPlataformas(plataformas);
 }
