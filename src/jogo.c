@@ -13,6 +13,7 @@
 
 void RodarJogo(int dificuldade)
 {
+    CarregarTexturasInimigos();
     int danoMax;
 
     if (dificuldade == 0) danoMax = 5;
@@ -268,4 +269,5 @@ void RodarJogo(int dificuldade)
 FIM:
     SalvarRecorde(score);
     LiberarPlataformas(plataformas);
+DescarregarTexturasInimigos(); 
 }
