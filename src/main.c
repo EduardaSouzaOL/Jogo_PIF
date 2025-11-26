@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "jogo.h"
 #include "inimigo.h" 
+#include "intro.h"
 
 int main(void) {
     InitWindow(1280, 720, "Jogo PIF - Amor & Endereco");
@@ -11,7 +12,8 @@ int main(void) {
     // Carrega as imagens dos inimigos 
     CarregarTexturasInimigos(); 
     
-
+    RodarIntro(); 
+    
     GameState estado = ESTADO_MENU;
 
     Menu menu;
