@@ -14,6 +14,7 @@
 void RodarJogo(int dificuldade)
 {
     CarregarTexturasInimigos();
+    Texture2D texturaMuro = LoadTexture("assets/muro.png");
     int danoMax;
 
     if (dificuldade == 0) danoMax = 5;
@@ -33,15 +34,16 @@ void RodarJogo(int dificuldade)
 
     // --- SISTEMA DE PLACAR ---
     int recordeAtual = CarregarRecorde(); 
-    int score = 0; //  o número de abates
+    int score = 0; // número de abates
     // -------------------------
 
     float tamanhoMapa = 50000;
     Rectangle chao = (Rectangle){ -5000, 650, tamanhoMapa, 2000 };
 
     float posParede = (-5000 + tamanhoMapa) - 2000;
-    Rectangle paredeFinal = { posParede, 250, 128, 1024 };
+    Rectangle paredeFinal = { posParede, -1000, 128, 2000 }; 
     bool paredeAberta = false;
+
 
     jogador.caixa.x = 100;
     float limiteEsquerdo = jogador.caixa.x;
@@ -61,6 +63,16 @@ void RodarJogo(int dificuldade)
     Inimigo inimigos[MAX_INI];
     IniciarInimigos(inimigos, qtdInimigos, 1, limiteGeracao);
 
+    
+    // Escolhe um inimigo aleatório para carregar a chave
+    if (qtdInimigos > 0) {
+        int indiceSorteado = rand() % qtdInimigos;
+        inimigos[indiceSorteado].temChave = true;
+        // Opcional: Se quiser facilitar muito, descomente a linha abaixo para forçar o tipo
+        // inimigos[indiceSorteado].tipo = TIPO_LEAO; 
+    }
+    // ----------------------------------
+
     Camera2D cam = {0};
     cam.offset = (Vector2){ 640, 360 };
     cam.zoom = 1.3f;
@@ -68,8 +80,8 @@ void RodarJogo(int dificuldade)
     int dano = 0;
     float cooldown = 0;
 
-    int inimigoChave = (qtdInimigos > 0) ? (rand() % qtdInimigos) : -1;
-    bool chaveColetada = false;
+    // Removidas as variáveis locais "inimigoChave" e "chaveColetada" 
+    // pois agora usamos as structs.
 
     bool deathMessageShown = false;
     float deathTimer = 0.0f;
@@ -87,8 +99,6 @@ void RodarJogo(int dificuldade)
 
         if (!finalBomIniciado)
             UpdateJogador(&jogador, dt, gravidade, forcaPulo);
-
-        
 
         cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
 
@@ -128,15 +138,17 @@ void RodarJogo(int dificuldade)
                         inimigos[i].vida--;
                         jogador.velocidade.y = forcaPulo * 1.25f;
 
-                        if (i == inimigoChave && inimigos[i].vida <= 0)
-                            chaveColetada = true;
-
-                        // --- AQUI CONTA O ABATE ---
+                        // Verifica se matou o inimigo
                         if (inimigos[i].vida <= 0) {
                             inimigos[i].vivo = false;
                             score++; // Incrementa 1 ponto por inimigo morto
+
+                            // --- LÓGICA DE PEGAR A CHAVE (NOVO) ---
+                            if (inimigos[i].temChave) {
+                                jogador.chave = 1; // O jogador coleta a chave
+                            }
+                            // --------------------------------------
                         }
-                        // --------------------------
                     }
                     else if (cooldown <= 0) {
                         // Dano no jogador
@@ -166,17 +178,21 @@ void RodarJogo(int dificuldade)
             {
                 if (tocandoParede)
                 {
-                    if (!chaveColetada)
+                    // Verifica se o jogador NÃO tem a chave
+                    if (jogador.chave == 0)
                     {
+                        // Permite morrer se apertar E sem a chave
                         if (IsKeyPressed(KEY_E) && !deathMessageShown) {
                             deathMessageShown = true;
                             deathTimer = deathDuration;
                             fadeAlpha = 0.0f;
                         }
+                        // Empurra o jogador para trás
                         jogador.caixa.x = paredeFinal.x - jogador.caixa.width - 1;
                     }
                     else
                     {
+                        // Se TEM a chave, permite abrir
                         if (IsKeyPressed(KEY_E))
                         {
                             paredeAberta = true;
@@ -230,23 +246,39 @@ void RodarJogo(int dificuldade)
         DesenharJogador(&jogador);
         DesenharInimigos(inimigos, qtdInimigos);
 
-        if (!paredeAberta)
-            DrawRectangleRec(paredeFinal, BLACK);
+        if (!paredeAberta){
+            DrawTexturePro(texturaMuro, 
+                           (Rectangle){ 0, 0, (float)texturaMuro.width, (float)texturaMuro.height }, // Parte da imagem a usar (toda ela)
+                           paredeFinal, // Onde desenhar (retângulo da parede)
+                           (Vector2){ 0, 0 }, 
+                           0.0f, 
+                           WHITE);
+        }
         EndMode2D();
 
         // --- HUD ATUALIZADO ---
         DrawText(TextFormat("Dano: %d/%d", dano, danoMax), 20, 20, 30, RED);
-        
-        // Mostra 'Abates' e 'Recorde'
         DrawText(TextFormat("Abates: %d", score), 20, 60, 20, WHITE);
         DrawText(TextFormat("Recorde: %d", (score > recordeAtual ? score : recordeAtual)), 20, 85, 20, GOLD);
-        // ----------------------
 
-        if (chaveColetada)
-            DrawText("ITEM CHAVE COLETADO!", 20, 120, 30, YELLOW);
+        // --- MENSAGENS DE OBJETIVO ---
+        if (jogador.chave > 0) {
+            DrawText("CHAVE COLETADA!", 20, 120, 20, GREEN);
+            DrawText("Vá para a muralha final!", 20, 145, 20, GREEN);
+        } else {
+            DrawText("OBJETIVO: Encontre o inimigo com a CHAVE (Dourado)!", 20, 120, 20, GOLD);
+        }
 
-        if (!paredeAberta && tocandoParede && !chaveColetada)
-            DrawText("Pressione E para interagir com a muralha", 20, 160, 22, WHITE);
+        // --- AVISO DE INTERAÇÃO COM A MURALHA ---
+        if (!paredeAberta && tocandoParede && !deathMessageShown)
+        {
+            if (jogador.chave > 0) {
+                DrawText("Pressione [E] para DESTRUIR a muralha!", 20, 180, 22, GREEN);
+            } else {
+                DrawText("A muralha está selada... Precisa da CHAVE.", 20, 180, 22, RED);
+                DrawText("Cuidado! Tocar nela sem a chave é fatal (Pressione E por sua conta e risco)", 20, 205, 18, GRAY);
+            }
+        }
 
         if (deathMessageShown) {
             DrawText("E apos tocar a muralha amaldiçoada, a heroina caiu e nunca mais levantou...",
@@ -267,7 +299,9 @@ void RodarJogo(int dificuldade)
     }
 
 FIM:
+
+    UnloadTexture(texturaMuro);
     SalvarRecorde(score);
     LiberarPlataformas(plataformas);
-DescarregarTexturasInimigos(); 
+    DescarregarTexturasInimigos(); 
 }

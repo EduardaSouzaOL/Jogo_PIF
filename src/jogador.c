@@ -10,7 +10,7 @@ void InitJogador(Jogador *j)
     j->tempoKnockback = 0.0f;
     j->forcaKnockback = 0.0f;
 
-    j->chave = 0;   // NOVO
+    j->chave = 0;   // Inicialmente, o jogador não tem a chave
 }
 
 void AplicarKnockbackJogador(Jogador *j, int direcao)
