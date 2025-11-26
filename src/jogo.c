@@ -33,7 +33,7 @@ void RodarJogo(int dificuldade)
 
     // --- SISTEMA DE PLACAR ---
     int recordeAtual = CarregarRecorde(); 
-    int score = 0; // Agora representará o número de abates
+    int score = 0; //  o número de abates
     // -------------------------
 
     float tamanhoMapa = 50000;
@@ -88,7 +88,7 @@ void RodarJogo(int dificuldade)
         if (!finalBomIniciado)
             UpdateJogador(&jogador, dt, gravidade, forcaPulo);
 
-        // (REMOVIDO) Lógica antiga de score por distância foi apagada daqui
+        
 
         cam.target = (Vector2){ jogador.caixa.x, jogador.caixa.y };
 
@@ -157,7 +157,7 @@ void RodarJogo(int dificuldade)
             }
         }
 
-        // ... (Código de colisão com parede igual ao anterior)
+        
         bool tocandoParede = ColisaoTotal(jogador.caixa, paredeFinal);
 
         if (!finalBomIniciado)

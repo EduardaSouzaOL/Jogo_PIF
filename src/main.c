@@ -1,16 +1,16 @@
 #include "raylib.h"
 #include "menu.h"
 #include "jogo.h"
-#include "inimigo.h" // Certifique-se que este include está aqui para acessar as funções de textura
+#include "inimigo.h" 
 
 int main(void) {
     InitWindow(1280, 720, "Jogo PIF - Amor & Endereco");
     SetTargetFPS(60);
 
-    // --- ADICIONE ESTA LINHA ---
-    // Carrega as imagens dos inimigos (coelho, lobo, leão) para a memória
+   
+    // Carrega as imagens dos inimigos 
     CarregarTexturasInimigos(); 
-    // ---------------------------
+    
 
     GameState estado = ESTADO_MENU;
 
