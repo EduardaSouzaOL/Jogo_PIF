@@ -4,6 +4,18 @@
 #include "raylib.h"
 #include <stdbool.h>
 
+typedef enum {
+    ESTADO_IDLE,
+    ESTADO_ANDAR,
+    ESTADO_PULO,
+    ESTADO_AGACHAR
+} EstadoJogador;
+
+typedef enum {
+    DIR_DIREITA,
+    DIR_ESQUERDA
+} DirecaoJogador;
+
 typedef struct Jogador {
     Rectangle caixa;
     Vector2 velocidade;
@@ -12,7 +24,19 @@ typedef struct Jogador {
     float tempoKnockback;
     float forcaKnockback;
 
-    int chave;    // <--- chave coletada de inimigo especial
+    int chave;
+
+    // ---- SPRITE ----
+    Texture2D sprite;
+    int frameWidth;
+    int frameHeight;
+    EstadoJogador estado;
+    DirecaoJogador direcao;
+
+    // ---- ANIMAÇÃO ----
+    int animFrame;
+    float animTimer;
+
 } Jogador;
 
 void InitJogador(Jogador *j);

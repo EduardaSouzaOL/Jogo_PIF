@@ -33,9 +33,12 @@ Plataforma *GerarPlataformas(int qtd, int dificuldade, float limiteGeracao)
         if (x >= limiteReal)
             x = limiteReal - (rand() % 600 + 400);
 
-        float yBaixa = 480 + (rand() % 50);
-        float yMedia = 410 + (rand() % 50);
-        float yAlta  = 300 + (rand() % 90);
+        float yBaixa = 520 + (rand() % 15);   // fácil — sempre alcançável
+        float yMedia = 470 + (rand() % 20);   // média — no limite do pulo
+        float yAlta  = 430 + (rand() % 25);   // alta — só com impulso do inimigo
+
+
+
 
         float yFinal = yBaixa;
         int r = rand() % 100;
