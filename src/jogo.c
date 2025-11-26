@@ -63,15 +63,14 @@ void RodarJogo(int dificuldade)
     Inimigo inimigos[MAX_INI];
     IniciarInimigos(inimigos, qtdInimigos, 1, limiteGeracao);
 
-    
-    // Escolhe um inimigo aleatório para carregar a chave
+ 
     if (qtdInimigos > 0) {
         int indiceSorteado = rand() % qtdInimigos;
         inimigos[indiceSorteado].temChave = true;
         
         inimigos[indiceSorteado].tipo = TIPO_LEAO; 
     }
-    // ----------------------------------
+
 
     Camera2D cam = {0};
     cam.offset = (Vector2){ 640, 360 };
