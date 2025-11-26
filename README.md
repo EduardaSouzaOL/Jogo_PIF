@@ -76,18 +76,8 @@ cd build
 ./Jogo_PIF         # Linux
 ```
 
----
 
-## 👥 Fluxo Colaborativo (Git)
 
-### 🌳 Branches principais
-| Branch | Função |
-|---------|--------|
-| `main` | Versão estável (entregas testadas) |
-| `dev` | Integração de recursos em desenvolvimento |
-| `feature/*` | Branches individuais de cada pessoa |
-
----
 
 ### 🧭 Passo a passo para contribuir
 
