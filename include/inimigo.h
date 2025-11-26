@@ -28,7 +28,8 @@ typedef struct Inimigo {
     float tempoKnockback;
     int vida;
     bool vivo;
-    TipoInimigo tipo; // NOVO: tipo do animal
+    TipoInimigo tipo; 
+    bool temChave;
 } Inimigo;
 
 void IniciarInimigos(Inimigo *v, int qtd, int dificuldade, float limiteGeracao);

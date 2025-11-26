@@ -23,6 +23,7 @@ add_executable(Jogo_PIF
     src/colisoes.c
     src/gameplay.c
     src/placar.c
+    src/intro.c
 )
 
 # Linka raylib

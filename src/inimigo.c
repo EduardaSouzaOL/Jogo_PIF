@@ -65,6 +65,7 @@ void IniciarInimigos(Inimigo *v, int qtd, int dificuldade, float limiteGeracao)
         v[i].vivo = true;
         v[i].vida = 1;
         v[i].tempoKnockback = 0.0f;
+        v[i].temChave = false;
     }
 }
 
