@@ -68,8 +68,8 @@ void RodarJogo(int dificuldade)
     if (qtdInimigos > 0) {
         int indiceSorteado = rand() % qtdInimigos;
         inimigos[indiceSorteado].temChave = true;
-        // Opcional: Se quiser facilitar muito, descomente a linha abaixo para forçar o tipo
-        // inimigos[indiceSorteado].tipo = TIPO_LEAO; 
+        
+        inimigos[indiceSorteado].tipo = TIPO_LEAO; 
     }
     // ----------------------------------
 
