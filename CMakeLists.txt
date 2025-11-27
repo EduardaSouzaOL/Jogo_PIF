@@ -3,16 +3,16 @@ project(Jogo_PIF C)
 
 set(CMAKE_C_STANDARD 99)
 
-# Diretório onde a Raylib está
+# Diretório da Raylib (clonada em external/raylib)
 set(RAYLIB_DIR "${CMAKE_SOURCE_DIR}/external/raylib")
 
-# Adiciona raylib
+# Adicionar Raylib ao projeto
 add_subdirectory(${RAYLIB_DIR})
 
-# Inclui seus headers
+# Diretório dos seus headers
 include_directories(include)
 
-# Arquivos fonte do seu jogo
+# Arquivos-fonte do jogo
 add_executable(Jogo_PIF
     src/main.c
     src/menu.c
@@ -26,15 +26,18 @@ add_executable(Jogo_PIF
     src/intro.c
 )
 
-# Linka raylib
+# Linkar Raylib primeiro
 target_link_libraries(Jogo_PIF raylib)
 
-# Linkagem para Windows (MinGW)
+# Dependência: Raylib precisa ser compilada antes do jogo
+add_dependencies(Jogo_PIF raylib)
+
+# Linkagem Windows (MinGW)
 if (WIN32)
     target_link_libraries(Jogo_PIF opengl32 gdi32 winmm)
 endif()
 
-# Linux (caso um dia use)
+# Linkagem Linux
 if (UNIX AND NOT APPLE)
     target_link_libraries(Jogo_PIF m pthread dl rt X11)
 endif()

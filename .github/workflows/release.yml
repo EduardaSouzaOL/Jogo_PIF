@@ -1,0 +1,151 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*-beta.*'
+      - 'v*.*.*-alpha.*'
+      - 'v*.*.*'
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev
+
+      - name: Install Raylib
+        run: |
+          git clone --depth 1 https://github.com/raysan5/raylib.git
+          cd raylib/src
+          make PLATFORM=PLATFORM_DESKTOP
+          sudo make install
+          cd ../..
+
+      - name: Build for Linux
+        run: |
+          mkdir -p bin
+          gcc -O3 -s -Wall -std=c99 -I include src/*.c -o bin/Amor_e_Endereco -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+          strip bin/Amor_e_Endereco
+          chmod +x bin/Amor_e_Endereco
+
+      - name: Package Linux build
+        run: |
+          mkdir -p Amor_e_Endereco-linux
+          cp bin/Amor_e_Endereco Amor_e_Endereco-linux/
+          if [ -d "assets" ]; then cp -r assets Amor_e_Endereco-linux/; fi
+          if [ -d "resources" ]; then cp -r resources Amor_e_Endereco-linux/; fi
+          echo "Amor e Endereço - Beta para Linux\n\nCOMO JOGAR:\n1. Extraia todos os arquivos\n2. Abra o terminal nesse diretório\n3. Rode: ./Amor_e_Endereco\n\nREQUISITOS:\n- Linux 64-bit\n- OpenGL 3.3+" > Amor_e_Endereco-linux/README.txt
+          tar -czf Amor_e_Endereco-${{ github.ref_name }}-linux.tar.gz Amor_e_Endereco-linux/
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-build
+          path: Amor_e_Endereco-${{ github.ref_name }}-linux.tar.gz
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup MinGW
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: false
+          install: >-
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-make
+            make
+            git
+
+      - name: Install Raylib
+        shell: msys2 {0}
+        run: |
+          git clone --depth 1 https://github.com/raysan5/raylib.git
+          cd raylib/src
+          make PLATFORM=PLATFORM_DESKTOP
+          make install
+          cd ../..
+
+      - name: Build for Windows
+        shell: msys2 {0}
+        run: |
+          mkdir -p bin
+          gcc -O3 -s -Wall -std=c99 -I include src/*.c -o bin/TouhouLostSnail.exe -lraylib -lopengl32 -lgdi32 -lwinmm -static
+          strip bin/TouhouLostSnail.exe
+
+      - name: Package Windows build
+        shell: bash
+        run: |
+          mkdir -p TouhouLostSnail-windows
+          cp bin/TouhouLostSnail.exe TouhouLostSnail-windows/
+          if [ -d "assets" ]; then cp -r assets TouhouLostSnail-windows/; fi
+          if [ -d "resources" ]; then cp -r resources TouhouLostSnail-windows/; fi
+          echo "Touhou: Lost Snail - Beta para Windows\n\nCOMO JOGAR:\n1. Extraia todos os arquivos\n2. Double-click TouhouLostSnail.exe\n\nREQUISITOS:\n- Windows 10/11 64-bit\n- OpenGL 3.3+" > TouhouLostSnail-windows/README.txt
+          7z a TouhouLostSnail-${{ github.ref_name }}-windows.zip TouhouLostSnail-windows/
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: TouhouLostSnail-${{ github.ref_name }}-windows.zip
+
+  create-release:
+    needs: [build-linux, build-windows]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Linux artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-build
+
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-build
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            TouhouLostSnail-${{ github.ref_name }}-linux.tar.gz
+            TouhouLostSnail-${{ github.ref_name }}-windows.zip
+          draft: false
+          prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
+          body: |
+            # Amor e Endereço v0.1.0-beta.1
+            Bem vindo à primeira versão beta jogável de Amor e Endereço.
+
+            ## Downloads
+            Escolha a versão para seu sistema operacional:
+            - Linux (64-bit): Amor_e_Endereco-v0.1.0-beta.1-linux.tar.gz
+            - Windows (64-bit): Amor_e_Endereco-v0.1.0-beta.1-windows.zip
+
+            ## Como jogar
+            ### Linux:
+            ```bash
+                tar -xzf Amor_e_Endereco-v0.1.0-beta.1-linux.tar.gz
+                cd Amor_e_Endereco-linux
+                ./Amor_e_Endereco
+            ```
+
+            ### Windows:
+                1. Extraia o arquivo ZIP
+                2. Execute Amor_e_Endereco.exe
+
+            ---
+
+            ## Agradecimento
+            Obrigado por jogar nosso jogo, foi um projeto feito para amantes de shmups e Touhou assim como nós.
