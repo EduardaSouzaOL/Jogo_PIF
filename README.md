@@ -1,7 +1,8 @@
 # 🎮 Projeto Raylib - Jogo PIF
 
 Este é um projeto desenvolvido em **C**, usando a biblioteca **Raylib**, compatível com **Windows e Linux**, e organizado em estrutura colaborativa via **Git**.
-[apresentação](https://www.canva.com/design/DAG5zm0vUFs/2h8DsBPseGyYqSWEIcWeNA/edit?utm_content=DAG5zm0vUFs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+[apresentação_jogo](https://www.canva.com/design/DAG5zm0vUFs/2h8DsBPseGyYqSWEIcWeNA/edit?utm_content=DAG5zm0vUFs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## 📦 Estrutura do Projeto
 
