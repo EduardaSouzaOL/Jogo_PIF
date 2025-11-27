@@ -21,14 +21,9 @@ jobs:
 
       - name: Setup Raylib
         run: |
-          if [ ! -d "external/raylib" ]; then
-            mkdir -p external
-            git clone --depth 1 https://github.com/raysan5/raylib.git external/raylib
-          fi
           cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
           sudo make install
-          cd ../../..
 
       - name: Build for Linux
         run: |
@@ -72,14 +67,9 @@ jobs:
       - name: Setup Raylib
         shell: msys2 {0}
         run: |
-          if [ ! -d "external/raylib" ]; then
-            mkdir -p external
-            git clone --depth 1 https://github.com/raysan5/raylib.git external/raylib
-          fi
           cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
           make install
-          cd ../../..
 
       - name: Build for Windows
         shell: msys2 {0}
