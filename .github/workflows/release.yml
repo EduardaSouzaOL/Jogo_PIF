@@ -71,13 +71,12 @@ jobs:
           git clone --depth 1 https://github.com/raysan5/raylib.git raylib-build
           cd raylib-build/src
           make PLATFORM=PLATFORM_DESKTOP
-          make install
 
       - name: Build for Windows
         shell: msys2 {0}
         run: |
           mkdir -p bin
-          gcc -O3 -s -Wall -std=c99 -I include src/*.c -o bin/Amor_e_Endereco.exe -lraylib -lopengl32 -lgdi32 -lwinmm -static
+          gcc -O3 -s -Wall -std=c99 -I include -I raylib-build/src src/*.c raylib-build/src/libraylib.a -o bin/Amor_e_Endereco.exe -lopengl32 -lgdi32 -lwinmm -static
           strip bin/Amor_e_Endereco.exe
 
       - name: Package Windows build
