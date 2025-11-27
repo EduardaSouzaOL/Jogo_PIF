@@ -1,137 +1,118 @@
-# 🎮 Projeto Raylib - Jogo Colaborativo
+# 🎮 Projeto Raylib - Jogo PIF
 
-Este é um projeto desenvolvido em **C** usando a biblioteca **[Raylib](https://www.raylib.com/)**, com suporte multiplataforma (**Windows + Linux**) e gerenciamento colaborativo via **Git**.
+Este é um projeto desenvolvido em **C**, usando a biblioteca **Raylib**, compatível com **Windows e Linux**, e organizado em estrutura colaborativa via **Git**.
 
----
-
-## 🧩 Estrutura do Projeto
+## 📦 Estrutura do Projeto
 
 ```
-📦 projeto-raylib/
-├── src/              # Código-fonte (.c, .h)
-├── assets/           # Imagens, sons, fontes etc.
-├── CMakeLists.txt    # Configuração do build
-├── build/            # Pasta gerada pelo CMake (IGNORADA no git)
+📦 Jogo_PIF/
+├── src/                 # Código-fonte (.c, .h)
+├── assets/              # Imagens, sprites, músicas e efeitos
+├── build/               # Pasta gerada automaticamente (IGNORADA no git)
+├── RunGame.sh           # Script para Linux
+├── RunGameWindows.bat   # Script para Windows
+├── CMakeLists.txt
 ├── .gitignore
 └── README.md
 ```
 
----
+# 🧱 Requisitos do Sistema
 
-## 🧱 Requisitos
+As instruções abaixo mostram tudo o que é necessário para compilar e rodar o projeto **tanto no Linux quanto no Windows**.
 
-### 🔹 Windows (MSYS2 + MinGW + Raylib)
+# 🐧 Linux — Instalação, Build e Execução
 
-1. Baixe e instale o [MSYS2](https://www.msys2.org/)
-2. Abra o terminal **MSYS2 UCRT64** e rode:
-
-   ```bash
-   sudo apt update
-   sudo apt install build-essential git cmake libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
-   ```
-
-3. Baixe a **Raylib 5.5 para Windows (MinGW)** e extraia em:
-   ```
-   C:\raylib\raylib-5.5_win64_mingw-w64
-   ```
-
-### 🔹 Linux (Debian/Ubuntu ou derivados)
-
-1. Instale Raylib e dependências:
-   ```bash
-   sudo apt update
-   sudo apt install build-essential cmake git libgl1-mesa-dev libopenal-dev libpthread-stubs0-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev libraylib-dev
-   ```
-
-2. Verifique se o Raylib está disponível:
-   ```bash
-   pkg-config --libs raylib
-   ```
-
----
-
-## 🧠 Configurando no VSCode
-
-1. Instale as extensões:
-   - **C/C++** (Microsoft)
-   - **CMake Tools**
-   - **CodeLLDB** (opcional para debug)
-2. Abra o projeto no VSCode
-3. Pressione `Ctrl + Shift + P` e selecione:
-   ```
-   CMake: Configure
-   CMake: Build
-   ```
-4. O executável será gerado dentro de `build/`
-
----
-
-## 🚀 Como Rodar o Jogo
-
-No terminal do VSCode (ou MSYS2/Linux):
+## ✔ Instalar dependências
 
 ```bash
-cd build
-./Jogo_PIF.exe     # Windows
-./Jogo_PIF         # Linux
+sudo apt update
+sudo apt install build-essential cmake git libraylib-dev libgl1-mesa-dev libopenal-dev libpthread-stubs0-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev
 ```
 
+## ✔ Verificar instalação da Raylib
 
+```bash
+pkg-config --libs raylib
+```
 
+## 🚀 Compilar e Rodar no Linux
 
-### 🧭 Passo a passo para contribuir
+```bash
+chmod +x RunGame.sh
+./RunGame.sh
+```
 
-1. Atualize o projeto:
-   ```bash
-   git checkout dev
-   git pull origin dev
-   ```
+# 🪟 Windows — Instalação, Build e Execução
 
-2. Crie sua branch:
-   ```bash
-   git checkout -b feature/nome-da-tarefa
-   ```
+## ✔ Instalar CMake
 
-3. Faça as alterações e commits:
-   ```bash
-   git add .
-   git commit -m "feat: adiciona tela inicial"
-   git push origin feature/nome-da-tarefa
-   ```
+https://cmake.org/download/
 
-4. Abra um **Pull Request** para `dev`
-5. Após revisão, o líder faz o merge
+## ✔ Instalar MinGW (gcc) + Raylib
 
----
+Baixe de:
+https://github.com/raysan5/raylib/releases/tag/5.0
 
-## 🧹 Convenções
+Extraia em:
+```
+C:\raylib\mingw64
+```
 
-- Nunca commitar arquivos de build (`/build`, `.exe`, `.dll`, `.o`, etc)
-- Commits padronizados:
-  ```
-  feat: adiciona menu inicial
-  fix: corrige erro na colisão
-  refactor: melhora loop principal
-  chore: atualiza dependências
-  ```
-- Código deve **compilar antes de enviar**
+Adicione ao PATH:
+```
+C:\raylib\mingw64\bin
+```
 
----
+## 🚀 Compilar e Rodar no Windows
 
-## 📜 Licença
+```
+RunGameWindows.bat
+```
 
-Este projeto é distribuído sob a licença [MIT](https://opensource.org/licenses/MIT).
+# 🧠 Configurar no VSCode
 
----
+- Instale C/C++
+- Instale CMake Tools
+- Configure e build pelo menu
 
-### 👩‍💻 Equipe
+# 🚀 Como Rodar o Jogo Manualmente
+
+Linux:
+```
+cd build
+./Jogo_PIF
+```
+
+Windows:
+```
+cd build
+Jogo_PIF.exe
+```
+
+# 🧭 Fluxo de Contribuição (Git)
+
+```bash
+git checkout dev
+git pull origin dev
+git checkout -b feature/nome-da-tarefa
+git add .
+git commit -m "feat: adiciona novo sistema"
+git push origin feature/nome-da-tarefa
+```
+
+# 🧹 Convenções Importantes
+
+- Não commitar build/, executáveis, objetos
+- Commits padronizados (feat, fix, refactor, chore)
+
+# 📜 Licença
+
+MIT
+
+# 👩‍💻 Equipe
 
 | Membro | Função | GitHub |
 |--------|---------|--------|
-| Maria Eduarda Souza de Oliveira | Programador(a) | [@EduardaOL](https://github.com/EduardaSouzaOL) |
-| Danilo Araujo Duleba | Programador(a) | [@danduleba](https://github.com/danduleba) |
-| Giovanna Karla Santos Do Nascimento | Programador(a) | [GihNascimento](https://github.com/GihNascimento) |
-
----
-
-> 🧡 Desenvolvido com Raylib e trabalho em equipe!
+| Maria Eduarda Souza de Oliveira | Programador(a) | https://github.com/EduardaSouzaOL |
+| Danilo Araujo Duleba | Programador(a) | https://github.com/danduleba |
+| Giovanna Karla Santos do Nascimento | Programador(a) | https://github.com/GihNascimento |
