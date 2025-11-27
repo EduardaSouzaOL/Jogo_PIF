@@ -26,8 +26,8 @@ Este é um projeto desenvolvido em **C** usando a biblioteca **[Raylib](https://
 2. Abra o terminal **MSYS2 UCRT64** e rode:
 
    ```bash
-   pacman -Syu
-   pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-make
+   sudo apt update
+   sudo apt install build-essential git cmake libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
    ```
 
 3. Baixe a **Raylib 5.5 para Windows (MinGW)** e extraia em:
