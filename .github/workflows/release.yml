@@ -21,14 +21,15 @@ jobs:
 
       - name: Setup Raylib
         run: |
-          cd external/raylib/src
+          git clone --depth 1 https://github.com/raysan5/raylib.git raylib-build
+          cd raylib-build/src
           make PLATFORM=PLATFORM_DESKTOP
           sudo make install
 
       - name: Build for Linux
         run: |
           mkdir -p bin
-          gcc -O3 -s -Wall -std=c99 -I include -I external/raylib/src src/*.c -o bin/Amor_e_Endereco -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+          gcc -O3 -s -Wall -std=c99 -I include src/*.c -o bin/Amor_e_Endereco -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
           strip bin/Amor_e_Endereco
           chmod +x bin/Amor_e_Endereco
 
