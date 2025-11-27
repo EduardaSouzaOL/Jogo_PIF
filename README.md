@@ -130,7 +130,7 @@ Este projeto é distribuído sob a licença [MIT](https://opensource.org/license
 |--------|---------|--------|
 | Maria Eduarda Souza de Oliveira | Programador(a) | [@EduardaOL](https://github.com/EduardaSouzaOL) |
 | Danilo Araujo Duleba | Programador(a) | [@danduleba](https://github.com/danduleba) |
-| Giovanna | Programador(a) | [@nome3](https://github.com/nome3) |
+| Giovanna Karla Santos Do Nascimento | Programador(a) | [GihNascimento](https://github.com/GihNascimento) |
 
 ---
 
