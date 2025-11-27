@@ -13,16 +13,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev
 
-      - name: Build Raylib
+      - name: Setup Raylib
         run: |
+          if [ ! -d "external/raylib" ]; then
+            mkdir -p external
+            git clone --depth 1 https://github.com/raysan5/raylib.git external/raylib
+          fi
           cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
           sudo make install
@@ -55,8 +57,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
       - name: Setup MinGW
         uses: msys2/setup-msys2@v2
@@ -69,9 +69,13 @@ jobs:
             make
             git
 
-      - name: Build Raylib
+      - name: Setup Raylib
         shell: msys2 {0}
         run: |
+          if [ ! -d "external/raylib" ]; then
+            mkdir -p external
+            git clone --depth 1 https://github.com/raysan5/raylib.git external/raylib
+          fi
           cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
           make install
