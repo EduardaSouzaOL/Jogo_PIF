@@ -14,26 +14,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: recursive   # <- IMPORTANTE
+          submodules: recursive
 
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev
 
-      - name: Build Raylib (submodule)
+      - name: Build Raylib
         run: |
           cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
+          sudo make install
           cd ../../..
 
       - name: Build for Linux
         run: |
           mkdir -p bin
-          gcc -O3 -s -Wall -std=c99 -I include src/*.c \
-              -Lexternal/raylib/src \
-              -o bin/Amor_e_Endereco \
-              -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+          gcc -O3 -s -Wall -std=c99 -I include -I external/raylib/src src/*.c -o bin/Amor_e_Endereco -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
           strip bin/Amor_e_Endereco
           chmod +x bin/Amor_e_Endereco
 
@@ -43,7 +41,7 @@ jobs:
           cp bin/Amor_e_Endereco Amor_e_Endereco-linux/
           if [ -d "assets" ]; then cp -r assets Amor_e_Endereco-linux/; fi
           if [ -d "resources" ]; then cp -r resources Amor_e_Endereco-linux/; fi
-          echo "Amor e Endereço - Beta para Linux\n\nCOMO JOGAR:\n1. Extraia todos os arquivos\n2. Abra o terminal nesse diretório\n3. Rode: ./Amor_e_Endereco\n\nREQUISITOS:\n- Linux 64-bit\n- OpenGL 3.3+" > Amor_e_Endereco-linux/README.txt
+          echo -e "Amor e Endereço - Linux Build\n\nCOMO JOGAR:\n1. Extraia todos os arquivos\n2. Abra o terminal nesse diretório\n3. Rode: ./Amor_e_Endereco\n\nREQUISITOS:\n- Linux 64-bit\n- OpenGL 3.3+" > Amor_e_Endereco-linux/README.txt
           tar -czf Amor_e_Endereco-${{ github.ref_name }}-linux.tar.gz Amor_e_Endereco-linux/
 
       - name: Upload Linux artifact
@@ -58,7 +56,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: recursive   # <- IMPORTANTE
+          submodules: recursive
 
       - name: Setup MinGW
         uses: msys2/setup-msys2@v2
@@ -71,38 +69,36 @@ jobs:
             make
             git
 
-      - name: Build Raylib (submodule)
+      - name: Build Raylib
         shell: msys2 {0}
         run: |
           cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
+          make install
           cd ../../..
 
       - name: Build for Windows
         shell: msys2 {0}
         run: |
           mkdir -p bin
-          gcc -O3 -s -Wall -std=c99 -I include src/*.c \
-              -Lexternal/raylib/src \
-              -o bin/TouhouLostSnail.exe \
-              -lraylib -lopengl32 -lgdi32 -lwinmm -static
-          strip bin/TouhouLostSnail.exe
+          gcc -O3 -s -Wall -std=c99 -I include -I external/raylib/src src/*.c -o bin/Amor_e_Endereco.exe -lraylib -lopengl32 -lgdi32 -lwinmm -static
+          strip bin/Amor_e_Endereco.exe
 
       - name: Package Windows build
         shell: bash
         run: |
-          mkdir -p TouhouLostSnail-windows
-          cp bin/TouhouLostSnail.exe TouhouLostSnail-windows/
-          if [ -d "assets" ]; then cp -r assets TouhouLostSnail-windows/; fi
-          if [ -d "resources" ]; then cp -r resources TouhouLostSnail-windows/; fi
-          echo "Touhou: Lost Snail - Beta para Windows\n\nCOMO JOGAR:\n1. Extraia o arquivo ZIP\n2. Double-click TouhouLostSnail.exe\n\nREQUISITOS:\n- Windows 10/11 64-bit\n- OpenGL 3.3+" > TouhouLostSnail-windows/README.txt
-          7z a TouhouLostSnail-${{ github.ref_name }}-windows.zip TouhouLostSnail-windows/
+          mkdir -p Amor_e_Endereco-windows
+          cp bin/Amor_e_Endereco.exe Amor_e_Endereco-windows/
+          if [ -d "assets" ]; then cp -r assets Amor_e_Endereco-windows/; fi
+          if [ -d "resources" ]; then cp -r resources Amor_e_Endereco-windows/; fi
+          echo -e "Amor e Endereço - Windows Build\n\nCOMO JOGAR:\n1. Extraia todos os arquivos\n2. Double-click Amor_e_Endereco.exe\n\nREQUISITOS:\n- Windows 10/11 64-bit\n- OpenGL 3.3+" > Amor_e_Endereco-windows/README.txt
+          7z a Amor_e_Endereco-${{ github.ref_name }}-windows.zip Amor_e_Endereco-windows/
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-build
-          path: TouhouLostSnail-${{ github.ref_name }}-windows.zip
+          path: Amor_e_Endereco-${{ github.ref_name }}-windows.zip
 
   create-release:
     needs: [build-linux, build-windows]
@@ -127,32 +123,34 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            TouhouLostSnail-${{ github.ref_name }}-linux.tar.gz
-            TouhouLostSnail-${{ github.ref_name }}-windows.zip
+            Amor_e_Endereco-${{ github.ref_name }}-linux.tar.gz
+            Amor_e_Endereco-${{ github.ref_name }}-windows.zip
           draft: false
           prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') }}
+          generate_release_notes: true
           body: |
-            # Amor e Endereço v0.1.0-beta.1
-            Bem vindo à primeira versão beta jogável de Amor e Endereço.
+            ## 🎮 Amor e Endereço ${{ github.ref_name }}
+            
+            Bem-vindo à nova versão de Amor e Endereço!
 
-            ## Downloads
+            ### 📦 Downloads
             Escolha a versão para seu sistema operacional:
-            - Linux (64-bit): Amor_e_Endereco-v0.1.0-beta.1-linux.tar.gz
-            - Windows (64-bit): Amor_e_Endereco-v0.1.0-beta.1-windows.zip
+            - **Linux (64-bit)**: `Amor_e_Endereco-${{ github.ref_name }}-linux.tar.gz`
+            - **Windows (64-bit)**: `Amor_e_Endereco-${{ github.ref_name }}-windows.zip`
 
-            ## Como jogar
-            ### Linux:
+            ### 🚀 Como jogar
+            
+            #### Linux:
             ```bash
-                tar -xzf Amor_e_Endereco-v0.1.0-beta.1-linux.tar.gz
-                cd Amor_e_Endereco-linux
-                ./Amor_e_Endereco
+            tar -xzf Amor_e_Endereco-${{ github.ref_name }}-linux.tar.gz
+            cd Amor_e_Endereco-linux
+            ./Amor_e_Endereco
             ```
 
-            ### Windows:
-                1. Extraia o arquivo ZIP
-                2. Execute Amor_e_Endereco.exe
+            #### Windows:
+            1. Extraia o arquivo ZIP
+            2. Execute `Amor_e_Endereco.exe`
 
-            ---
-
-            ## Agradecimento
-            Obrigado por jogar nosso jogo, foi um projeto feito para amantes de shmups e Touhou assim como nós.
+            ### 💻 Requisitos
+            - **Linux**: 64-bit, OpenGL 3.3+
+            - **Windows**: 10/11 64-bit, OpenGL 3.3+
