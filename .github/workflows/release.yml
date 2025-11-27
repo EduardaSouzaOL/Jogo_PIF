@@ -13,24 +13,27 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: recursive   # <- IMPORTANTE
 
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev
 
-      - name: Install Raylib
+      - name: Build Raylib (submodule)
         run: |
-          git clone --depth 1 https://github.com/raysan5/raylib.git
-          cd raylib/src
+          cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
-          sudo make install
-          cd ../..
+          cd ../../..
 
       - name: Build for Linux
         run: |
           mkdir -p bin
-          gcc -O3 -s -Wall -std=c99 -I include src/*.c -o bin/Amor_e_Endereco -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+          gcc -O3 -s -Wall -std=c99 -I include src/*.c \
+              -Lexternal/raylib/src \
+              -o bin/Amor_e_Endereco \
+              -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
           strip bin/Amor_e_Endereco
           chmod +x bin/Amor_e_Endereco
 
@@ -42,6 +45,7 @@ jobs:
           if [ -d "resources" ]; then cp -r resources Amor_e_Endereco-linux/; fi
           echo "Amor e Endereço - Beta para Linux\n\nCOMO JOGAR:\n1. Extraia todos os arquivos\n2. Abra o terminal nesse diretório\n3. Rode: ./Amor_e_Endereco\n\nREQUISITOS:\n- Linux 64-bit\n- OpenGL 3.3+" > Amor_e_Endereco-linux/README.txt
           tar -czf Amor_e_Endereco-${{ github.ref_name }}-linux.tar.gz Amor_e_Endereco-linux/
+
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
@@ -53,6 +57,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: recursive   # <- IMPORTANTE
 
       - name: Setup MinGW
         uses: msys2/setup-msys2@v2
@@ -65,20 +71,21 @@ jobs:
             make
             git
 
-      - name: Install Raylib
+      - name: Build Raylib (submodule)
         shell: msys2 {0}
         run: |
-          git clone --depth 1 https://github.com/raysan5/raylib.git
-          cd raylib/src
+          cd external/raylib/src
           make PLATFORM=PLATFORM_DESKTOP
-          make install
-          cd ../..
+          cd ../../..
 
       - name: Build for Windows
         shell: msys2 {0}
         run: |
           mkdir -p bin
-          gcc -O3 -s -Wall -std=c99 -I include src/*.c -o bin/TouhouLostSnail.exe -lraylib -lopengl32 -lgdi32 -lwinmm -static
+          gcc -O3 -s -Wall -std=c99 -I include src/*.c \
+              -Lexternal/raylib/src \
+              -o bin/TouhouLostSnail.exe \
+              -lraylib -lopengl32 -lgdi32 -lwinmm -static
           strip bin/TouhouLostSnail.exe
 
       - name: Package Windows build
@@ -88,7 +95,7 @@ jobs:
           cp bin/TouhouLostSnail.exe TouhouLostSnail-windows/
           if [ -d "assets" ]; then cp -r assets TouhouLostSnail-windows/; fi
           if [ -d "resources" ]; then cp -r resources TouhouLostSnail-windows/; fi
-          echo "Touhou: Lost Snail - Beta para Windows\n\nCOMO JOGAR:\n1. Extraia todos os arquivos\n2. Double-click TouhouLostSnail.exe\n\nREQUISITOS:\n- Windows 10/11 64-bit\n- OpenGL 3.3+" > TouhouLostSnail-windows/README.txt
+          echo "Touhou: Lost Snail - Beta para Windows\n\nCOMO JOGAR:\n1. Extraia o arquivo ZIP\n2. Double-click TouhouLostSnail.exe\n\nREQUISITOS:\n- Windows 10/11 64-bit\n- OpenGL 3.3+" > TouhouLostSnail-windows/README.txt
           7z a TouhouLostSnail-${{ github.ref_name }}-windows.zip TouhouLostSnail-windows/
 
       - name: Upload Windows artifact
