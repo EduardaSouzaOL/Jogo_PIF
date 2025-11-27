@@ -18,37 +18,35 @@ Este é um projeto desenvolvido em **C** usando a biblioteca **[Raylib](https://
 
 ---
 
+
+---
+
 ## 🧱 Requisitos
 
 ### 🔹 Windows (MSYS2 + MinGW + Raylib)
 
-1. Baixe e instale o [MSYS2](https://www.msys2.org/)
-2. Abra o terminal **MSYS2 UCRT64** e rode:
+1. Baixe e instale o **[MSYS2](https://www.msys2.org/)**.
+2. Abra o terminal **MSYS2 UCRT64** e instale os pacotes necessários:
 
    ```bash
-   sudo apt update
-   sudo apt install build-essential git cmake libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
-   ```
+   pacman -Syu
+   pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake git
+   pacman -S mingw-w64-ucrt-x86_64-raylib
 
-3. Baixe a **Raylib 5.5 para Windows (MinGW)** e extraia em:
-   ```
+Observação:
+Você pode usar a Raylib fornecida pelo MSYS2, mas também pode usar uma versão manual da Raylib para MinGW.
+
+
+## Caso prefira baixar manualmente a Raylib:
+
+
+# Baixe a versão MinGW no repositório oficial:
+https://github.com/raysan5/raylib/releases
+
+### Extraia em:
+```
    C:\raylib\raylib-5.5_win64_mingw-w64
-   ```
-
-### 🔹 Linux (Debian/Ubuntu ou derivados)
-
-1. Instale Raylib e dependências:
-   ```bash
-   sudo apt update
-   sudo apt install build-essential cmake git libgl1-mesa-dev libopenal-dev libpthread-stubs0-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev libraylib-dev
-   ```
-
-2. Verifique se o Raylib está disponível:
-   ```bash
-   pkg-config --libs raylib
-   ```
-
----
+```
 
 ## 🧠 Configurando no VSCode
 
