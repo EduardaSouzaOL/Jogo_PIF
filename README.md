@@ -64,10 +64,24 @@ Adicione ao PATH:
 C:\raylib\mingw64\bin
 ```
 
-## 🚀 Compilar e Rodar no Windows
+🚀 Como Compilar
+🔸 Usando Makefile (recomendado)
 
+No diretório do projeto:
 ```
-RunGameWindows.bat
+make
+```
+```
+make run
+```
+```
+make clean
+```
+Usando CMake (alternativo)
+```
+cmake -B build
+cmake --build build
+./build/Jogo_PIF
 ```
 
 # 🧠 Configurar no VSCode
@@ -89,6 +103,13 @@ Windows:
 cd build
 Jogo_PIF.exe
 ```
+## 🎮 Como Jogar
+
+Setas  — movimentação
+
+Espaço — pular
+
+ESC — sair do jogo
 
 # 🧭 Fluxo de Contribuição (Git)
 
