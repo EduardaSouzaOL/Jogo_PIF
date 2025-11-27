@@ -1,41 +1,81 @@
 #!/bin/bash
 
-# Ir para o diretório onde o script está
-cd "$(dirname "$0")"
-
-echo "========================================"
-echo "     JOGO PIF - COMPILAÇÃO & EXECUÇÃO   "
-echo "========================================"
+echo "============================================"
+echo "      Jogo_PIF - Compilar e Executar"
+echo "============================================"
 echo ""
 
-# Verifica se a pasta build existe, senão cria
+# --------------------------------------------------
+# TESTE 1: CMAKE EXISTE?
+# --------------------------------------------------
+if ! command -v cmake &> /dev/null
+then
+    echo "[ERRO] CMake não encontrado!"
+    echo "Instale com:"
+    echo "  sudo apt install cmake"
+    exit 1
+fi
+echo "[OK] CMake encontrado."
+
+# --------------------------------------------------
+# TESTE 2: GCC EXISTE?
+# --------------------------------------------------
+if ! command -v gcc &> /dev/null
+then
+    echo "[ERRO] GCC (build-essential) não encontrado!"
+    echo "Instale com:"
+    echo "  sudo apt install build-essential"
+    exit 1
+fi
+echo "[OK] GCC encontrado."
+
+# --------------------------------------------------
+# TESTE 3: RAYLIB EXISTE?
+# --------------------------------------------------
+if ! ldconfig -p | grep -q raylib
+then
+    echo "[ERRO] Raylib não encontrada no sistema!"
+    echo "Instale com:"
+    echo "  sudo apt install libraylib-dev"
+    echo ""
+    exit 1
+fi
+echo "[OK] Raylib encontrada."
+
+# --------------------------------------------------
+# CRIAR PASTA BUILD
+# --------------------------------------------------
 if [ ! -d "build" ]; then
-    echo "[INFO] Pasta 'build/' não encontrada. Criando..."
     mkdir build
 fi
 
-# Verifica se o executável existe
-if [ ! -f "build/Jogo_PIF" ]; then
-    echo "[INFO] Executável não encontrado. Compilando o jogo..."
-    cmake -B build
-    cmake --build build
+cd build
 
-    # Verifica se compilou corretamente
-    if [ ! -f "build/Jogo_PIF" ]; then
-        echo ""
-        echo "[ERRO] Falha ao compilar o jogo!"
-        echo "Verifique se o CMake e o compilador estão instalados."
-        exit 1
-    fi
-else
-    echo "[INFO] Executável encontrado. Compilação não necessária."
+echo "============================================"
+echo "          Rodando CMake..."
+echo "============================================"
+
+cmake .. 
+if [ $? -ne 0 ]; then
+    echo "[ERRO] Falha ao gerar projeto com CMake!"
+    exit 1
 fi
 
-echo ""
-echo "========================================"
-echo "              INICIANDO JOGO            "
-echo "========================================"
-echo ""
+echo "============================================"
+echo "          Compilando o Jogo..."
+echo "============================================"
 
-# Executa o jogo
-./build/Jogo_PIF
+make
+if [ $? -ne 0 ]; then
+    echo "[ERRO] Falha ao compilar!"
+    exit 1
+fi
+
+echo "============================================"
+echo "         Executando Jogo_PIF..."
+echo "============================================"
+
+./Jogo_PIF
+cd ..
+
+exit 0
