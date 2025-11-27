@@ -1,10 +1,38 @@
-# Normaliza fim de linha
+# ------------------------
+# NORMALIZAÇÃO PADRÃO
+# ------------------------
 * text=auto
 
-# Arquivos de código-fonte
-*.c text
-*.h text
-*.cpp text
-*.hpp text
+# ------------------------
+# ARQUIVOS LINUX (DEVEM FICAR EM LF)
+# ------------------------
+*.sh text eol=lf
+
+# ------------------------
+# ARQUIVOS DE CÓDIGO (podem ser CRLF no Windows)
+# ------------------------
+*.c text eol=crlf
+*.h text eol=crlf
+*.cpp text eol=crlf
+*.hpp text eol=crlf
 *.txt text
-*.cmake text
+*.md  text
+
+# ------------------------
+# CMakelists (Linux-friendly)
+# ------------------------
+*.cmake text eol=lf
+
+# ------------------------
+# ARQUIVOS BINÁRIOS (NUNCA ALTERAR)
+# ------------------------
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.wav binary
+*.ogg binary
+*.bmp binary
+*.ttf binary
+*.zip binary
+*.exe binary
