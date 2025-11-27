@@ -79,7 +79,7 @@ void UpdateJogador(Jogador *j, float dt, float gravidade, float forcaPulo)
         {
             j->animTimer = 0;
             j->animFrame++;
-            if (j->animFrame > 2)   // frames 1,2,3
+            if (j->animFrame > 2)   
                 j->animFrame = 0;
         }
     }
